@@ -1,7 +1,6 @@
 ---
 title: "Impressum"
-draft: true
-menu: "main"
+draft: false
 ---
 
 # Adresse
@@ -13,8 +12,8 @@ Hohenzollernring 138
 Deniz Adrian
 Jan Brauer
 Boris Erdmann
-Hendric Ruesch
-Soenke Ruempler
+Hendric Rüsch
+Sönke Ruempler
 
 # Kontakt:
 info@superluminar.io
@@ -22,7 +21,7 @@ info@superluminar.io
 Umsatzsteuer-Identifikationsnummer sowie Eintrag in Handelsregister Hamburg folgen.
 
 # Inhaltlich Verantwortlicher
-Hendric Ruesch
+Hendric Rüsch
 
 # Haftungshinweis
 
