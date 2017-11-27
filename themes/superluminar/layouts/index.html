@@ -1,10 +1,5 @@
 {{ partial "header.html" . }}
-	<main>
-        <p>BOILENKOLLENADSADSADSADSADSASDSADADSDAS</p>
-		{{ $paginator := .Paginate (where .Site.Pages "Type" "post") }}
-		{{ range $paginator.Pages }}
-			{{ partial "summary.html" . }}
-		{{ end }}
-		{{ partial "pagination.html" . }}
-	</main>
+<main>
+{{ .Content }}
+</main>
 {{ partial "footer.html" . }}
