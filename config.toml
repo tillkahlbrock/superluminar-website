@@ -1,0 +1,8 @@
+baseURL = "https://superluminar.io/"
+languageCode = "en-us"
+title = "superluminar GmbH i.G."
+theme = "superluminar"
+sectionPagesMenu = "main"
+
+[blackfriday]
+extensions = ["hardLineBreak"]
