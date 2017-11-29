@@ -11,7 +11,19 @@
 	{{ if .RSSLink -}}<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}">{{- end }}
 	{{ .Hugo.Generator }}
 </head>
+{{ if .Site.Params.gaTrackingId -}}
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.gaTrackingId }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', '{{ .Site.Params.gaTrackingId }}');
+</script>
+{{- end }}
 <body>
+
 	<header class="max-width-4 mx-auto px2 py2">
 		<a href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL}}img/superluminar.svg" alt="superluminar" width="150px"/></a>
 		<!-- <nav class="clearfix mxn2">
