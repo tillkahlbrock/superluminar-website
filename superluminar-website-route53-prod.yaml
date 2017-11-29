@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Route53 DNS records for https://superluminar.io
+Parameters:
+  WebsiteCdn:
+    Type: String
+  CloudFrontDistributionRedirect:
+    Type: String
+  ApexDomainName:
+    Type: String
+    Default: superluminar.io
+  RedirectDomainName:
+    Type: String
+    Default: www.superluminar.io
+Resources:
+  DNS:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneName: !Sub ${ApexDomainName}.
+      RecordSets:
+      - Name: !Ref ApexDomainName
+        Type: A
+        AliasTarget:
+          # Magic AWS number:  For CloudFront, use Z2FDTNDATAQYW2.
+          HostedZoneId: Z2FDTNDATAQYW2
+          DNSName: !Ref WebsiteCdn
+      - Name: !Ref RedirectDomainName
+        Type: A
+        AliasTarget:
+          # Magic AWS number:  For CloudFront, use Z2FDTNDATAQYW2.
+          HostedZoneId: Z2FDTNDATAQYW2
+          DNSName: !Ref CloudFrontDistributionRedirect
