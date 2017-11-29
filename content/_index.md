@@ -19,7 +19,7 @@ Wir beraten, coachen und trainieren. Bei Auftragsende gehören das Wissen, die F
 <div class="center sm-col sm-col-6 px2">
 <h1 class="h1 h0-responsive mt4 mb0 regular">Alles wird Code!</h1>
 <p class="h3">Interesse geweckt?</p>
-<a href="#" class="h3 btn btn-primary mb4">Lass uns reden</a>
+<a href="mailto:hi@superluminar.io" class="h3 btn btn-primary mb4">Lass uns reden</a>
 </div>
 
 </div>
