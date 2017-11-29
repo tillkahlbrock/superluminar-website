@@ -4,9 +4,15 @@ draft: false
 ---
 
 # Adresse
-superluminar GmbH i.G.
+superluminar GmbH
 Hohenzollernring 138
 22763 Hamburg
+
+Handelsregister Hamburg HRB 149058
+Umsatzsteuer-Identifikationsnummer folgt
+
+# Kontakt:
+info@superluminar.io
 
 # Vertreten durch:
 Deniz Adrian
@@ -14,11 +20,6 @@ Jan Brauer
 Boris Erdmann
 Hendric Rüsch
 Sönke Ruempler
-
-# Kontakt:
-info@superluminar.io
-
-Umsatzsteuer-Identifikationsnummer sowie Eintrag in Handelsregister Hamburg folgen.
 
 # Inhaltlich Verantwortlicher
 Hendric Rüsch
