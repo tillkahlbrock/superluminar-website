@@ -142,13 +142,13 @@ Resources:
           phases:
             install:
               commands:
-                - npm install
+                - make install
             build:
               commands:
-                - node_modules/.bin/hexo deploy
+                - make build 
             post_build:
               commands:
-                - aws s3 sync public/ s3://$WEBSITE_BUCKET/ --delete
+                - make deploy 
 
   DeployWebsiteRole:
     Type: AWS::IAM::Role
