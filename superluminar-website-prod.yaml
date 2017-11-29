@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Serverless deployment pipeline for a website powered by Hexo, including a CDN, HTTPS/Cert and Route53 records
+Description: Deployment pipeline for https://superluminar.io including a CDN and HTTPS
 Parameters:
   GithubOauthToken:
     Type: String
