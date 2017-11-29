@@ -203,7 +203,6 @@ Resources:
   S3BucketRedirect:
     Type: 'AWS::S3::Bucket'
     Properties:
-      BucketName: !Ref RedirectDomainName
       WebsiteConfiguration:
         RedirectAllRequestsTo:
           HostName: !Ref ApexDomainName
