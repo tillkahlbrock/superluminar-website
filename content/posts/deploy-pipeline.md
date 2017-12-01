@@ -1,8 +1,7 @@
 ---
 title: "Eine Deploy-Pipeline mit AWS CodePipeline"
 author: "Jan Brauer"
-date: 2017-11-30T08:04:49+01:00
-draft: true
+date: 2017-12-01
 type: post
 ---
 ## Das Problem
