@@ -44,18 +44,18 @@ Die Konfiguration für die `Source`-Stage sieht wie folgt aus:
   Actions:
     - Name: SourceAction
       ActionTypeId:
-	Category: Source
-	Owner: ThirdParty
-	Version: 1
-	Provider: GitHub
+        Category: Source
+        Owner: ThirdParty
+        Version: 1
+        Provider: GitHub
       InputArtifacts: []
       OutputArtifacts:
-	- Name: SourceOutput
+        - Name: SourceOutput
       Configuration:
-	Owner: superluminar-io 
-	Repo: superluminar-website 
-	Branch: master 
-	OAuthToken: !Ref GithubOauthToken
+        Owner: superluminar-io 
+        Repo: superluminar-website 
+        Branch: master 
+        OAuthToken: !Ref GithubOauthToken
       RunOrder: 1
 ```
 
@@ -77,7 +77,7 @@ Die Konfiguration für die darauffolgende `DeployWebsite`-Stage sieht wie folgt 
       - Name: DeployWebsiteActionOutput
     Configuration:
       ProjectName:
-	Ref: DeployWebsiteBuild
+        Ref: DeployWebsiteBuild
     RunOrder: 2
 ```
 
@@ -121,13 +121,13 @@ Der eigentliche Build-Step sieht so aus. Die [Spezifikation](http://docs.aws.ama
   phases:
     install:
       commands:
-	- make install
+        - make install
     build:
       commands:
-	- make build 
+        - make build 
     post_build:
       commands:
-	- make deploy 
+        - make deploy 
 ```
 
 Drei Schritte: die Abhängigkeiten installieren, das Artefakt (unsere Webseite) bauen, die Website in einen S3-Bucket kopieren.  Das [Makefile](Makefile) für unsere Webseite stellt die obigen drei Targets bereit. Ausgeführt wird das ganze in einem Docker-Container (`Image: aws/codebuild/ubuntu-base:14.04`, s.o.). Es stehen verschiedene [Docker-Images](http://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html) zur Auswahl. Das gesamte Cloudformation-Template findet Ihr [hier](superluminar-website-prod.yaml).
