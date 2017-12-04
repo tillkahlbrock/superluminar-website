@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "superluminar GmbH"
 theme = "superluminar"
 sectionPagesMenu = "main"
+disqusShortname = "superluminar"
 
 [blackfriday]
 extensions = ["hardLineBreak"]
