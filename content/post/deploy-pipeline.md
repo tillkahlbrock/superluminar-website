@@ -2,7 +2,6 @@
 title: "Eine Deploy-Pipeline mit AWS CodePipeline"
 author: "Jan Brauer"
 date: 2017-12-01
-type: post
 ---
 ## Das Problem
 Wer kennt es nicht. Die Stories sind alle abgearbeitet, das BurnDown-Chart geht gegen null, die Product Ownerin frohlockt.
@@ -58,7 +57,7 @@ Die Konfiguration für die `Source`-Stage sieht wie folgt aus:
       RunOrder: 1
 ```
 
-Damit wird der Source-Code unserer [Webseite](github.com/superluminar-io/superluminar-website) ausgecheckt. Wichtig ist hierbei der Parameter `OAuthToken`. Dies muss ein OAuth Token für GitHub mit dem Scope `repo` sein. Weitere Informationen dazu lassen sich [hier](http://docs.aws.amazon.com/codepipeline/latest/userguide/integrations-action-type.html#integrations-source) finden.
+Hier wird eine Action vom Typ `Source verwendet. Damit wird der Source-Code unserer [Webseite](github.com/superluminar-io/superluminar-website) ausgecheckt. Wichtig ist hierbei der Parameter `OAuthToken`. Dies muss ein OAuth Token für GitHub mit dem Scope `repo` sein. Weitere Informationen dazu lassen sich [hier](http://docs.aws.amazon.com/codepipeline/latest/userguide/integrations-action-type.html#integrations-source) finden.
 
 Die Konfiguration für die darauffolgende `DeployWebsite`-Stage sieht wie folgt aus:
 ```yaml
@@ -80,7 +79,7 @@ Die Konfiguration für die darauffolgende `DeployWebsite`-Stage sieht wie folgt 
     RunOrder: 2
 ```
 
-Der spannende Teil hieran ist im Parameter `Configuration` mit dem Namen `DeployWebsiteBuild` zu finden. Hier wird folgender Teil referenziert:
+Hier verwenden wir eine Action vom Typ `Build`. Dies mag widersprüchlich sein, aber wir kombinieren den Build- und den Deploy-Step in einen. Würden wir auf EC2-Instanzen deployen wollen, wäre eine Action vom Typ `Deploy` angebracht.  Der spannende Teil hieran ist im Parameter `Configuration` mit dem Namen `DeployWebsiteBuild` zu finden. Hier wird folgender Teil referenziert:
 
 ```
   DeployWebsiteBuild:

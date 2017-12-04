@@ -10,3 +10,6 @@ extensions = ["hardLineBreak"]
 
 [params]
 gaTrackingId = "UA-110302159-1"
+
+[permalinks]
+post = "/:year/:month/:day/:title/"
