@@ -8,13 +8,13 @@ superluminar GmbH
 Hohenzollernring 138
 22763 Hamburg
 
-Handelsregister Hamburg HRB 149058
+Amtsgericht Hamburg: HRB 149058
 Umsatzsteuer-Identifikationsnummer folgt
 
-# Kontakt:
+# Kontakt
 info@superluminar.io
 
-# Vertreten durch:
+# Vertreten durch
 Deniz Adrian
 Jan Brauer
 Boris Erdmann
