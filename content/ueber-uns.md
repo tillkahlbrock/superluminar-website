@@ -1,6 +1,5 @@
 ---
 title: "Über uns"
-slug: "Über uns"
 menu: "main"
 ---
 
