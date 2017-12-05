@@ -25,14 +25,16 @@
 <body>
 
 	<header class="max-width-4 mx-auto px2 py2">
-		<a href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL}}img/superluminar.svg" alt="superluminar" width="150px"/></a>
-		<!-- <nav class="clearfix mxn2">
-                    <div class="sm-col">
-                          {{ $currentPage := . }}
-                          {{ range .Site.Menus.main }}
-                          <a class="btn py2{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} underline{{end}}" href="{{.URL}}">{{ .Name }}</a>
-                          {{ end }}
+		<nav class="clearfix mxn2">
+                    <div class="left">
+                      <a class="btn" href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL}}img/superluminar.svg" alt="superluminar" width="150px"/></a>
                     </div>
-                </nav> -->
+                    <div class="right">
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.main }}
+                      <a class="btn py2{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} underline{{end}}" href="{{.URL}}">{{ .Name }}</a>
+                    {{ end }}
+                    </div>
+                </nav>
 	</header>
         <div class="max-width-4 mx-auto px2 py2">
