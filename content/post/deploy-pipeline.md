@@ -13,7 +13,7 @@ Dann kommt die Frage:
 Hektische Betriebsamkeit macht sich breit. Das Release-Datum wird um zwölf Wochen verschoben. Die bisherigen Schätzungen waren alle falsch.
 
 ## Geht es auch anders? 
-Doch so muss es nicht sein. Für uns gehört der Deployment-Prozess als vollwertiges Bestandteil zur Produktentwicklung dazu. Also sollte er zum Beginn des Entwicklungsprozesses geplant und mit etwas Liebe bedacht werden.
+Doch so muss es nicht sein. Für uns gehört der Deployment-Prozess als vollwertiger Bestandteil zur Produktentwicklung dazu. Also sollte er zum Beginn des Entwicklungsprozesses geplant und mit etwas Liebe bedacht werden.
 Im folgenden Zeigen wir Euch, wie die Deployment-Pipeline für eben diese [Webseite](superluminar.io) funktioniert und aufgebaut ist.
 
 ## Continuous Delivery
