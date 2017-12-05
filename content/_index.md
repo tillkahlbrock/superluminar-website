@@ -1,6 +1,5 @@
 ---
 title: "Home"
-menu: "main"
 ---
 <h1 class="h1 h0-responsive mt2 mb0 regular">Mutig. Ehrlich. Vorwärtsgewandt.</h1>
 <div class="max-width-2">

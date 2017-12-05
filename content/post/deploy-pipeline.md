@@ -57,7 +57,7 @@ Die Konfiguration für die `Source`-Stage sieht wie folgt aus:
       RunOrder: 1
 ```
 
-Hier wird eine Action vom Typ `Source verwendet. Damit wird der Source-Code unserer [Webseite](github.com/superluminar-io/superluminar-website) ausgecheckt. Wichtig ist hierbei der Parameter `OAuthToken`. Dies muss ein OAuth Token für GitHub mit dem Scope `repo` sein. Weitere Informationen dazu lassen sich [hier](http://docs.aws.amazon.com/codepipeline/latest/userguide/integrations-action-type.html#integrations-source) finden.
+Hier wird eine Action vom Typ `Source` verwendet. Damit wird der Source-Code unserer [Webseite](https://github.com/superluminar-io/superluminar-website) ausgecheckt. Wichtig ist hierbei der Parameter `OAuthToken`. Dies muss ein OAuth Token für GitHub mit dem Scope `repo` sein. Weitere Informationen dazu lassen sich [hier](http://docs.aws.amazon.com/codepipeline/latest/userguide/integrations-action-type.html#integrations-source) finden.
 
 Die Konfiguration für die darauffolgende `DeployWebsite`-Stage sieht wie folgt aus:
 ```yaml
@@ -132,4 +132,4 @@ Drei Schritte: die Abhängigkeiten installieren, das Artefakt (unsere Webseite) 
 
 ## Fazit
 
-Zugegebenermaßen hat AWS CloudFormation eine steile Lernkurve. Doch die Investition macht sich bezahlt. Wir haben eine Pipeline für unsere Webseite ohne weitere Komponenten gebaut. Ab jetzt können wir unsere Webseite nach Gusto ändern. Gefällt uns etwas nicht, ändern wir es einfach auf [GitHub](github.com/superluminar-io/superluminar-website). Unsere Pipeline stellt sicher, das Änderungen binnen Minuten live sind. Eine Sorge weniger. Bis zum nächsten Artikel!
+Zugegebenermaßen hat AWS CloudFormation eine steile Lernkurve. Doch die Investition macht sich bezahlt. Wir haben eine Pipeline für unsere Webseite ohne weitere Komponenten gebaut. Ab jetzt können wir unsere Webseite nach Gusto ändern. Gefällt uns etwas nicht, ändern wir es einfach auf [GitHub](https://github.com/superluminar-io/superluminar-website). Unsere Pipeline stellt sicher, das Änderungen binnen Minuten live sind. Eine Sorge weniger. Bis zum nächsten Artikel!
