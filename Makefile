@@ -7,7 +7,7 @@ endif
 
 .PHONY: clean
 clean:
-	rm -fr public
+	rm -fr public tmp
 
 .PHONY: clobber
 clobber: clean
@@ -33,3 +33,17 @@ build: public
 
 deploy: public guard-WEBSITE_BUCKET
 	aws s3 sync public/ s3://$(WEBSITE_BUCKET)/ --delete
+
+tmp/superluminar-website-slack-hook-prod.yaml:
+	mkdir -p tmp
+	curl -LsS https://s3.amazonaws.com/aws-to-slack/cloudformation.yaml -o $@
+
+deploy-slack-hook: tmp/superluminar-website-slack-hook-prod.yaml guard-SLACK_HOOK_URL guard-SLACK_CHANNEL
+	aws cloudformation deploy \
+		--profile superluminar-website \
+		--stack-name superluminar-website-slack-hook-prod \
+		--region us-east-1 \
+		--template-file $< \
+		--parameter-overrides "HookUrl=$(SLACK_HOOK_URL)" "Channel=$(SLACK_CHANNEL)" \
+		--capabilities CAPABILITY_IAM
+

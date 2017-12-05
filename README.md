@@ -29,6 +29,11 @@ Content is in [content](content). Every file is written in Markdown. CSS and tem
 
 # Cloudformation setup
 
+A [AWS Lambda function](https://github.com/arabold/aws-to-slack) to forward SNS messages from the build pipeline to our Slack:
+```
+SLACK_HOOK_URL=... SLACK_CHANNEL=... make deploy-slack-hook
+```
+
 The `superluminar-website` organization holds the S3 bucket and CloudFront setup.
 
 ```
