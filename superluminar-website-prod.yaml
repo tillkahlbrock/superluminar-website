@@ -225,7 +225,7 @@ Resources:
           
           
           def handler(event, _):
-              slack_map = {'SUCCEEDED': ':ok:', 'FAILED': ':fire:'}
+              slack_map = {'STARTED': ':grey_exclamation:', 'SUCCEEDED': ':ok:', 'FAILED': ':fire:'}
               result = event['detail']['state']
               slack = slack_map.get(result, ':question:')
               slack_message = {
