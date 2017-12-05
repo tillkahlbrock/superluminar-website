@@ -26,6 +26,9 @@ Parameters:
   DeploymentStage:
     Type: String
     Default: prod
+  SlackHookUrl:
+    Type: String
+    Description: Slack hook to call when AWS CodePipeline finishes
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -163,6 +166,93 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AdministratorAccess
 
+  CodePipelineToSlackEventRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Description: CodePipeline event that triggers on state changes
+      EventPattern:
+        source:
+          - "aws.codepipeline"
+        "detail-type":
+          - "CodePipeline Pipeline Execution State Change"
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt CodePipelineToSlackLambdaFunction.Arn
+          Id: lambda
+
+  CodePipelineToSlackLambdaFunctionPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !Ref CodePipelineToSlackLambdaFunction
+      Principal: 'events.amazonaws.com'
+      SourceArn: !GetAtt CodePipelineToSlackEventRule.Arn 
+
+  CodePipelineToSlackLambdaFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: 'lambda.amazonaws.com'
+          Action: 'sts:AssumeRole'
+      Policies:
+      - PolicyName: logs
+        PolicyDocument:
+          Statement:
+          - Effect: Allow
+            Action:
+            - 'logs:CreateLogGroup'
+            - 'logs:CreateLogStream'
+            - 'logs:PutLogEvents'
+            Resource: 'arn:aws:logs:*:*:*'
+
+  CodePipelineToSlackLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        ZipFile: !Sub |
+          import os
+          import logging
+          import json
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError, URLError
+          
+          logger = logging.getLogger()
+          logger.setLevel(logging.INFO)
+          
+          
+          def handler(event, _):
+              slack_map = {'STARTED': ':grey_exclamation:', 'SUCCEEDED': ':ok:', 'FAILED': ':fire:'}
+              result = event['detail']['state']
+              slack = slack_map.get(result, ':question:')
+              slack_message = {
+                  'channel': 'deployments',
+                  'text': '{0} - {1} superluminar.io website deployment'.format(slack, result),
+                  'username': 'AWS CodePipeline',
+                  'icon_emoji': ':tophat:'
+              }
+              req = Request(os.environ['SLACK_HOOK_URL'], json.dumps(slack_message).encode('utf8'))
+              try:
+                  response = urlopen(req)
+                  response.read()
+                  logger.info("Message posted to %s", slack_message['channel'])
+              except HTTPError as e:
+                  logger.error("Request failed: %d %s", e.code, e.reason)
+              except URLError as e:
+                  logger.error("Server connection failed: %s", e.reason)
+              print(slack_message)
+      Handler: 'index.handler'
+      MemorySize: 128
+      Role: !GetAtt CodePipelineToSlackLambdaFunctionRole.Arn 
+      Runtime: 'python3.6'
+      Timeout: 60
+      Environment:
+        Variables:
+          SLACK_HOOK_URL: !Ref SlackHookUrl 
+
   WebsiteCdn:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -231,24 +321,6 @@ Resources:
           AcmCertificateArn: !Ref WebsiteCertificate
           SslSupportMethod: sni-only
         HttpVersion: http2
-  
-        #  DNS:
-        #    Type: AWS::Route53::RecordSetGroup
-        #    Properties:
-        #      HostedZoneName: !Sub ${ApexDomainName}.
-        #      RecordSets:
-        #      - Name: !Ref ApexDomainName
-        #        Type: A
-        #        AliasTarget:
-        #          # Magic AWS number:  For CloudFront, use Z2FDTNDATAQYW2.
-        #          HostedZoneId: Z2FDTNDATAQYW2
-        #          DNSName: !GetAtt WebsiteCdn.DomainName
-        #      - Name: !Ref RedirectDomainName
-        #        Type: A
-        #        AliasTarget:
-        #          # Magic AWS number:  For CloudFront, use Z2FDTNDATAQYW2.
-        #          HostedZoneId: Z2FDTNDATAQYW2
-        #          DNSName: !GetAtt CloudFrontDistributionRedirect.DomainName
 
 Outputs:
   WebsiteCdn:
