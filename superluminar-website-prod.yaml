@@ -26,6 +26,9 @@ Parameters:
   DeploymentStage:
     Type: String
     Default: prod
+  SlackHookUrl:
+    Type: String
+    Description: Slack hook to call when AWS CodePipeline finishes
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -211,13 +214,44 @@ Resources:
     Properties:
       Code:
         ZipFile: !Sub |
-          def handler(event, context):
-            print(event)
+          import os
+          import logging
+          import json
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError, URLError
+          
+          logger = logging.getLogger()
+          logger.setLevel(logging.INFO)
+          
+          
+          def handler(event, _):
+              slack_map = {'SUCCEEDED': ':ok:', 'FAILED': ':fire:'}
+              result = event['detail']['state']
+              slack = slack_map.get(result, ':question:')
+              slack_message = {
+                  'channel': 'deployments',
+                  'text': '{0} - {1} superluminar.io website deployment'.format(slack, result),
+                  'username': 'AWS CodePipeline',
+                  'icon_emoji': ':tophat:'
+              }
+              req = Request(os.environ['SLACK_HOOK_URL'], json.dumps(slack_message).encode('utf8'))
+              try:
+                  response = urlopen(req)
+                  response.read()
+                  logger.info("Message posted to %s", slack_message['channel'])
+              except HTTPError as e:
+                  logger.error("Request failed: %d %s", e.code, e.reason)
+              except URLError as e:
+                  logger.error("Server connection failed: %s", e.reason)
+              print(slack_message)
       Handler: 'index.handler'
       MemorySize: 128
       Role: !GetAtt CodePipelineToSlackLambdaFunctionRole.Arn 
       Runtime: 'python3.6'
       Timeout: 60
+      Environment:
+        Variables:
+          SLACK_HOOK_URL: !Ref SlackHookUrl 
 
   WebsiteCdn:
     Type: AWS::CloudFront::Distribution
