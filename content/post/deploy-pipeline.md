@@ -14,7 +14,7 @@ Hektische Betriebsamkeit macht sich breit. Das Release-Datum wird um zwölf Woch
 
 ## Geht es auch anders? 
 Doch so muss es nicht sein. Für uns gehört der Deployment-Prozess als vollwertiger Bestandteil zur Produktentwicklung dazu. Also sollte er zum Beginn des Entwicklungsprozesses geplant und mit etwas Liebe bedacht werden.
-Im folgenden Zeigen wir Euch, wie die Deployment-Pipeline für eben diese [Webseite](superluminar.io) funktioniert und aufgebaut ist.
+Im folgenden Zeigen wir Euch, wie die Deployment-Pipeline für eben diese [Webseite](https://superluminar.io) funktioniert und aufgebaut ist.
 
 ## Continuous Delivery
 Für eine [Continuous Delivery Pipeline](https://continuousdelivery.com/principles/) benötigen wir zum einen ein herkömmliches CI-System wie zum Beispiel [Jenkins](https://jenkins.io/) oder [Travis](https://travis-ci.com/). Zum Anderen ein Skript, das unser Projekt baut, testet und live stellt. Hierfür genügt ein Bash-Skript oder ein Makefile.
@@ -79,7 +79,7 @@ Die Konfiguration für die darauffolgende `DeployWebsite`-Stage sieht wie folgt 
     RunOrder: 2
 ```
 
-Hier verwenden wir eine Action vom Typ `Build`. Dies mag widersprüchlich sein, aber wir kombinieren den Build- und den Deploy-Step in einen. Würden wir auf EC2-Instanzen deployen wollen, wäre eine Action vom Typ `Deploy` angebracht.  Der spannende Teil hieran ist im Parameter `Configuration` mit dem Namen `DeployWebsiteBuild` zu finden. Hier wird folgender Teil referenziert:
+Hier verwenden wir eine Action vom Typ `Build`. Dies mag widersprüchlich sein, aber wir kombinieren den Build- und den Deploy-Step zu einem. Würden wir auf EC2-Instanzen deployen wollen, wäre eine Action vom Typ `Deploy` angebracht.  Der spannende Teil hieran ist im Parameter `Configuration` mit dem Namen `DeployWebsiteBuild` zu finden. Hier wird folgender Teil referenziert:
 
 ```
   DeployWebsiteBuild:
@@ -128,7 +128,7 @@ Der eigentliche Build-Step sieht so aus. Die [Spezifikation](http://docs.aws.ama
         - make deploy 
 ```
 
-Drei Schritte: die Abhängigkeiten installieren, das Artefakt (unsere Webseite) bauen, die Website in einen S3-Bucket kopieren.  Das [Makefile](Makefile) für unsere Webseite stellt die obigen drei Targets bereit. Ausgeführt wird das ganze in einem Docker-Container (`Image: aws/codebuild/ubuntu-base:14.04`, s.o.). Es stehen verschiedene [Docker-Images](http://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html) zur Auswahl. Das gesamte Cloudformation-Template findet Ihr [hier](superluminar-website-prod.yaml).
+Drei Schritte: die Abhängigkeiten installieren, das Artefakt (unsere Webseite) bauen, die Website in einen S3-Bucket kopieren.  Das [Makefile](https://github.com/superluminar-io/superluminar-website/blob/master/Makefile) für unsere Webseite stellt die obigen drei Targets bereit. Ausgeführt wird das ganze in einem Docker-Container (`Image: aws/codebuild/ubuntu-base:14.04`, s.o.). Es stehen verschiedene [Docker-Images](http://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html) zur Auswahl. Das gesamte Cloudformation-Template findet Ihr [hier](https://github.com/superluminar-io/superluminar-website/blob/master/superluminar-website-prod.yaml).
 
 ## Fazit
 
