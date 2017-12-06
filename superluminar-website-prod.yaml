@@ -237,7 +237,7 @@ Resources:
           
           def handler(event, _):
               logger.info("Got event: %s", event)
-              if event['detail']['state'] not in ('SUCCEEDED', 'FAILED):
+              if event['detail']['state'] not in ('SUCCEEDED', 'FAILED'):
                   logger.info("Skipping event state: %s", event['detail']['state'])
                   return
               pipeline_name = event['detail']['pipeline']
