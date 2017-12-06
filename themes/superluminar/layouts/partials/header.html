@@ -9,7 +9,12 @@
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 	<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
 	{{ if .RSSLink -}}<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}">{{- end }}
-	{{ .Hugo.Generator }}
+        <meta property="og:title" content="{{ .Title }}">
+        <meta property="og:type" content="{{ if eq "post" .Type }}article{{ else }}website{{end}}">
+        <meta property="og:site_name" content="superluminar GmbH">
+        <meta property="og:url" content="{{ .Permalink }}">
+        <meta property="og:image" content="{{ .Site.BaseURL}}img/superluminar.png">
+        <meta property="twitter:site" content="@superluminario">
 </head>
 {{ if .Site.Params.gaTrackingId -}}
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
