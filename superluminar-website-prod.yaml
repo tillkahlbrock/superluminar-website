@@ -208,33 +208,71 @@ Resources:
             - 'logs:CreateLogStream'
             - 'logs:PutLogEvents'
             Resource: 'arn:aws:logs:*:*:*'
+      - PolicyName: codepipeline
+        PolicyDocument:
+          Statement:
+          - Effect: Allow
+            Action:
+            - 'codepipeline:GetPipelineExecution'
+            Resource: 'arn:aws:codepipeline:*:*:*'
 
   CodePipelineToSlackLambdaFunction:
     Type: AWS::Lambda::Function
     Properties:
       Code:
         ZipFile: !Sub |
-          import os
-          import logging
+          import boto3
           import json
+          import logging
+          import os
           from urllib.request import Request, urlopen
           from urllib.error import HTTPError, URLError
           
           logger = logging.getLogger()
           logger.setLevel(logging.INFO)
           
+          codepipeline = boto3.client('codepipeline')
+          
+          color_map = {'Started': '#c0c0c0', 'Succeeded': 'good', 'Failed': 'danger'}
+          
           
           def handler(event, _):
-              slack_map = {'STARTED': ':grey_exclamation:', 'SUCCEEDED': ':ok:', 'FAILED': ':fire:'}
-              result = event['detail']['state']
-              slack = slack_map.get(result, ':question:')
+              logger.info("Got event: %s", event)
+              pipeline_name = event['detail']['pipeline']
+              pipeline_execution_id = event['detail']['execution-id']
+              state = codepipeline.get_pipeline_execution(pipelineName=pipeline_name, pipelineExecutionId=pipeline_execution_id)
+              logger.info("Pipeline state: %s", state)
+              status = state['pipelineExecution']['status']
+              text =  '{0}: {1}'.format(pipeline_name, status)
               slack_message = {
-                  'channel': 'deployments',
-                  'text': '{0} - {1} superluminar.io website deployment'.format(slack, result),
                   'username': 'AWS CodePipeline',
-                  'icon_emoji': ':tophat:'
+                  'as_user': False,
+                  'icon_emoji': ':tophat:',
+                  'attachments': [
+                          {
+                              'title': 'superluminar.io deployment',
+                              'title_link': 'https://console.aws.amazon.com/codepipeline/home?region=us-east-1#/view/{}'.format(pipeline_name),
+                              'text': text,
+                              'color': color_map.get(status, '#c0c0c0'),
+                          }
+                  ]
               }
+              if state['pipelineExecution']['artifactRevisions']:
+                  fields = [
+                      {
+                          "title": "Summary",
+                          "value": state['pipelineExecution']['artifactRevisions'][0]['revisionSummary'],
+                          "short": False
+                      },
+                      {
+                          "title": "Revision",
+                          "value": state['pipelineExecution']['artifactRevisions'][0]['revisionUrl'],
+                          "short": False
+                      }
+                  ]
+                  slack_message['attachments'][0]['fields'] = fields
               req = Request(os.environ['SLACK_HOOK_URL'], json.dumps(slack_message).encode('utf8'))
+              logger.info("Sending request to Slack: %s", slack_message)
               try:
                   response = urlopen(req)
                   response.read()
@@ -243,7 +281,6 @@ Resources:
                   logger.error("Request failed: %d %s", e.code, e.reason)
               except URLError as e:
                   logger.error("Server connection failed: %s", e.reason)
-              print(slack_message)
       Handler: 'index.handler'
       MemorySize: 128
       Role: !GetAtt CodePipelineToSlackLambdaFunctionRole.Arn 
