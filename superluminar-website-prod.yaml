@@ -233,7 +233,7 @@ Resources:
           
           codepipeline = boto3.client('codepipeline')
           
-          color_map = {'Started': '#c0c0c0', 'Succeeded': 'good', 'Failed': 'danger'}
+          color_map = {'Succeeded': 'good', 'Failed': 'danger'}
           
           
           def handler(event, _):
@@ -243,6 +243,9 @@ Resources:
               state = codepipeline.get_pipeline_execution(pipelineName=pipeline_name, pipelineExecutionId=pipeline_execution_id)
               logger.info("Pipeline state: %s", state)
               status = state['pipelineExecution']['status']
+              if status not in ('Succeeded', 'Failed'):
+                  logger.info("Skipping status: %s", status)
+                  return
               text =  '{0}: {1}'.format(pipeline_name, status)
               slack_message = {
                   'username': 'AWS CodePipeline',
