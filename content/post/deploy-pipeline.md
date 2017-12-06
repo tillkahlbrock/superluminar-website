@@ -17,7 +17,7 @@ Doch so muss es nicht sein. Für uns gehört der Deployment-Prozess als vollwert
 Im folgenden Zeigen wir Euch, wie die Deployment-Pipeline für eben diese [Webseite](superluminar.io) funktioniert und aufgebaut ist.
 
 ## Continuous Delivery
-Für eine [Continuous Delivery Pipeline](https://continuousdelivery.com/principles/) benötigen wir zum einen ein herkömmliches CI-System wie zum Beispiel [Jenkins](https://jenkins.io/) oder [Travis](https://travis-ci.com/). Zum Anderen ein Skript, was unser Projekt baut, testet und live stellt. Hierfür genügt ein Bash-Skript oder ein Makefile.
+Für eine [Continuous Delivery Pipeline](https://continuousdelivery.com/principles/) benötigen wir zum einen ein herkömmliches CI-System wie zum Beispiel [Jenkins](https://jenkins.io/) oder [Travis](https://travis-ci.com/). Zum Anderen ein Skript, das unser Projekt baut, testet und live stellt. Hierfür genügt ein Bash-Skript oder ein Makefile.
 Jenkins ist für gewöhnlich mit operativem Mehraufwand verbunden und nicht ohne weiteres verfügbar. Travis ist mit relativ hohen Kosten verbunden, die sich erst ab einer gewissen Größe lohnen.
 
 ## Eine Pipeline mit AWS-Bordmitteln 
