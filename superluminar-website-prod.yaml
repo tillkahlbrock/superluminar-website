@@ -231,22 +231,20 @@ Resources:
           logger = logging.getLogger()
           logger.setLevel(logging.INFO)
           
-          codepipeline = boto3.client('codepipeline')
+          pipeline_client = boto3.client('codepipeline')
           
           color_map = {'Succeeded': 'good', 'Failed': 'danger'}
           
-          
           def handler(event, _):
               logger.info("Got event: %s", event)
+              if event['detail']['state'] not in ('SUCCEEDED', 'FAILED):
+                  logger.info("Skipping event state: %s", event['detail']['state'])
+                  return
               pipeline_name = event['detail']['pipeline']
               pipeline_execution_id = event['detail']['execution-id']
-              state = codepipeline.get_pipeline_execution(pipelineName=pipeline_name, pipelineExecutionId=pipeline_execution_id)
-              logger.info("Pipeline state: %s", state)
-              status = state['pipelineExecution']['status']
-              if status not in ('Succeeded', 'Failed'):
-                  logger.info("Skipping status: %s", status)
-                  return
-              text =  '{0}: {1}'.format(pipeline_name, status)
+              execution = pipeline_client.get_pipeline_execution(pipelineName=pipeline_name, pipelineExecutionId=pipeline_execution_id)['pipelineExecution']
+              logger.info("Pipeline info: %s", execution)
+              text = '{0}: {1}'.format(pipeline_name, execution['status'])
               slack_message = {
                   'username': 'AWS CodePipeline',
                   'as_user': False,
@@ -256,20 +254,20 @@ Resources:
                               'title': 'superluminar.io deployment',
                               'title_link': 'https://console.aws.amazon.com/codepipeline/home?region=us-east-1#/view/{}'.format(pipeline_name),
                               'text': text,
-                              'color': color_map.get(status, '#c0c0c0'),
+                              'color': color_map.get(execution['status'], '#c0c0c0'),
                           }
                   ]
               }
-              if state['pipelineExecution']['artifactRevisions']:
+              if execution['artifactRevisions']:
                   fields = [
                       {
                           "title": "Summary",
-                          "value": state['pipelineExecution']['artifactRevisions'][0]['revisionSummary'],
+                          "value": execution['artifactRevisions'][0]['revisionSummary'],
                           "short": False
                       },
                       {
                           "title": "Revision",
-                          "value": state['pipelineExecution']['artifactRevisions'][0]['revisionUrl'],
+                          "value": execution['artifactRevisions'][0]['revisionUrl'],
                           "short": False
                       }
                   ]
