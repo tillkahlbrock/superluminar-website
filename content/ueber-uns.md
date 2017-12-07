@@ -1,5 +1,6 @@
 ---
 title: "Über uns"
+description: "Erfahre mehr über das superluminar Team."
 menu: "main"
 ---
 

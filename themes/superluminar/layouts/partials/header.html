@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode | default "en-us" }}">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>superluminar - {{ .Title }}</title>
-	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
-	<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
-	{{ if .RSSLink -}}<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}">{{- end }}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ .Site.Title }} - {{ .Title }}</title>
+        {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+        {{ with .Description }}<meta name="og:description" content="{{ . }}">{{ end }}
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
+        {{ if .RSSLink -}}<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}">{{- end }}
         <meta property="og:title" content="{{ .Title }}">
         <meta property="og:type" content="{{ if eq "post" .Type }}article{{ else }}website{{end}}">
         <meta property="og:site_name" content="superluminar GmbH">
@@ -16,7 +16,7 @@
         <meta property="og:image" content="{{ .Site.BaseURL}}img/superluminar.png">
         <meta property="twitter:site" content="@superluminario">
         <meta property="twitter:card" content="summary_large_image">
-	<meta name="google-site-verification" content="zNhnyHCz4zFMeGXBZPa5J52TRepr5RmnIP2kozPtIUs" />
+        <meta name="google-site-verification" content="zNhnyHCz4zFMeGXBZPa5J52TRepr5RmnIP2kozPtIUs" />
 </head>
 {{ if .Site.Params.gaTrackingId -}}
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
@@ -31,8 +31,8 @@
 {{- end }}
 <body>
 
-	<header class="max-width-4 mx-auto px2 py2">
-		<nav class="clearfix mxn2">
+        <header class="max-width-4 mx-auto px2 py2">
+                <nav class="clearfix mxn2">
                     <div class="left">
                       <a class="btn" href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL}}img/superluminar.svg" alt="superluminar" width="150px"/></a>
                     </div>
@@ -43,5 +43,5 @@
                     {{ end }}
                     </div>
                 </nav>
-	</header>
+        </header>
         <div class="max-width-4 mx-auto px2 py2">
