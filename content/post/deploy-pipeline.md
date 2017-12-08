@@ -8,6 +8,7 @@ Wer kennt es nicht. Die Stories sind alle abgearbeitet, das BurnDown-Chart geht 
 Dann kommt die Frage:
 
 > "Ist es denn schon live?"
+>
 > "Öh, jein. Wir müssen nur noch deployen..."
 
 Hektische Betriebsamkeit macht sich breit. Das Release-Datum wird um zwölf Wochen verschoben. Die bisherigen Schätzungen waren alle falsch.

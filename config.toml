@@ -5,9 +5,6 @@ theme = "superluminar"
 sectionPagesMenu = "main"
 disqusShortname = "superluminar"
 
-[blackfriday]
-extensions = ["hardLineBreak"]
-
 [params]
 gaTrackingId = "UA-110302159-1"
 
