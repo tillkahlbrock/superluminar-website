@@ -31,8 +31,9 @@ install: hugo
 
 build: public
 
-deploy: public guard-WEBSITE_BUCKET
+deploy: public guard-WEBSITE_BUCKET guard-CLOUDFRONT_DISTRIBUTION_ID
 	aws s3 sync public/ s3://$(WEBSITE_BUCKET)/ --delete
+	aws cloudfront create-invalidation --distribution-id=$(CLOUDFRONT_DISTRIBUTION_ID) --paths /
 
 deploy-pipeline:
 	aws cloudformation deploy \

@@ -136,6 +136,8 @@ Resources:
         EnvironmentVariables:
           - Name: WEBSITE_BUCKET
             Value: !Ref WebsiteBucket
+          - Name: CLOUDFRONT_DISTRIBUTION_ID
+            Value: !Ref WebsiteCdn
       Name: !Sub DeployWebsiteBuild-${DeploymentStage}
       ServiceRole: !Ref DeployWebsiteRole
       Source:
