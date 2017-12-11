@@ -4,15 +4,17 @@ description: "Erfahre mehr über das superluminar Team."
 menu: "main"
 ---
 <div class="clearfix mxn2">
-<div class="sm-col sm-col-6 p2">
+<div class="sm-col sm-col-6 px2">
 <h2>Unsere Vision</h2>
 <blockquote>Mit uns entwickelt ihr euren Kern nach vorn.</blockquote>
 </div>
-<div class="sm-col sm-col-6 p2">
+<div class="sm-col sm-col-6 px2">
 <h2>Unsere Werte</h2>
 <blockquote>Mutig. Ehrlich. Vorwärtsgewandt.</blockquote>
 </div>
 </div>
+
+## Das Team
 
 <div class="clearfix mxn2">
 <div class="sm-col sm-col-4 p2">
