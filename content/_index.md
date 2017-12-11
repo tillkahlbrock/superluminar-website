@@ -9,7 +9,7 @@ Wir verstehen nicht nur die modernsten Technologien, wir schauen auch auf Mensch
 
 Produkte oder Features, die nicht in Produktion sind, können nicht benutzt werden und somit keinen Wert generieren, weder für Eure Kunden noch für Eure Organisation. Sie generieren kein reales Feedback. Das wurmt uns. 
 
-DevOps, Kanban, Serverless, Container etc. sind für uns Werkzeuge, um Durchlaufzeiten und Lernschleifen zu verkürzen sowie Folgekosten zu minimieren Wir setzen sie nicht um ihrer selbst Willen ein. Wichtiger als Technologien ist uns die Zusammenarbeit und das Mindset dahinter.
+DevOps, Kanban, Serverless, Container etc. sind für uns Werkzeuge, um Durchlaufzeiten und Lernschleifen zu verkürzen sowie Folgekosten zu minimieren. Wir setzen sie nicht um ihrer selbst Willen ein. Wichtiger als Technologien ist uns die Zusammenarbeit und das Mindset dahinter.
 
 Wir hören erst zu, wollen verstehen und versetzen uns in die Lage der Teams. Wir werfen nicht blind Lösungen in die Runde, ohne den Kontext verstanden zu haben. Wir denken über bestehende Verantwortungs- und Team-Grenzen hinweg, auch wenn wir diese respektieren. Wir wollen Silos überwinden - Experimente statt Meinungen.
 
