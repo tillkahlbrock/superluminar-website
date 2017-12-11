@@ -7,7 +7,7 @@ date: 2017-12-11
 tl;dr: Die [JeffConf findet am 16.02.2018 in Hamburg statt](https://hamburg.jeffconf.com/) und wir sind Co-Organisatoren.
 
 ## Hintergrund
-Seit 2016 wächst der berechtigte Hype um das Thema Serverless gewaltig an. Der Begriff Serverless ist allerdings nicht ganz passend - irgendwo sind immer noch Server, wir "sehen" sie nur nicht mehr - und daher veröffentlichte Paul Johnston letztes Jahr auf den Artikel ['Serverless' is just a name. We could have called it 'Jeff'](https://serverless.zone/serverless-is-just-a-name-we-could-have-called-it-jeff-1958dd4c63d7)
+Seit 2016 wächst der berechtigte Hype um das Thema Serverless gewaltig an. Der Begriff Serverless ist allerdings nicht ganz passend - irgendwo sind immer noch Server, wir "sehen" sie nur nicht mehr - und daher veröffentlichte Paul Johnston letztes Jahr auf den Artikel ['Serverless' is just a name. We could have called it 'Jeff'](https://serverless.zone/serverless-is-just-a-name-we-could-have-called-it-jeff-1958dd4c63d7).
 Ein Jahr Fast-Forward und die erste JeffConf wurde in London geboren. Daraufhin folgte Mailand wo superluminar Mitgründer Soenke einen Talk halten konnte. Auf der Rückreise brachte Soenke das "Go" für die JeffConf Hamburg mit.
 
 <div>
