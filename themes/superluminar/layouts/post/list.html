@@ -6,15 +6,15 @@
           </header>
           {{ .Content }}
         </article>
-        <ul class="list-reset">
+        <table class="mb2">
               {{ $paginator := .Paginate (where .Data.Pages "Type" "post") 50 }}
               {{ range $paginator.Pages }}
-              <li><span class="bold">{{ .Date.Format "2006-01-02" }}</span> >> <a href="{{ .Permalink }}">{{ .Title }}</a></li>
-		{{ range .Params.tags }}
-		<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-		{{ end }}
+              <tr>
+                <td class="bold">{{ .Date.Format "2006-01-02" }}</td>
+                <td><a href="{{ .Permalink }}">{{ .Title }}</a></td>
+              </tr>
               {{ end }}
               <!-- {{ partial "pagination.html" . }} -->
-        </ul>
+        </table>
 	</main>
 {{ partial "footer.html" . }}
