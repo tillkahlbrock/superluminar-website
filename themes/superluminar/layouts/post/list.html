@@ -6,13 +6,13 @@
           </header>
           {{ .Content }}
         </article>
-        <table class="mb2">
+        <ul class="list-reset">
               {{ $paginator := .Paginate (where .Data.Pages "Type" "post") 50 }}
               {{ range $paginator.Pages }}
-              <tr>
-                <td class="bold">{{ .Date.Format "2006-01-02" }}</td>
-                <td><a href="{{ .Permalink }}">{{ .Title }}</a></td>
-              </tr>
+              <li>
+                <pre class="inline mr1">{{ .Date.Format "2006-01-02" }}</pre>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </li>
               {{ end }}
               <!-- {{ partial "pagination.html" . }} -->
         </table>
