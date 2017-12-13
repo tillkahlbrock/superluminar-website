@@ -33,10 +33,16 @@
 
         <header class="max-width-4 mx-auto px2 py2">
                 <nav class="clearfix mxn2">
-                    <div class="left">
+                    <div class="sm-col left">
                       <a class="btn" href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL}}img/superluminar.svg" alt="superluminar" width="150px"/></a>
                     </div>
-                    <div class="right">
+                    <div class="xs-hide right">
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.main }}
+                      <a class="btn py2{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} underline{{end}}" href="{{.URL}}">{{ .Name }}</a>
+                    {{ end }}
+                    </div>
+                    <div class="overflow-hidden sm-hide md-hide lg-hide left">
                     {{ $currentPage := . }}
                     {{ range .Site.Menus.main }}
                       <a class="btn py2{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} underline{{end}}" href="{{.URL}}">{{ .Name }}</a>
