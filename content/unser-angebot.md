@@ -31,6 +31,8 @@ Wir haben uns auf folgende Bereiche spezialisiert.
 <li>Architektur und Entwurfsmuster</li>
 <li>Test-Strategien</li>
 <li>Continuous Delivery & Pipelines</li>
+<li>Gamedays und Chaos Engineering</li>
+<li>Compliance Automatisierung</li>
 </ul>
 </div>
 
@@ -43,8 +45,8 @@ Wir haben uns auf folgende Bereiche spezialisiert.
 <li>Sicherheit</li>
 <li>Public und Hybrid Clouds</li>
 <li>API-Entwicklung</li>
-<li>Containerisierung (Docker, Kubernetes)</li>
-<li>FaaS-Entwicklung (Serverless/AWS Lambda)</li>
+<li>Containerisierung (z. B. Docker, Kubernetes, AWS ECS)</li>
+<li>FaaS-Entwicklung (Serverless Framework/AWS Lambda)</li>
 <li>Performance-Analysen</li>
 </ul>
 </div>
