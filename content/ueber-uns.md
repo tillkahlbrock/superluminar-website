@@ -1,7 +1,9 @@
 ---
 title: "Über uns"
 description: "Erfahre mehr über das superluminar Team."
-menu: "main"
+menu:
+  main:
+    weight: 1
 ---
 <div class="clearfix mxn2">
 <div class="sm-col sm-col-6 px2">

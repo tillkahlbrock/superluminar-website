@@ -1,7 +1,9 @@
 ---
 title: "Unser Angebot"
 description: "Das superluminar Portfolio umfasst Training, Beratung, Coaching, Konzeption, Konstruktion und Betrieb."
-menu: "main"
+menu:
+  main:
+    weight: 1
 ---
 
 Wir haben uns auf folgende Bereiche spezialisiert.

@@ -2,7 +2,6 @@ baseURL = "https://superluminar.io/"
 languageCode = "de-de"
 title = "superluminar GmbH"
 theme = "superluminar"
-sectionPagesMenu = "main"
 disqusShortname = "superluminar"
 
 [params]
