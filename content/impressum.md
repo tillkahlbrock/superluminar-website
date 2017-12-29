@@ -9,7 +9,7 @@ Hohenzollernring 138<br>
 22763 Hamburg<br>
 
 Amtsgericht Hamburg: HRB 149058<br>
-Umsatzsteuer-Identifikationsnummer folgt
+Umsatzsteuer-Identifikationsnummer: DE815731015<br>
 
 # Kontakt
 info@superluminar.io
