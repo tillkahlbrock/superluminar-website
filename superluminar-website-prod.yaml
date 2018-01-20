@@ -45,7 +45,6 @@ Resources:
   WebsiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: !If [HasErrorDocument, !Ref ErrorDocument, !Ref 'AWS::NoValue']
