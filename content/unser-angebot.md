@@ -43,7 +43,7 @@ Wir haben uns auf folgende Bereiche spezialisiert.
 <ul class="list-reset px2" style="list-style-type: square;">
 <li>Automatisierung</li>
 <li>Skalierung</li>
-<li>Monitoring und Metriken</li>
+<li>Monitoring und Metriken (Prometheus, AWS CloudWatch)</li>
 <li>Sicherheit</li>
 <li>Public und Hybrid Clouds</li>
 <li>API-Entwicklung</li>
