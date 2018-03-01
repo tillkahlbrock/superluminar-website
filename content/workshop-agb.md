@@ -37,12 +37,12 @@ Dies gilt auch für Vertreter oder Erfüllungsgehilfen der superluminar GmbH.
 Die Schadensersatzpficht ist – abgesehen von der Haftung für Vorsatz und schuldhafter Verletzung des Lebens, des Körpers oder der Gesundheit – auf den vorhersehbaren, typischerweise eintretenden Schaden begrenzt. 
 Im Übrigen sind Schadenersatzansprüche gegen die superluminar GmbH unabhängig vom Rechtsgrund ausgeschlossen. Die Haftung nach dem Produkthaftungsgesetz, wegen Arglist oder einer Garantie – mit Ausnahme der Garantiehaftung nach § 536a Abs.1 BGB, die ausgeschlossen ist - bleibt unberührt. 
 
-# 7. Datenschutz
+# 8. Datenschutz
 
-## 7.1 
+## 8.1 
 Die Datenverarbeitung erfolgt nach Maßgabe der geltenden Regelungen des Bundesdatenschutzgesetzes. Die superluminar GmbH speichert die personenbezogenen Kundendaten (Bestands- und Nutzungsdaten) zur Vertragsabwicklung und gibt diese auch nur zu diesem Zweck gegebenenfalls an Dritte weiter.
 
-## 7.2 
+## 8.2 
 Daneben werden die persönlichen Daten des Kunden gemäß der aktuellen Datenschutzerklärung verarbeitet.
 
 # 9. Schlussbestimmungen
