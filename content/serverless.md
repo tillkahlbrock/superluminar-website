@@ -1,13 +1,16 @@
 ---
-title: "superluminar Serverless Workshop"
-draft: false
+title: "Serverless"
+description: "Serverless Workshop am 20.4.2018 in Hamburg"
+menu:
+  main:
+    weight: 2
 ---
 
-superluminar bietet am 20.04.2018 Im betahaus Hamburg einen ganztägigen Serverless Workshop an.
+superluminar bietet am 20.04.2018 im betahaus Hamburg einen ganztägigen Serverless Workshop an.
 
-Dieser Workshop richtet sich an neugierige Entwickler*innen, die mindestens 1 Programmiersprache beherrschen. Der Workshop ist auf 5 Personen begrenzt und wird von 2 erfahrenen superluminar Mitarbeitern mit großem Serverless-Erfahrungsschatz durchgeführt.
+Dieser Workshop richtet sich an neugierige Entwickler*innen, die mindestens eine Programmiersprache beherrschen. Der Workshop ist auf *sechs* Personen begrenzt und wird von zwei superluminar Mitarbeitern mit großem Serverless-Erfahrungsschatz durchgeführt.
 
-**Ziele des Workshops** sind es, ein Verständnis für Serverless/FaaS zu bekommen, die Möglichkeiten und Grenzen zu verstehen sowie die prototypische Entwicklung einer simplen Applikation mit AWS Lambda und einer zugehörigen Deploy Pipeline. Ausserdem bekommen die Teilnehmer*innen einen grundlegenden Einblick in den Betrieb der App, also Metriken, Monitoring und Alerting.
+**Ziele des Workshops** sind es, ein Verständnis für Serverless/FaaS zu bekommen und die Möglichkeiten und Grenzen zu verstehen. Dazu entwickeln die Teilnehmer eine prototypische Anwendung mit AWS Lambda mit der dazugehörigen Deploy Pipeline. Ausserdem bekommen die Teilnehmer*innen einen grundlegenden Einblick in den Betrieb der Anwendung, also Metriken, Monitoring und Alerting.
 
 ## Ablauf (Details koennen sich noch ändern):
 
@@ -29,4 +32,4 @@ Fragen zum Workshop beantworten die Workshop-Geber ebenfalls unter: [workshops@s
 <img src="/img/aws_partner.png" style="width: 30%"><br>
 Die superluminar GmbH ist Standard Consulting Partner von AWS
 
-Es gelten die Veranstaltungs-AGB der superluminar GmbH.
+Es gelten die [Veranstaltungs-AGB]({{< relref "workshop-agb.md" >}}) der superluminar GmbH.
