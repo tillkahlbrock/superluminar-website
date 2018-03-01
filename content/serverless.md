@@ -12,7 +12,7 @@ Dieser Workshop richtet sich an neugierige Entwickler*innen, die mindestens eine
 
 **Ziele des Workshops** sind es, ein Verständnis für Serverless/FaaS zu bekommen und die Möglichkeiten und Grenzen zu verstehen. Dazu entwickeln die Teilnehmer eine prototypische Anwendung mit AWS Lambda mit der dazugehörigen Deploy Pipeline. Ausserdem bekommen die Teilnehmer*innen einen grundlegenden Einblick in den Betrieb der Anwendung, also Metriken, Monitoring und Alerting.
 
-## Ablauf (Details koennen sich noch ändern):
+## Ablauf (Details können sich noch ändern):
 
 Block 1 (09:00 - 10:00): Einführung in AWS, Serverless computing und grundlegende Bausteine<br>
 Block 2 (10:15 - 12:45): Setup und Entwicklung einer serverless Web-App (Frontend, Backend und Datenbank-Anbindung)<br>
