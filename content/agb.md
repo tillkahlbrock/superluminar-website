@@ -25,7 +25,7 @@ Geschäftsbedingungen.
 -----------------------------------
 
 Es gelten ausschließlich unsere Allgemeinen Geschäftsbedingungen.
-Jegliche Geschäftsbe- dingungen des Kunden finden keine Anwendung, auch
+Jegliche Geschäftsbedingungen des Kunden finden keine Anwendung, auch
 wenn wir diesen nicht explizit widersprochen haben.
 
 §2 Unsere Leistung
@@ -445,7 +445,7 @@ Wettbewerber unserer Kunden tätig zu werden.
 
 Wir respektieren die Tatsache, dass Geschäftsgeheimnisse geschützt
 werden müssen. Daher verrichten wir unsere Tätigkeit normalerweise nach
-Unterzeichnung einer Verschwiegenheits- erklärung. Bestimmte
+Unterzeichnung einer Verschwiegenheitserklärung. Bestimmte
 Einschränkungen wie beispielsweise ein generelles Konkurrenzverbot
 können wir allerdings aufgrund der Natur unserer Geschäftstätigkeit
 nicht akzeptieren. Damit wir die Verschwiegenheitserklärungen unserer
