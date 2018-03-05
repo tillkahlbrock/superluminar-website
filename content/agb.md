@@ -1,7 +1,7 @@
 ---
 title: "Allgemeine Geschäftsbedingungen"
 ---
-
+Stand: 1.1.2018
 §1 Geltungsbereich
 ==================
 
