@@ -29,7 +29,7 @@ Anmeldungen zum Workshop per E-Mail bitte an [workshops@superluminar.io](mailto:
 
 Fragen zum Workshop beantworten die Workshop-Geber ebenfalls unter: [workshops@superluminar.io](mailto:workshops@superluminar.io).
 
-<img src="/img/aws-consulting-partner.png" style="width: 30%"><br>
-Die superluminar GmbH ist Standard Consulting Partner von AWS
+<img src="/img/aws-consulting-partner.png" style="width: 15%"><br>
+Die superluminar GmbH ist Standard Consulting Partner von AWS.
 
 Es gelten die [Veranstaltungs-AGB]({{< relref "workshop-agb.md" >}}) der superluminar GmbH.
