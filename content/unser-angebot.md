@@ -57,3 +57,10 @@ Wir haben uns auf folgende Bereiche spezialisiert.
 
 <img src="/img/aws-consulting-partner.png" style="width: 15%"><br>
 Die superluminar GmbH ist Standard Consulting Partner von AWS.
+
+
+<h2>Referenzen</h2>
+<div class="col sm-col-4">
+<img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 15%"><br>
+<div class="col sm-col-4">
+<img src="/img/Jimdo Logo 150 DPI.png" style="width: 15%"><br>
