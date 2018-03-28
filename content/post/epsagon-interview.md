@@ -3,7 +3,6 @@ title: "Monitoring von Serverless Apps: unser Interview mit epsagon"
 author: "Hendric Rüsch"
 date: 2018-03-28
 ---
-## Monitoring von Serverless Apps: unser Interview mit epsagon
 
 Nitzan Shapira ist Mit-Gründer von [epsagon](http://epsagon.com/). Das israelische Startup hat sich auf eine KI-basierte Lösung zur Überwachung serverloser Anwendungen spezialisiert. Wir trafen Nitzan bei der [JeffConf in Hamburg](https://hamburg.jeffconf.com).
 
