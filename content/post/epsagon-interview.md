@@ -1,10 +1,10 @@
 ---
-title: "Monitoring von Serverless Apps: unser Interview mit epsagon"
+title: "Monitoring von Serverless Apps: unser Interview mit Epsagon"
 author: "Hendric Rüsch"
 date: 2018-03-28
 ---
 
-Nitzan Shapira ist Mit-Gründer von [epsagon](http://epsagon.com/). Das israelische Startup hat sich auf eine KI-basierte Lösung zur Überwachung serverloser Anwendungen spezialisiert. Wir trafen Nitzan bei der [JeffConf in Hamburg](https://hamburg.jeffconf.com).
+Nitzan Shapira ist Mit-Gründer von [Epsagon](http://epsagon.com/). Das israelische Startup hat sich auf eine KI-basierte Lösung zur Überwachung serverloser Anwendungen spezialisiert. Wir trafen Nitzan bei der [JeffConf in Hamburg](https://hamburg.jeffconf.com).
 
 **superluminar:** Hallo Nitzan, kannst du uns kurz etwas über dich erzählen? 
 
@@ -14,11 +14,11 @@ Nitzan Shapira ist Mit-Gründer von [epsagon](http://epsagon.com/). Das israelis
 
 **Nitzan:** Mein Geschäftspartner Ran hatte bereits Erfahrung als Entwickler für die Alexa-Plattform von Amazon gesammelt. Er kannte sich also mit Serverless Architekturen aus. Im letzten Jahr haben wir uns dann eingehend mit dem Serverless-Bereich beschäftigt. Wir haben beide viele Jahre Erfahrung mit Infrastrukturtechnologien, Cyber-Sicherheit und R&D. Es lag für uns also nahe, Probleme im Zusammenhang mit Cloud-Infrastrukturen und Serverless näher zu untersuchen.
 
-**superluminar:** Was war die Initialzündung für die Gründung von epsagon?
+**superluminar:** Was war die Initialzündung für die Gründung von Epsagon?
 
 **Nitzan:** Das war eher ein Prozess über mehrere Monate, in dem wir mit vielen Kunden (Serverless-Nutzern) gesprochen haben. Wir wollten verstehen, wo ihre Schmerzpunkte sind und wie sie mit ihnen umgehen. Nach vielen Gesprächen wurde uns klar, dass Serverless-User oft nicht verstehen, was in ihrer Produktionsumgebung passiert, weil Serverless Architekturen so komplex sind. Daraus ergeben sich etwa bei der Überwachung oder der Fehlerbehebung besondere Herausforderungen. Wir beschlossen also, nach Lösungen für diese Herausforderungen zu suchen.
 
-**superluminar:** Welche Probleme bei der Überwachung von Serverless Anwendungen möchtet ihr mit epsagon angehen?
+**superluminar:** Welche Probleme bei der Überwachung von Serverless Anwendungen möchtet ihr mit Epsagon angehen?
 
 **Nitzan:** Das Hauptproblem liegt in der Natur von Serverless Apps. Da spielen viele Aspekte wie zum Beispiel Compute-Einheiten (etwa Funktionen), Cloud-Ressourcen und externe APIs, die von der Architektur verwendet werden, eine Rolle. Diese Architekturen sind hochgradig verteilt und ereignisgesteuert. Auch wenn man einzelne Funktionen analysieren kann, ist es daher sehr schwer, tiefe Einblicke in die End-to-End-Performance eines Systems zu erhalten oder Fehler zu beheben. Die entscheidende Aufgabe ist, alle diese asynchronen Ereignisse zu verknüpfen – und zwar automatisch.
 
