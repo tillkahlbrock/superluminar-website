@@ -8,7 +8,7 @@ Nitzan Shapira ist Mit-Gründer von [Epsagon](http://epsagon.com/). Das israelis
 
 **superluminar:** Hallo Nitzan, kannst du uns kurz etwas über dich erzählen? 
 
-**Nitzan:** Ich bin 30 Jahre alt, komme aus Tel Aviv und habe Informatik studiert. In den letzten 12 Jahren war ich Software-Entwickler, habe in der Forschung gearbeitet und Teams im Bereich R&D geleitet. Ich war für Intel, die israelische Armee und ein Startup tätig.
+**Nitzan:** Ich bin 30 Jahre alt, komme aus Tel Aviv und habe Informatik studiert. In den letzten 12 Jahren war ich Software-Entwickler, habe in der Forschung gearbeitet und Teams im Bereich R&D geleitet. Ich war für die israelische Armee und ein Startup tätig.
 
 **superluminar:** Wie bist du zu dem Thema Serverless gekommen?
 
