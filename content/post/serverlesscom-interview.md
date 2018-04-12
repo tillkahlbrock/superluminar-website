@@ -6,7 +6,7 @@ date: 2018-04-12
 
 **superluminar:** Moin Philipp, stell dich uns bitte in 1-2 Sätzen vor.
 
-**Philipp:** Hallo zusammen! Ich bin Philipp Müns, 29 Jahre alt und komme aus Paderborn. Derzeit arbeite ich als “Software Engineer” bei Serverless, Inc. wo ich mich primär um unsere Open Source Projekte wie z.B. das Serverless Framework sowie dessen Weiterentwicklung kümmere.
+**Philipp:** Hallo zusammen! Ich bin [Philipp Müns](https://twitter.com/pmmuens), 29 Jahre alt und komme aus Paderborn. Derzeit arbeite ich als “Software Engineer” bei [Serverless, Inc.](https://serverless.com) wo ich mich primär um unsere Open Source Projekte wie z.B. das Serverless Framework sowie dessen Weiterentwicklung kümmere.
 
 **Superluminar:** Wie bist du mit serverless, inc. in Verbindung gekommen und was machst du jetzt dort?
 
