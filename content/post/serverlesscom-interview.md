@@ -1,5 +1,5 @@
 ---
-title: "Serverless Framework und Event-Gateway: Interview mit Philipp Müns"
+title: "Serverless Framework und Event-Gateway: Interview mit Philipp Muens"
 author: "Hendric Rüsch"
 date: 2018-04-12
 ---
