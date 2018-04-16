@@ -39,7 +39,6 @@ deploy: public guard-WEBSITE_BUCKET guard-CLOUDFRONT_DISTRIBUTION_ID
 deploy-pipeline:
 	aws cloudformation deploy \
 		--stack-name superluminar-website-prod \
-		--profile superluminar-website \
 		--region us-east-1 \
 		--template-file superluminar-website-prod.yaml \
 		--capabilities CAPABILITY_IAM
