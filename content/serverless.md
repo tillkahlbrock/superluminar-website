@@ -6,7 +6,7 @@ menu:
     weight: 2
 ---
 
-superluminar bietet am 20.04.2018 im betahaus Hamburg einen ganztägigen Serverless Workshop an.
+superluminar bietet am 01.06.2018 im betahaus Hamburg einen ganztägigen Serverless Workshop an.
 
 Dieser Workshop richtet sich an neugierige Entwickler*innen, die mindestens eine Programmiersprache beherrschen. Der Workshop ist auf *sechs* Personen begrenzt und wird von zwei superluminar Mitarbeitern mit großem Serverless-Erfahrungsschatz durchgeführt.
 
