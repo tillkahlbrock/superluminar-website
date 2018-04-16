@@ -138,6 +138,8 @@ Resources:
             Value: !Ref WebsiteBucket
           - Name: CLOUDFRONT_DISTRIBUTION_ID
             Value: !Ref WebsiteCdn
+          - Name: LC_CTYPE
+            Value: en_US.UTF-8
       Name: !Sub DeployWebsiteBuild-${DeploymentStage}
       ServiceRole: !Ref DeployWebsiteRole
       Source:
