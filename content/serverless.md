@@ -19,8 +19,6 @@ Block 1 (09:00 - 10:00): Einführung in AWS und Serverless Operations sowie grun
 Block 2 (10:15 - 12:45): Setup und Entwicklung einer serverless Web-App (Backend und Datenbank-Anbindung)<br>
 ---Mittagspause---<br>
 Block 3 (13:45 - 15:15): Sammeln von benutzerdefinierten Business Metriken mittels CloudWatch<br>
-Block 3 (13:45 - 15:15): Sammeln und Auswerten von Logs mittels CloudWatch Logs<br>
-Block 3 (13:45 - 15:15): Überwachung von Alarmen, um gut zu schlafen<br>
 Block 4 (15:30 - 17:00): Distributed Tracing durch die gesamte Applikation mittels AWS X-Ray<br>
 
 Ein AWS-Account wird für den Workshop von superluminar gestellt und die Teilnehmer*innen erhalten Workshop-Unterlagen, Projekt-Export sowie eine Teilnahmebestätigung.
