@@ -1,6 +1,6 @@
 ---
 title: "Serverless"
-description: "Serverless Workshop am 20.4.2018 in Hamburg"
+description: "Serverless Workshop am 01.06.2018 in Hamburg"
 menu:
   main:
     weight: 2
