@@ -1,5 +1,6 @@
 ﻿---
-title: "Sieben Tipps für effektives Arbeiten mit git"
+title: "Sieben Tipps für effizientes Arbeiten mit git"
+slug: "sieben-tipps-fuer-effizientes-arbeiten-mit-git"
 author: "Soenke Ruempler"
 date: 2018-04-24
 ---
