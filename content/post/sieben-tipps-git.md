@@ -2,7 +2,7 @@
 title: "Sieben Tipps für effizientes Arbeiten mit git"
 slug: "sieben-tipps-fuer-effizientes-arbeiten-mit-git"
 author: "Soenke Ruempler"
-date: 2018-04-24
+date: 2018-05-02
 ---
 
 Im folgenden wollen wir ein paar Kniffe, die wie über die Zeit mit `git` gelernt haben, mit euch teilen. 
