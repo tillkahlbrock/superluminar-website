@@ -12,7 +12,8 @@ Es gibt unterschiedliche Ansätze Kubernetes-Cluster bei AWS aufzusetzen. Einer 
 Die Anzahl der Master und Knoten lässt sich per Kommandozeile festlegen.
 Der folgende Befehl erstellt einen Kubernetes-Cluster in der AWS-Region `eu-central` mit sechs Knoten und drei Mastern.
 ```
-$(KOPS_CMD) create cluster \
+export CLUSTER_NAME=my-first-cluster
+kops create cluster \
 	--zones=eu-central-1a,eu-central-1b,eu-central-1c \
 	--master-zones=eu-central-1a,eu-central-1b,eu-central-1c \
 	--node-count=6 \
@@ -20,10 +21,8 @@ $(KOPS_CMD) create cluster \
 	--node-size=m4.2xlarge \
 	--master-size=m4.large \
 	--topology=private \
-	--name=$(CLUSTER_NAME) \
-	--authorization=RBAC \
+	--name=$(CLUSTER_NAME)
 ```
-
 `kops` kann auch den Lebenszyklus eines Clusters verwalten und z.B. Ausskalieren oder Kubernetes durch rollende Upgrades auf neue Versionen bringen. Eine detaillierte Anleitung findet sich [hier](https://github.com/kubernetes/kops/blob/master/docs/aws.md).
 
 ## kube2iam
