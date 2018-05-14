@@ -22,11 +22,21 @@
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.gaTrackingId }}"></script>
 <script>
+var gaProperty = '{{ .Site.Params.gaTrackingId }}';
+var disableStr = 'ga-disable-' + gaProperty;
+if (document.cookie.indexOf(disableStr + '=true') > -1) {
+  window[disableStr] = true;
+}
+function gaOptout() {
+  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+  window[disableStr] = true;
+}
+</script>
+<script>
   window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments)};
   gtag('js', new Date());
-
-  gtag('config', '{{ .Site.Params.gaTrackingId }}');
+  gtag('config', '{{ .Site.Params.gaTrackingId }}', {'anonymize_ip':true});
 </script>
 {{- end }}
 <body>
