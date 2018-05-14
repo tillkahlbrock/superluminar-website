@@ -3,7 +3,7 @@ title: "Kubernetes und AWS"
 author: "Jan Brauer"
 date: 2018-05-14
 ---
-Während allerorts fieberhaft auf Preview-Zugänge zu Amazon EKS gewartet wird, haben wir an dieser Stelle eine Liste nützlicher Werkzeuge zusammengestellt mit denen man sich direkt in das Abenteuer Kubernetes stürzen kann.
+Während allerorts fieberhaft auf Preview-Zugänge zu Amazon EKS gewartet wird, haben wir an dieser Stelle eine Liste nützlicher Werkzeuge zusammengestellt, mit denen man sich direkt in das Abenteuer Kubernetes stürzen kann.
 
 ## kops
 
@@ -27,7 +27,7 @@ kops create cluster \
 
 ## kube2iam
 
-Wenn Pods die auf Kubernetes laufen AWS-APIs konsumieren ist der Einsatz von [kube2iam](https://github.com/jtblin/kube2iam) angezeigt. `kube2iam` erlaubt Pods IAM-Rollen anzunehmen, so wie sonst EC2-Instanzen über Instanzprofile Rollen annehmen können.
+Wenn Pods, die auf Kubernetes laufen, AWS-APIs konsumieren, ist der Einsatz von [kube2iam](https://github.com/jtblin/kube2iam) angezeigt. `kube2iam` erlaubt Pods IAM-Rollen anzunehmen, so wie sonst EC2-Instanzen über Instanzprofile Rollen annehmen können.
 `kube2iam` simuliert die Instance-Metadata API ([http://169.254.169.254/latest/meta-data/
 ](https://docs.aws.amazon.com/de_de/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)) und isoliert Pods voneinander, so dass diese nur ihre Ihnen zugedachten Berechtigungen erhalten. `kube2iam` wird als DaemonSet auf jeder Node installiert. Per Annotation am Pod oder Deployment wird den Containern die jeweilige Rolle zugeordnet.
 
@@ -47,7 +47,7 @@ spec:
 `kube2iam` liest die Annotation `iam.amazonaws.com/role` aus und ordnet dem Pod die Rolle `role-arn` zu. Damit das funktioniert, müssen die ec2-Instanzen selber eine IAM-Rolle haben, die ihnen erlaubt weiter Rollen anzunehmen. Details sind der [Dokumentation](https://github.com/jtblin/kube2iam#usage) zu entnehmen.
 
 ## ExternalDNS
-Um auf Services die auf Kubernetes laufen durch das Öffentliche Internet zugreifen zu können, ist es üblich diese mit DNS-Einträgen zu versehen. [`ExternalDNS`](https://github.com/kubernetes-incubator/external-dns) erlaubt eben dies. Per Annotation oder Konvention werden Services mit DNS-Einträgen versehen. `ExternalDNS` delegiert diese dann an AWS Route53 oder andere DNS-Services. Die Rechte die `ExternalDNS` benötigt um DNS-Einträge mit Route53 zu machen, lassen sich auch per `kube2iam` vergeben.
+Um auf Services, die auf Kubernetes laufen, durch das öffentliche Internet zugreifen zu können, ist es üblich diese mit DNS-Einträgen zu versehen. [`ExternalDNS`](https://github.com/kubernetes-incubator/external-dns) erlaubt eben dies. Per Annotation oder Konvention werden Services mit DNS-Einträgen versehen. `ExternalDNS` delegiert diese dann an AWS Route53 oder andere DNS-Services. Die Rechte, die `ExternalDNS` benötigt, um DNS-Einträge mit Route53 zu machen, lassen sich auch per `kube2iam` vergeben.
 `ExternalDNS` kann sowohl Ingress- als auch Service-Ressourcen DNS-Einträge zuordnen. Damit `ExternalDNS` funktioniert, braucht es Verwaltungsrechte für die öffentlich gehostete Zone. Im folgenden Beispiel wird der Ingress-Ressource der Name `cool-website.` in der Zone `example.com.` zugeordnet. Bei Ingress-Ressourcen wird das `host`-Keyword aus den Regeln ausgelesen und ein passender DNS-Eintrag erstellt.
 
 ```
