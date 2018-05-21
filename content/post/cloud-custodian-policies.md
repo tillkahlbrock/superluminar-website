@@ -32,9 +32,10 @@ policies:
 In diesem Beispiel wird die Vorhaltezeit für Log-Dateien auf allen CloudWatch LogGroups auf 14 Tage gesetzt. Mittels
 ```
 $ custodian run --dryrun -s out policy.yaml
-2018-05-21 10:33:06,370: custodian.policy:INFO policy: cloudwatch-set-log-group-retention resource:log-group region:eu-central-1 count:207 time:0.00
+2018-05-21 10:33:06,370: custodian.policy:INFO policy: cloudwatch-set-log-group-retention
+resource:log-group region:eu-central-1 count:207 time:0.00
 ```
-wird die voraussichtliche Wirkung dieser Policy überprüft und ohne `--dryrun` umgesetzt. Wie man an diesem Beispiel sehen kann, hat Custodian in unserem Konto 207 Ressourcen gefunden, für die es die Vorhaltezeit setzen würde. Wollte wir diese Aktion regelmäßig durchführen, so würden jedesmal alle 207 Ressourcen angefasst. Das kann bei größeren Mengen an Ressourcen schnell mal zu einer Rate-Limit Überschreitung bei AWS führen. Daher kann es sinnvoll sein, die Menge der Ressourcen mit Hilfe von Filtern einzuschränken:
+wird die voraussichtliche Wirkung dieser Policy überprüft und ohne `--dryrun` umgesetzt. Wie man an diesem Beispiel sehen kann, hat Custodian in unserem Konto 207 Ressourcen gefunden, für die es die Vorhaltezeit setzen würde. Wollten wir diese Aktion regelmäßig durchführen, so würden jedesmal alle 207 Ressourcen angefasst. Das kann bei größeren Mengen an Ressourcen schnell mal zu einer Rate-Limit Überschreitung bei AWS führen. Daher kann es sinnvoll sein, die Menge der Ressourcen mit Hilfe von Filtern einzuschränken:
 ```
 $ cat policy.yml
 policies:
@@ -50,7 +51,8 @@ policies:
       days: 14
 
 $ custodian run --dryrun -s out policy.yaml 
-2018-05-21 10:45:34,735: custodian.policy:INFO policy: cloudwatch-set-log-group-retention resource:log-group region:eu-central-1 count:0 time:0.00
+2018-05-21 10:45:34,735: custodian.policy:INFO policy: cloudwatch-set-log-group-retention
+resource:log-group region:eu-central-1 count:0 time:0.00
 ```
 Wir sehen also, dass in unserem Konto die Log-Retention schon überall richtig gesetzt war -- sehr gut.
 
@@ -86,7 +88,7 @@ Resources:
   CloudCustodianExecutionRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: "rol-cloud-custodian-execution"
+      RoleName: "cloud-custodian-execution"
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
         - "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
