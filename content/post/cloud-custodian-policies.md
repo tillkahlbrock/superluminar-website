@@ -8,7 +8,7 @@ Wer kennt dieses Durcheinander nicht: Man wollte etwas ausprobieren, es wurden D
 
 ## Cloud Custodian
 
-Hier hilft [Cloud-Custodian](https://github.com/capitalone/cloud-custodian), ein Open-Source Tool von Capital One: Es wird benutzt, um bestimmte unerwünschte Zustände im AWS-Konto zu erkennen, darüber zu berichten und den gewünschten Zustand (wieder) herzustellen.
+Hier hilft [Cloud-Custodian](https://github.com/capitalone/cloud-custodian), ein Open-Source Tool von Capital One: Es wird benutzt, um bestimmte unerwünschte Zustände im AWS-Konto zu erkennen, darüber zu berichten oder den gewünschten Zustand (wieder) herzustellen.
 
 Cloud Custodian ist mit
 ```
