@@ -8,7 +8,7 @@ Wer kennt dieses Durcheinander nicht: Man wollte etwas ausprobieren, es wurden D
 
 ## Cloud Custodian
 
-Hier hilft [Cloud-Custodian](https://github.com/capitalone/cloud-custodian), ein Open-Source Tool von Capital One: Es wird benutzt, um bestimmte unerwünschte Zustände in einem AWS-Konto zu erkennen, darüber zu berichten und den gewünschten Zustand (wieder) herzustellen.
+Hier hilft [Cloud-Custodian](https://github.com/capitalone/cloud-custodian), ein Open-Source Tool von Capital One: Es wird benutzt, um bestimmte unerwünschte Zustände im AWS-Konto zu erkennen, darüber zu berichten und den gewünschten Zustand (wieder) herzustellen.
 
 Cloud Custodian ist mit
 ```
@@ -34,7 +34,7 @@ In diesem Beispiel wird die Vorhaltezeit für Log-Dateien auf allen CloudWatch L
 $ custodian run --dryrun -s out policy.yaml
 2018-05-21 10:33:06,370: custodian.policy:INFO policy: cloudwatch-set-log-group-retention resource:log-group region:eu-central-1 count:207 time:0.00
 ```
-wird die voraussichtliche Wirkung dieser Policy überprüft und ohne `--dryrun` umgesetzt. Wie man an diesem Beispiel sehen kann, hat Custodian in diesem Konto 207 Ressourcen gefunden, für die es die Vorhaltezeit setzen würde. Wollte wir diese Aktion regelmäßig durchführen, so würden jedesmal alle 207 Ressourcen angefasst. Das kann bei größeren Mengen an Ressourcen schnell mal zu einer Rate-Limit Überschreitung bei AWS führen. Daher kann es sinnvoll sein, die Menge der Ressourcen mit Hilfe von Filtern einzuschränken:
+wird die voraussichtliche Wirkung dieser Policy überprüft und ohne `--dryrun` umgesetzt. Wie man an diesem Beispiel sehen kann, hat Custodian in unserem Konto 207 Ressourcen gefunden, für die es die Vorhaltezeit setzen würde. Wollte wir diese Aktion regelmäßig durchführen, so würden jedesmal alle 207 Ressourcen angefasst. Das kann bei größeren Mengen an Ressourcen schnell mal zu einer Rate-Limit Überschreitung bei AWS führen. Daher kann es sinnvoll sein, die Menge der Ressourcen mit Hilfe von Filtern einzuschränken:
 ```
 $ cat policy.yml
 policies:
