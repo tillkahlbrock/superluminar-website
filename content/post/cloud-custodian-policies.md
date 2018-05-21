@@ -35,7 +35,7 @@ $ custodian run --dryrun -s out policy.yaml
 2018-05-21 10:33:06,370: custodian.policy:INFO policy: cloudwatch-set-log-group-retention
 resource:log-group region:eu-central-1 count:207 time:0.00
 ```
-wird die voraussichtliche Wirkung dieser Policy überprüft und ohne `--dryrun` umgesetzt. Wie man an diesem Beispiel sehen kann, hat Custodian in unserem Konto 207 Ressourcen gefunden, für die es die Vorhaltezeit setzen würde. Wollten wir diese Aktion regelmäßig durchführen, so würden jedesmal alle 207 Ressourcen angefasst. Das kann bei größeren Mengen an Ressourcen schnell mal zu einer Rate-Limit Überschreitung bei AWS führen. Daher kann es sinnvoll sein, die Menge der Ressourcen mit Hilfe von Filtern einzuschränken:
+wird die voraussichtliche Wirkung dieser Policy überprüft und ohne `--dryrun` umgesetzt. Wie man an diesem Beispiel sehen kann, hat Custodian in unserem Konto 207 Ressourcen gefunden, für die es die Vorhaltezeit setzen würde. Wollten wir diese Aktion regelmäßig durchführen, so würden jedesmal alle 207 Ressourcen angefasst. Das kann bei größeren Mengen an Ressourcen schnell mal zu einer Rate-Limit Überschreitung in AWS führen. Daher kann es sinnvoll sein, die Menge der Ressourcen mit Hilfe von Filtern einzuschränken:
 ```
 $ cat policy.yml
 policies:
