@@ -111,6 +111,8 @@ Wir haben nun an einem einfachen Beispiel gesehen, wie wir codifiziert, automati
 - Die Anwendung bestimmter Regeln nur zu bestimmten Uhrzeiten
 - strukturierte Log-Ausgaben nach S3 zur automatisierten Weiterverarbeitung
 
+## Fazit und Ausblick
+
 Damit wird Custodian zu einem mächtigen Werkzeug und wertvollen Helfer bei der Durchsetzung von Governance und Compliance-Richtlinien im AWS Konto: Tätigkeiten, die normalerweise schnell unüberschaubar und lästig werden, können nun relativ einfach codifiziert, automatisiert und ereignis-basiert bzw. periodisch durchgeführt werden; unerwünschte Zustände in der Konto-Konfiguration können erkannt und automatisch behoben oder gemeldet werden. Die nachträgliche Änderung von Richtlinien stellt kein Problem mehr da oder wird wesentlich vereinfacht. Durch die Codifizierung sind alle Richtlinien dokumentiert und können einfach kommuniziert werden.
 
 Je nach Handhabung können bestimmte Vorfälle im Konto auch einfach nach dem Tag-Notify-Act Pattern behandelt werden: Somit kann ein definierter Prozess zur informierten Behandlung bestimmter Ereignisse etabliert werden, ohne dass Ressourcen z.B. direkt automatisch abgeschaltet oder zerstört werden müssten. Dies ermöglicht dann auch wieder das händische Klicken, ausprobieren und experimentieren im Account ohne die Angst im Nacken, dass die geklickten Ressourcen das Experiment nicht überleben.
