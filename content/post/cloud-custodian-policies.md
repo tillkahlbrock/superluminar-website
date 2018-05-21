@@ -117,4 +117,4 @@ Cloud Custodian ist ein mächtiges Werkzeug und wertvoller Helfer bei der Durchs
 
 Je nach Handhabung können bestimmte Vorfälle im Konto auch einfach nach dem Tag-Notify-Act Pattern behandelt werden: Somit kann ein definierter Prozess zur informierten Behandlung bestimmter Ereignisse etabliert werden, ohne dass Ressourcen z.B. direkt automatisch abgeschaltet oder zerstört werden müssten. Dies ermöglicht dann auch wieder das händische Klicken, ausprobieren und experimentieren im Account ohne die Angst im Nacken, dass die geklickten Ressourcen das Experiment nicht überleben.
 
-In einigen Folge-Artikeln werden wir weitere Beispiele zur Anwendung und zur Integrationen von Cloud-Custodian beleuchten.
+In weiteren Artikeln werden wir Beispiele zur Anwendung geben und die Integrationen von Cloud-Custodian beleuchten.
