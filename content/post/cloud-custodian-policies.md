@@ -79,7 +79,7 @@ $ custodian run -s out policy.yaml
 2018-05-03 14:19:54,523 - custodian.policy - INFO - Provisioning policy lambda cloudwatch-set-log-group-retention
 ```
 
-In diesem Beispiel provisioniert Custodian für uns eine Lambda-Funktion, die einmal stündlich alle LogGroup Ressourcen prüft und gegebenenfalls auf 14 Tage korrigiert. Damit diese Funktion ihre Aufgabe auch verrichten kann, benötigt sie die notwendigen Berechtigungen (im Beispiel oben unter `role:` referenziert):
+In dem erweiterten Beispiel provisioniert Custodian für uns eine Lambda-Funktion, die einmal stündlich alle LogGroup Ressourcen prüft und gegebenenfalls auf 14 Tage korrigiert. Damit diese Funktion ihre Aufgabe auch verrichten kann, benötigt sie die notwendigen Berechtigungen (im Beispiel oben unter `role:` referenziert):
 ```
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Cloud Custodian Pipeline and Execution Roles
