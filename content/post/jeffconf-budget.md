@@ -54,4 +54,4 @@ Die restlichen knapp 7% nutzen wir als Puffer.
 
 
 Wir haben dieses Jahr sehr viel gelernt und freuen uns bereits auf den JeffConf Hamburg Nachfolger:
-die [ServerlessDays Hamburg](https://serverlessdays.io/) 2019 am 15.02.2018. 
+die [ServerlessDays Hamburg](https://serverlessdays.io/) 2019 am 15.02.2019. 
