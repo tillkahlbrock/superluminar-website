@@ -42,6 +42,7 @@ Da wir uns ja dem Community-Gedanken sowie Transparenz verschrieben haben, folgt
 Unser JeffConf Hamburg Orga-Team hat sich für folgende Verwendungen entschieden:
 
 42% des Überschusses wurde an folgende Organisationen gespendet:
+
  + [Repair Café Altona](http://haus-drei.de/projekt/repair-cafe/): reparieren statt wegwerfen technischer Geräte
  + [App Camps](https://appcamps.de/): Kostenloses Unterrichtsmaterial zu digitalen Themen
  + [Netzpolitik.org](https://netzpolitik.org): Plattform für digitale Freiheitsrechte
