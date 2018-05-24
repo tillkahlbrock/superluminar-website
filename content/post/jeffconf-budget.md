@@ -5,7 +5,7 @@ date: 2018-05-24
 ---
 
 Am 16.02.2018 haben wir die erste reine **Serverless-Konferenz in Deutschland** veranstaltet: [JeffConf Hamburg](https://hamburg.jeffconf.com). Da es bereits eine JeffConf in London sowie eine JeffConf in Mailand gab, konnten wir auf  Erfahrungen anderer aufbauen, das Branding und vor allem das Netzwerk nutzen. 
-Die JeffConf-Reihe (heute[ServerlessDays](https://serverlessdays.io)) ist als Community-Events gedacht und unterscheidet sich dadurch in etlichen Bereichen von klassischen Konferenzen. Bei letzteren steht der Profit (z.B. durch hohe Ticketpreise, zu kaufende Talk-Slots, etc.) im Fokus. 
+Die JeffConf-Reihe (heute [ServerlessDays](https://serverlessdays.io)) ist als Community-Events gedacht und unterscheidet sich dadurch in etlichen Bereichen von klassischen Konferenzen. Bei letzteren steht der Profit (z.B. durch hohe Ticketpreise, zu kaufende Talk-Slots, etc.) im Fokus. 
 Bei einer Community-Konferenz möchte man so inklusiv und fair wie möglich sein, statt Profit ist Kostendeckung ein Ziel und ist auch eher nachgelagert. 
 Zwei Bedingungen um die Konferenz unter dem JeffConf Brand zu starten waren einerseits mit dem JeffConf-Core-Team ([Ant Stanley](https://twitter.com/IamStan), [Paul Johnston](https://twitter.com/PaulDJohnston), [James Thomas](https://twitter.com/thomasj) und [Alex Casalboni](https://twitter.com/alex_casalboni) via Slack im Loop zu bleiben und andererseits möglichst transparent mit dem Budget umzugehen. Hier vorab noch einmal an großes Lob und Danke für die tolle Unterstützung, wir waren sicherlich nicht immer einfach :)
 
