@@ -42,11 +42,11 @@ Da wir uns ja dem Community-Gedanken sowie Transparenz verschrieben haben, folgt
 Unser JeffConf Hamburg Orga-Team hat sich für folgende Verwendungen entschieden:
 
 42% des Überschusses wurde an folgende Organisationen gespendet:
-* [Repair Café Altona](http://haus-drei.de/projekt/repair-cafe/): reparieren statt wegwerfen technischer Geräte
-* [App Camps](https://appcamps.de/): Kostenloses Unterrichtsmaterial zu digitalen Themen
-* [Netzpolitik.org](https://netzpolitik.org): Plattform für digitale Freiheitsrechte
-* [Code.design](https://code.design): begeistern für digitale Berufe
-* [Open Knowledge Foundation](https://okfn.de/): Verein für offenes Wissen, offene Daten, Transparenz und Beteiligung
+- [Repair Café Altona](http://haus-drei.de/projekt/repair-cafe/): reparieren statt wegwerfen technischer Geräte
+- [App Camps](https://appcamps.de/): Kostenloses Unterrichtsmaterial zu digitalen Themen
+- [Netzpolitik.org](https://netzpolitik.org): Plattform für digitale Freiheitsrechte
+- [Code.design](https://code.design): begeistern für digitale Berufe
+- [Open Knowledge Foundation](https://okfn.de/): Verein für offenes Wissen, offene Daten, Transparenz und Beteiligung
 
 31% der Überschüsse sind für die nicht-technische Weiterbildung des Hamburger Orga-Teams (Ben, Soenke, Susanne und Hendric). Jede\*r von uns hat jetzt knapp 500€ zur Verfügung um zum Beispiel Moderationstraining, Sprachkurs, einen Graffiti Kurs, eine Yoga-Konferenz oder was ihr/ihm beliebt zu wählen (es solll aber bewusst keine Tech-Konferenz, Coding Workshop, etc. sein).
 21% legen wir als Reserve für das nächste Event bei Seite. So haben wir einerseits frühzeitig die Möglichkeit Marketing-Materialien zu ordern aber auch um Speaker ohne bzw. mit geringem Travel-Budget und mit wenig Erfahrung zu unterstützen. 
