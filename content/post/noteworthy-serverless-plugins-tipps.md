@@ -22,13 +22,13 @@ Jetzt ist die `${blah}` Syntax für IAM "frei" und ihr könnt `serverless.yml` V
 
 ## Sprechende Domains für AWS API Gateways
 
-Aus der Tuete fallen bei AWS API Gateways keine schoenen Domainnamen, sondern sowas wie `tkuvma5x55.execute-api.us-east-1.amazonaws.com`. Allerdings bietet AWS alle Bausteine, um auch sprechende Domains, die ggf. bestehenden Namenschemata wie `<service>.<enviroment>.mycompany.com` entsprechen. Dafuer braucht es zumindest die Dienste ACM, Route53, und das API Gateway Domain Mapping. 
+Aus der Tüte fallen bei AWS API Gateways keine schoenen Domainnamen, sondern sowas wie `tkuvma5x55.execute-api.us-east-1.amazonaws.com`. Allerdings bietet AWS alle Bausteine, um auch sprechende Domains, die ggf. bestehenden Namenschemata wie `<service>.<enviroment>.mycompany.com` entsprechen. Dafür braucht es zumindest die Dienste ACM, Route53, und das API Gateway Domain Mapping. 
 
 Der [serverless-domain-manager](https://github.com/amplify-education/serverless-domain-manager) vereinfacht den Prozess. Bis auf die Einrichtung des TLS Zertifikats in ACM und die Route53 Zone nimmt er euch die Arbeit ab. 
 
 ## Lambda Python Projekte ohne Probleme paketieren und deployen
 
-Falls es Probleme beim Paketieren von Python Projekten gibt, weil z. B. Python Versionen nicht übereinstimmen oder irgendetwas mit `pip` nicht geht, dann hilft das [serverless-python-requirements](https://www.npmjs.com/package/serverless-python-requirements) Plugin. Es nimmt euch das Handling von `requirements.txt` ab und kann auch isoliert in einer Docker Umgebung paketieren (mit `dockerizePip`). Das funktioniert uebrigens auch in [CodeBuild](https://ruempler.eu/2016/12/19/aws-codebuild-the-missing-link-for-deployment-pipelines-in-aws/), dem Build Service von AWS, denn dieser unterstützt 'Docker in Docker'.
+Falls es Probleme beim Paketieren von Python Projekten gibt, weil z. B. Python Versionen nicht übereinstimmen oder irgendetwas mit `pip` nicht geht, dann hilft das [serverless-python-requirements](https://www.npmjs.com/package/serverless-python-requirements) Plugin. Es nimmt euch das Handling von `requirements.txt` ab und kann auch isoliert in einer Docker Umgebung paketieren (mit `dockerizePip`). Das funktioniert übrigens auch in [CodeBuild](https://ruempler.eu/2016/12/19/aws-codebuild-the-missing-link-for-deployment-pipelines-in-aws/), dem Build Service von AWS, denn dieser unterstützt 'Docker in Docker'.
 
 ## Harte Kodierung von AWS Account Ids oder Region verhindern
 
@@ -62,7 +62,7 @@ functions:
 
 ## Lambda Kaltstarts vorbeugen
 
-Eines der aktuell größten Herausforderungen für Serverless Anwendungen scheinen derzeit Kaltstarts zu sein, zumindest bei synchronen Request/Response Aufrufen, wie z. B. über das API Gateway. Das bedeutet, dass beim Aufruf einer Lambdafunktion diese erst intern auf der AWS Infrastruktur hochgefahren werden muss - wenn diese einige Zeit nicht aufgerufen wurde - was einige 100ms bis zu einigen Sekunden dauern kann. Gerade bei Services, die nur sporadisch aufgerufen werden, kann dies also zu signifikanter Latenz oder sogar zu Timeouts bei aggressiv eingestellten Aufrufern fuehren.
+Eines der aktuell größten Herausforderungen für Serverless Anwendungen scheinen derzeit Kaltstarts zu sein, zumindest bei synchronen Request/Response Aufrufen, wie z. B. über das API Gateway. Das bedeutet, dass beim Aufruf einer Lambdafunktion diese erst intern auf der AWS Infrastruktur hochgefahren werden muss - wenn diese einige Zeit nicht aufgerufen wurde - was einige 100ms bis zu einigen Sekunden dauern kann. Gerade bei Services, die nur sporadisch aufgerufen werden, kann dies also zu signifikanter Latenz oder sogar zu Timeouts bei aggressiv eingestellten Aufrufern führen.
  
  Gerade für Sprachen mit "Class Loaders" (z. B. [JVM oder .NET basierte Sprachen](https://read.acloud.guru/does-coding-language-memory-or-package-size-affect-cold-starts-of-aws-lambda-a15e26d12c76)) schlagen Kaltstarts besonders zu. Hierfür gibt es das [Warmup Plugin](https://github.com/FidelLimited/serverless-plugin-warmup), welches dafür sorgt, dass Lambda Funktionen "vorgewärmt" werden. Das ist sicher nur ein Workaround, aber erkauft uns Zeit, bis die Cloud Provider hier besser werden. Solange hilft es auch, den Lambdafunktionen mehr RAM zu geben.
 
