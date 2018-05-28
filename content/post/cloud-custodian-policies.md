@@ -1,7 +1,7 @@
 ﻿---
 title: "Accountweit Richtlinien mit Cloud Custodian durchsetzen"
 author: "Boris Erdmann"
-date: 2018-05-21
+date: 2018-05-28
 ---
 
 Wer kennt dieses Durcheinander nicht: Man wollte etwas ausprobieren, es wurden Dinge geklickt und später nur halb wieder abgeräumt; trotz aller Bemühungen sich an die Vorschriften zu halten wurde an X Cloudformation-Templates eine bestimmte Einstellung vergessen; oder es haben sich nachträglich im Unternehmen eine oder mehrere Richtlinien geändert, und nun müsste jemand eigentlich mal alle Stacks aktualisieren… Schnell kann Account-Pflege in AWS zu einer lästigen Sache werden, bei der sich Entwickler\*innen über Vorgaben und Einschränkungen wundern oder Ops-Leute sich ärgern, dass sie Entwickler\*innen hinterher wischen müssen.
