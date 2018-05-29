@@ -10,9 +10,9 @@ Wir bieten zahlreiche Workshops, Schulungen und Trainings rund um die Bereiche C
 
 Die Workshops können je nach Wunsch inhouse oder remote stattfinden.
 
-## Executive Summary: Cloud und AWS fuer Entscheider*innen
+## Executive Summary: Cloud und AWS für Entscheider*innen
 
-- Zielgruppe: CxO, Entscheider*innen, Teamleiter*innen, die eine kompakte Übersicht wuenschen
+- Zielgruppe: CxO, Entscheider*innen, Teamleiter*innen, die eine kompakte Übersicht wünschen
 - Dauer: 1 Tag
 
 Inhalte:
@@ -20,7 +20,7 @@ Inhalte:
 - Mit Cynefin und Wardley Mapping zur Produktstrategie: Entscheidungsframeworks, wann Cloud Bausteine einzusetzen sind, oder eine Eigenentwicklung vorzuziehen ist.
 - Überblick über die verschiedenen AWS Produkte und Bausteine.
 - Überblick darüber, wie sich Development und Operations in der Cloud ändern: Welche Verantwortungen fallen weg, welche kommen neu dazu? Was ändert sich für die Teams?
-- Uebersicht über Cloud Bausteine, die sich für “Rapid Prototyping” eignen, und euren Mitarbeiter\*innen erlauben, Ideen schnell umzusetzen und zu testen.
+- Übersicht über Cloud Bausteine, die sich für “Rapid Prototyping” eignen, und euren Mitarbeiter\*innen erlauben, Ideen schnell umzusetzen und zu testen.
 - Pro und Contra Argumente rund um das Thema Cloud und Strategien gegen möglichen internen Widerstand.
 - Einblick in “Enterprise AWS”: Sicherheitskonzepte, Anbindung an bestehendene Systeme und Netzwerke
 
