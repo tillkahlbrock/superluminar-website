@@ -1,5 +1,6 @@
 ---
 title: "Workshops"
+aliases: [ "/serverless", "/serverless/" ]
 menu:
   main:
     weight: 1
