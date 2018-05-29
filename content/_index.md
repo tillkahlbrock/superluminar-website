@@ -17,5 +17,4 @@ Das Cloud-Prinzip ermöglicht erstmalig die konsequente Umsetzung dieser Methode
 
 Wir beraten, coachen und trainieren. Bei Auftragsende gehören das Wissen, die Fähigkeiten und die Lösung euch. 
 
-<a href="mailto:hi@superluminar.io" class="h3 btn btn-primary mb4 mt2">Lasst uns reden</a>
-
+<a href="mailto:hi@superluminar.io" class="h3 btn btn-primary mb2 mt2">Lasst uns reden</a>
