@@ -24,7 +24,7 @@ Inhalte:
 - Pro und Contra Argumente rund um das Thema Cloud und Strategien gegen möglichen internen Widerstand.
 - Einblick in “Enterprise AWS”: Sicherheitskonzepte, Anbindung an bestehendene Systeme und Netzwerke
 
-## AWS von A bis Z: Cloud Bausteine erklaert
+## AWS von A bis Z: Cloud Bausteine erklärt
 
 - Zielgruppe: Alle, die einen kompakten Überblick über die gängigsten AWS Bausteine bekommen wollen, um effektiv und kostengünstig mit der Cloud Software zu entwickeln
 - Dauer: 1 Tag
