@@ -17,4 +17,4 @@ den Bau einer einfachen Serverless-Anwendung mit Hilfe von AWS Lambda.
 
 Der Workshop richtet sich primär an EntwicklerInnen und System-AdministratorInnen mit wenig bis keiner Erfahrung mit der Cloud.
 
-Weitere Details und die [Anmeldung gibt es bei it-agile](goo.gl/ntSfUX).
+Weitere Details und die [Anmeldung gibt es bei it-agile](https://www.it-agile.de/ausbildung/entwickler/entwicklung-und-betrieb-in-der-cloud/).
