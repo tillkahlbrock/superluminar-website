@@ -87,9 +87,9 @@ resources:
       Properties:
         DeploymentId:
           Ref: __deployment__
-        RestApiId:
+        RestApiId: !
           Ref: ApiGatewayRestApi
-          StageName: dev 
+        StageName: dev 
         MethodSettings:
           - HttpMethod: "*"
             ResourcePath: "/*"
