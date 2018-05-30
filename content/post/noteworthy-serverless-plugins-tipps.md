@@ -1,7 +1,7 @@
 ---
 title: "Serverless Framework und AWS: Tipps und Plugins aus der Praxis"
 author: "Soenke Ruempler"
-date: 2018-05-25
+date: 2018-06-04
 ---
 
 Das [Serverless Framework](https://serverless.com) erfreut sich großer Beliebtheit und kommt auch bei uns und unseren Kunden häufig zum Einsatz. Nicht zuletzt wegen des großen Plugin Ökosystems und der guten AWS Unterstützung.
