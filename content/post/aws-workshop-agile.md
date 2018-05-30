@@ -7,7 +7,7 @@ date: 2018-05-30
 Im superluminar Alltag geben wir häufig Inhouse als auch offene Workshops rund um die Themen AWS, Serverless, Kubernetes und DevOps.
 Neu im Programm haben wir einen AWS-Workshop für Einsteiger und richten diesen gemeinsam mit unseren Freunden von [it-agile](https://it-agile.de) in Hamburg aus.
 
-![Workshop Picture](/workshop-pic.jpg)
+![Workshop Picture](/img/workshop-pic.jpg)
 
 
 ## Details:
