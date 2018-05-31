@@ -11,11 +11,32 @@ Styling is done with [basscss.com](basscss.com).
 make install
 ```
 
-# Run it
+# Edit and develop
 
 ```
-./hugo serve -D
+> make develop
+
+                   | EN
++------------------+----+
+  Pages            | 29
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     | 16
+  Processed images |  0
+  Aliases          |  4
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Total in 32 ms
+Watching for changes in /Users/jan/Code/superluminar-website/{content,layouts,static,themes}
+Watching for config changes in /Users/jan/Code/superluminar-website/config.toml
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
 ```
+
+This will start a local server that renders the web page. Usually it is available at [http://localhost:1313](http://localhost:1313/). 
 
 # Build it
 ```
