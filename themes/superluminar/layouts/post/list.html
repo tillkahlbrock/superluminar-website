@@ -6,15 +6,13 @@
           </header>
           {{ .Content }}
         </article>
-        <table class="mb2">
-              {{ $paginator := .Paginate (where .Data.Pages "Type" "post") 50 }}
-              {{ range $paginator.Pages }}
-              <tr>
-                <td class="bold">{{ .Date.Format "2006-01-02" }}</td>
-                <td><a href="{{ .Permalink }}">{{ .Title }}</a></td>
-              </tr>
+              {{ range .Data.Pages.GroupByDate "2006" }}
+              <h3>{{ .Key }}</h3>
+              <ul class="list-reset">
+                {{ range .Pages }}
+                <li><a href="{{ .Permalink }}" class="btn pl0">{{ .Title }}</a></li>
+                {{ end }}
+              </ul>
               {{ end }}
-              <!-- {{ partial "pagination.html" . }} -->
-        </table>
 	</main>
 {{ partial "footer.html" . }}
