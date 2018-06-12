@@ -170,9 +170,11 @@ stateMachines:
         Initialize:
           Type: Task
           Resource: arn:aws:lambda:......
+          Next: Fetch
         Fetch:
           Type: Task
           Resource: arn:aws:lambda:......
+          Next: PersistOrContinue
         PersistOrContinue:
           Type: Choice
           Choices:
@@ -185,6 +187,7 @@ stateMachines:
         Persist:
           Type: Task
           Resource: arn:aws:lambda:......
+          End: true
 {{< / highlight >}}
 
 Zusammenfassung: Step Functions eignet sich hervorragend, um komplexere oder laenger laufende Applikationen mit Hilfe von Lambda zu orchestrieren, jedoch auch fuer eine Vielzahl weiterer Anwendungsfaelle. Habt Ihr selber schon mit Step Functions experimentiert, oder benutzt Ihr Step Functions bereits in Produktion? Lasst uns gerne per Kommentar wissen wie Eure Erfahrungen sind!
