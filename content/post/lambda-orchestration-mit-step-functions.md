@@ -32,7 +32,7 @@ Hier kommen uns Step Functions zu Hilfe. Step Functions sind State Machines mit 
 Schauen wir uns den Code oben noch einmal in Ruhe an. Wir initialisieren eine leere Datenstruktur, die wir nach und nach mit Daten fuellen (`data = []`) und einen Iterator, den wir fuer die Paginierung des externen Datensets benutzen (`offset = 0`). Wir extrahieren:
 
 {{< highlight python >}}
-def initialize:
+def initialize():
   data = []
   offset = 0
 {{< / highlight >}}
@@ -52,7 +52,7 @@ def fetch(offset):
 Zu guter Letzt schreiben wir die gesammelten Daten in unsere Persistenz (hier S3). Wir extrahieren:
 
 {{< highlight python >}}
-def persist:
+def persist():
   persist_to_s3(data)
 {{< / highlight >}}
 
