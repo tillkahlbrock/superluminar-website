@@ -95,7 +95,7 @@ Unsere `fetch` Funktion bauen wir nun entsprechend um, so dass sie das nun im St
 
 ### Migration: data
 
-Bleibt die Frage wo wir nun die Nutzdaten speichern, wir haben ja keinen Shared Memory, und das State Objekt ist zu klein um alle Daten zu halten. Wir entscheiden uns hier als "Cache" eine Datei in S3 zu nutzen, die wir waehrend der Initialisierung (`initialize`) leeren, in unserem Interator (`fetch`) befuellen, und in unserer Persistierung (`persist`) an den Ziel-Ort verschieben. (Bei Bedarf koennen wir spaeter vor unseren `persist` Schritt auch noch Validierung oder Sanitisierung hinzufuegen). Wir aendern:
+Bleibt die Frage, wo wir nun die Nutzdaten speichern, denn wir haben ja keinen Shared Memory, und das State Objekt ist zu klein, um alle Daten zu halten. Wir entscheiden uns hier, als "Cache" eine Datei in S3 zu nutzen, die wir waehrend der Initialisierung (`initialize`) leeren, in unserem Interator (`fetch`) befuellen, und in unserer Persistierung (`persist`) an den Ziel-Ort verschieben. (Bei Bedarf koennen wir spaeter vor unseren `persist` Schritt auch noch Validierung oder Sanitisierung hinzufuegen). Wir aendern:
 
 {{< highlight diff >}}
  def initialize(state):
