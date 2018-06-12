@@ -71,6 +71,7 @@ Dies machen wir uns zu Nutzen, und migrieren als Erstes `offset` in den State. `
 -  offset = 0
 +  state['offset'] = 0
 +  return state
+ 
 {{< / highlight >}}
 
 Dieser "shared state" ist allerdings limitiert (https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-task-executions), und eignet sich somit nicht fuer das Durchreichen der von der externen Datenquelle gelieferten Nutzdaten (`data`). Doch hierzu spaeter mehr.
@@ -89,6 +90,7 @@ Unsere `fetch` Funktion bauen wir nun entsprechend um, so dass sie das nun im St
 -  offset = offset + 25
 +  state['offset'] = state['offset'] + 25
 +  return state
+ 
 {{< / highlight >}}
 
 ### Migration: data
@@ -102,6 +104,7 @@ Bleibt die Frage wo wir nun die Nutzdaten speichern, wir haben ja keinen Shared 
 +
    state['offset'] = 0
    return state
+ 
 {{< / highlight >}}
 
 
@@ -117,6 +120,7 @@ Bleibt die Frage wo wir nun die Nutzdaten speichern, wir haben ja keinen Shared 
 +  write_to_s3_cache(data)
    state['offset'] = state['offset'] + 25
    return state
+ 
 {{< / highlight >}}
 
 {{< highlight diff >}}
@@ -125,6 +129,7 @@ Bleibt die Frage wo wir nun die Nutzdaten speichern, wir haben ja keinen Shared 
 +def persist(state):
 +  copy_s3_cache_to_final_location()
 +
+ 
 {{< / highlight >}}
 
 ## Flow und Abbruchbedingung
@@ -138,6 +143,7 @@ Wir haben nun die Einzelbestandteile unserer Job Logik in einzelne Funktionen au
 +  state['continue'] = True
    state['offset'] = 0
    return state
+ 
 {{< / highlight >}}
 
 {{< highlight diff >}}
@@ -148,6 +154,7 @@ Wir haben nun die Einzelbestandteile unserer Job Logik in einzelne Funktionen au
  
    data.extend(rows)
    write_to_s3_cache(data)
+ 
 {{< / highlight >}}
 
 Mit Hilfe des serverless Plugins `serverless-step-functions` koennen wir unsere State-Machine direkt in unserer `serverless.yml` definieren. Wir sitzen nun auf allen Bestandteilen um die finale State Machine zusammenstecken zu koennen. Wir haben unsere einzelnen Funktionen (`initialize`, `fetch`, `persist`), unseren Iterator (`offset`) und eine Abbruchbedingung (`continue`) im State. Fuer den Abbruch benutzen wir eine der Step Functions Primitiven (`Choice`) und pruefen auf unsere Abbruchbedingung `continue`. Unsere fertige State Machine sieht danach so aus:
