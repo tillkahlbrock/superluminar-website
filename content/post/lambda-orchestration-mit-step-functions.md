@@ -4,7 +4,7 @@ author: "Deniz Adrian"
 date: 2018-06-12
 ---
 
-Heute moechte ich Euch anhand eines praktischen Beispiels eine Einfuehrung in AWS Step Functions geben. Wir werden eine bestehende AWS Lambda Funktion in ihre einzelnen Bestandteile aufsplitten und in eine State Machine umbauen, die es uns ermoeglicht die Logik der Lambda Funktion ueber die Limits einer einzelnen Lambda Funktion hinaus zu skalieren.
+Heute moechte ich Euch anhand eines praktischen Beispiels eine Einfuehrung in AWS Step Functions geben. Wir werden eine bestehende AWS Lambda Funktion in ihre einzelnen Bestandteile aufsplitten und in eine State Machine umbauen, die es uns ermoeglicht, die Logik der Lambda Funktion ueber die Limits einer einzelnen Lambda Funktion hinaus zu skalieren.
 
 Stellt Euch folgende Situation vor: Ihr habt unter Zuhilfenahme des Serverless Frameworks eine Lambda Funktion deployed, die per Cloudwatch Events 1x pro Tag aufgerufen wird, strukturierte Daten von einer externen Datenquelle liest, und zur Weiterverarbeitung nach S3 schreibt. Die externe Datenquelle stellt eine API mit Paginierung bereit und Euer Code sieht in etwa so aus:
 
