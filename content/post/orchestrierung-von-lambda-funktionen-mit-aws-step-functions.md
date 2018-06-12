@@ -95,7 +95,7 @@ Unsere `fetch` Funktion bauen wir nun entsprechend um, so dass sie das nun im St
 
 ### Migration: data
 
-Bleibt die Frage, wo wir nun die Nutzdaten speichern, denn wir haben ja keinen Shared Memory, und das State Objekt ist zu klein, um alle Daten zu halten. Wir entscheiden uns hier, als "Cache" eine Datei in S3 zu nutzen, die wir waehrend der Initialisierung (`initialize`) leeren, in unserem Interator (`fetch`) befuellen, und in unserer Persistierung (`persist`) an den Ziel-Ort verschieben. (Bei Bedarf koennen wir spaeter vor unseren `persist` Schritt auch noch Validierung oder Sanitisierung hinzufuegen). Wir aendern:
+Bleibt die Frage, wo wir nun die Nutzdaten speichern, denn wir haben ja keinen Shared Memory, und das State Objekt ist zu klein, um alle Daten zu halten. Wir entscheiden uns hier, als "Cache" eine Datei in S3 zu nutzen, die wir waehrend der Initialisierung (`initialize`) leeren, in unserem Interator (`fetch`) befuellen, und in unserer Persistierung (`persist`) an den Ziel-Ort verschieben (bei Bedarf koennen wir spaeter vor unseren `persist` Schritt auch noch Validierung oder Sanitisierung hinzufuegen). Wir aendern:
 
 {{< highlight diff >}}
  def initialize(state):
@@ -159,7 +159,7 @@ Wir haben nun die Einzelbestandteile unserer Job Logik in einzelne Funktionen au
 
 ## Die State-Machine
 
-Mit Hilfe des serverless Plugins `serverless-step-functions` koennen wir unsere State-Machine direkt in unserer `serverless.yml` definieren. Wir sitzen nun auf allen Bestandteilen um die finale State Machine zusammenstecken zu koennen. Wir haben unsere einzelnen Funktionen (`initialize`, `fetch`, `persist`), unseren Iterator (`offset`) und eine Abbruchbedingung (`continue`) im State. Fuer den Abbruch benutzen wir eine der Step Functions Primitiven (`Choice`) und pruefen auf unsere Abbruchbedingung `continue`. Unsere fertige State Machine sieht danach so aus:
+Mit Hilfe des serverless Plugins `serverless-step-functions` koennen wir unsere State-Machine direkt in unserer `serverless.yml` definieren. Wir sitzen nun auf allen Bestandteilen, um die finale State Machine zusammenstecken zu koennen. Wir haben unsere einzelnen Funktionen (`initialize`, `fetch`, `persist`), unseren Iterator (`offset`) und eine Abbruchbedingung (`continue`) im State. Fuer den Abbruch benutzen wir eine der Step Functions Primitiven (`Choice`) und pruefen auf unsere Abbruchbedingung `continue`. Unsere fertige State Machine sieht danach so aus:
 
 ![State Machine](/img/state-machine.png)
 
@@ -192,4 +192,6 @@ stateMachines:
           End: true
 {{< / highlight >}}
 
-Zusammenfassung: Step Functions eignet sich hervorragend, um komplexere oder laenger laufende Applikationen mit Hilfe von Lambda zu orchestrieren, jedoch auch fuer eine Vielzahl weiterer Anwendungsfaelle. Habt Ihr selber schon mit Step Functions experimentiert, oder benutzt Ihr Step Functions bereits in Produktion? Lasst uns gerne per Kommentar wissen wie Eure Erfahrungen sind!
+## Zusammenfassung
+
+Step Functions eignet sich hervorragend, um komplexere oder laenger laufende Applikationen mit Hilfe von Lambda zu orchestrieren, jedoch auch fuer eine Vielzahl weiterer Anwendungsfaelle. Habt Ihr selber schon mit Step Functions experimentiert, oder benutzt Ihr Step Functions bereits in Produktion? Lasst uns gerne per Kommentar wissen, wie Eure Erfahrungen sind!
