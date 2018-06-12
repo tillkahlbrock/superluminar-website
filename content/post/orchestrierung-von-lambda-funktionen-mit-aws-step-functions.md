@@ -29,7 +29,7 @@ Hier kommen uns Step Functions zu Hilfe. Step Functions sind State Machines mit 
 
 ## Aus eins mach viele!
 
-Schauen wir uns den Code oben noch einmal in Ruhe an. Wir initialisieren eine leere Datenstruktur, die wir nach und nach mit Daten fuellen (`data = []`) und einen Iterator, den wir fuer die Paginierung des externen Datensets benutzen (`offset = 0`). Wir extrahieren:
+Schauen wir uns den Code oben noch einmal in Ruhe an. Wir initialisieren eine leere Datenstruktur, die wir nach und nach mit Daten fuellen (`data = []`), und einen Iterator, den wir fuer die Paginierung des externen Datensets benutzen (`offset = 0`). Wir extrahieren:
 
 {{< highlight python >}}
 def initialize():
@@ -58,7 +58,7 @@ def persist():
 
 ## Shared State
 
-Beim Design unserer State-Machine muessen wir bedenken, dass wir zwischen Lambda Funktionen keinen echten Shared Memory zur Verfuegung haben. Allerdings bekommen wir durch Step Functions den aktuellen State in jede Funktion als ersten Parameter hereingereicht, und geben aus Funktionen neuen State zurueck. Somit koennen Funktionen den State Lesen und Schreiben!
+Beim Design unserer State-Machine muessen wir bedenken, dass wir zwischen Lambda Funktionen keinen echten Shared Memory zur Verfuegung haben. Allerdings bekommen wir durch Step Functions den aktuellen State in jede Funktion als ersten Parameter hereingereicht, und geben aus Funktionen neuen State zurueck. Somit koennen Funktionen den State lesen und schreiben!
 
 ### Migration: offset
 
