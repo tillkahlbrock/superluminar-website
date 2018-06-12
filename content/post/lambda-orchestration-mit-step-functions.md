@@ -25,7 +25,7 @@ persist_to_s3(data)
 
 Nun stellt Ihr beim Betrachten der Metriken Eurer Funktion in AWS Cloudwatch fest, dass sich sowohl die Ausfuehrungszeiten, als auch der Speicherverbrauch der Lambda Funktion gefaehrlich nahe am Limit bewegen. Antwortet die externe Datenquelle einmal langsamer als erwartet, oder werden die zurueckgelieferten Daten deutlich mehr, wird Eure Funktion nach maximaler Ausfuehrungsdauer oder Erreichen des Speicher-Limits abgebrochen, ohne Ihren Job vollstaendig ausgefuehrt zu haben.
 
-Hier kommen uns Step Functions zu Hilfe. Step Functions sind State Machines mit einer maximalen Ausfuehrungsdauer von derzeit [einem Jahr](https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions). Indem wir unsere Logik also in kleinere Stuecke zerlegen, die jeweils die maximale Ausfuehrungsdauer einer Lambda Funktion ausnutzen koennen, haben wir eine Moeglichkeit unserem Import Job die benoetigte Zeit zur Verfuegung zu stellen.
+Hier kommen uns Step Functions zu Hilfe. Step Functions sind State Machines mit einer maximalen Ausfuehrungsdauer von derzeit [einem Jahr](https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions). Indem wir unsere Logik also in kleinere Stuecke zerlegen, die jeweils die maximale Ausfuehrungsdauer einer Lambda Funktion ausnutzen koennen, haben wir eine Moeglichkeit, unserem Import Job die benoetigte Zeit zur Verfuegung zu stellen.
 
 ## Aus eins mach viele!
 
