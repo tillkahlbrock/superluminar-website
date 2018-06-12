@@ -1,5 +1,5 @@
 ---
-title: "Lambda Orchestration mit Step Functions"
+title: "Orchestrierung von Lambda Funktionen mit AWS Step Functions"
 author: "Deniz Adrian"
 date: 2018-06-12
 ---
