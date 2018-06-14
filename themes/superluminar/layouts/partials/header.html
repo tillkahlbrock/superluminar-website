@@ -26,7 +26,7 @@
         </style>
 
 </head>
-{{ if and ( eq (getenv "HUGO_ENV") "prod" ) ( .Site.Params.gaTrackingId ) -}}
+{{ if and ( not ( .Site.IsServer ) ) ( .Site.Params.gaTrackingId ) -}}
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.gaTrackingId }}"></script>
 <script>
