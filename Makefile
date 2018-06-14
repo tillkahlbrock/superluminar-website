@@ -28,7 +28,7 @@ develop: hugo
 	./hugo serve -D
 
 public: hugo
-	./hugo
+	HUGO_ENV=prod ./hugo
 
 install: hugo
 
