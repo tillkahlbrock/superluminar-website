@@ -4,9 +4,9 @@ author: "Deniz Adrian"
 date: 2018-06-19
 ---
 
-Heute möchte ich Euch anhand eines praktischen Beispiels eine Einführung in [AWS Step Functions](https://aws.amazon.com/step-functions/) geben. Wir werden eine bestehende AWS Lambda Funktion in ihre einzelnen Bestandteile aufsplitten und in eine State Machine umbauen, die es uns ermöglicht, die Logik der Lambda Funktion über die [Limits einer einzelnen Lambda Funktion](https://docs.aws.amazon.com/lambda/latest/dg/limits.html#limits-list) hinaus zu skalieren.
+Heute möchte ich euch anhand eines praktischen Beispiels eine Einführung in [AWS Step Functions](https://aws.amazon.com/step-functions/) geben. Wir werden eine bestehende AWS Lambda Funktion in ihre einzelnen Bestandteile aufsplitten und in eine State Machine umbauen, die es uns ermöglicht, die Logik der Lambda Funktion über die [Limits einer einzelnen Lambda Funktion](https://docs.aws.amazon.com/lambda/latest/dg/limits.html#limits-list) hinaus zu skalieren.
 
-Stellt Euch folgende Situation vor: Ihr habt unter Zuhilfenahme des Serverless Frameworks eine Lambda Funktion deployed, die per Cloudwatch Events 1x pro Tag aufgerufen wird, strukturierte Daten von einer externen Datenquelle liest, und zur Weiterverarbeitung nach S3 schreibt. Die externe Datenquelle stellt eine API mit Paginierung bereit und Euer Code sieht in etwa so aus:
+Stellt euch folgende Situation vor: ihr habt unter Zuhilfenahme des Serverless Frameworks eine Lambda Funktion deployed, die per Cloudwatch Events 1x pro Tag aufgerufen wird, strukturierte Daten von einer externen Datenquelle liest, und zur Weiterverarbeitung nach S3 schreibt. Die externe Datenquelle stellt eine API mit Paginierung bereit und euer Code sieht in etwa so aus:
 
 {{< highlight python >}}
 data = []
@@ -23,9 +23,9 @@ while (True):
 persist_to_s3(data)
 {{< / highlight >}}
 
-Nun stellt Ihr beim Betrachten der Metriken Eurer Funktion in AWS Cloudwatch fest, dass sich sowohl die Ausführungszeiten, als auch der Speicherverbrauch der Lambda Funktion gefährlich nahe am Limit bewegen. Antwortet die externe Datenquelle einmal langsamer als erwartet, oder werden die zurückgelieferten Daten deutlich mehr, wird Eure Funktion nach maximaler Ausführungsdauer oder Erreichen des Speicher-Limits abgebrochen, ohne Ihren Job vollständig ausgeführt zu haben.
+Nun stellt ihr beim Betrachten der Metriken eurer Funktion in AWS Cloudwatch fest, dass sich sowohl die Ausführungszeiten, als auch der Speicherverbrauch der Lambda Funktion gefährlich nahe am Limit bewegen. Antwortet die externe Datenquelle einmal langsamer als erwartet, oder werden die zurückgelieferten Daten deutlich mehr, wird eure Funktion nach maximaler Ausführungsdauer oder Erreichen des Speicher-Limits abgebrochen, ohne ihren Job vollständig ausgeführt zu haben.
 
-Hier kommen Euch Step Functions zu Hilfe. Step Functions sind State Machines mit einer maximalen Ausführungsdauer von derzeit [einem Jahr](https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions). Indem Ihr Eure Logik also in kleinere Stücke zerlegt, die jeweils die maximale Ausführungsdauer einer Lambda Funktion ausnutzen können, habt Ihr eine Möglichkeit, eurem Import Job die benötigte Zeit zur Verfügung zu stellen.
+Hier kommen euch Step Functions zu Hilfe. Step Functions sind State Machines mit einer maximalen Ausführungsdauer von derzeit [einem Jahr](https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions). Indem ihr eure Logik also in kleinere Stücke zerlegt, die jeweils die maximale Ausführungsdauer einer Lambda Funktion ausnutzen können, habt ihr eine Möglichkeit, eurem Import Job die benötigte Zeit zur Verfügung zu stellen.
 
 ## Aus eins mach viele!
 
@@ -159,7 +159,7 @@ Wir haben nun die Einzelbestandteile unserer Job Logik in einzelne Funktionen au
 
 ## Die State-Machine
 
-Mit Hilfe des serverless Plugins [`serverless-step-functions`](https://github.com/horike37/serverless-step-functions) können wir unsere State-Machine direkt in unserer `serverless.yml` definieren. Wir sitzen nun auf allen Bestandteilen, um die finale State Machine zusammenstecken zu können. Wir haben unsere einzelnen Funktionen (`initialize`, `fetch`, `persist`), unseren Iterator (`offset`) und eine Abbruchbedingung (`continue`) im State. Für den Abbruch benutzen wir eine der Step Functions Primitiven (`Choice`) und prüfen auf unsere Abbruchbedingung `continue`. Weitere Primitiven findet Ihr in der [AWS Dokumentation](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-states.html)). Unsere fertige State Machine sieht danach so aus:
+Mit Hilfe des serverless Plugins [`serverless-step-functions`](https://github.com/horike37/serverless-step-functions) können wir unsere State-Machine direkt in unserer `serverless.yml` definieren. Wir sitzen nun auf allen Bestandteilen, um die finale State Machine zusammenstecken zu können. Wir haben unsere einzelnen Funktionen (`initialize`, `fetch`, `persist`), unseren Iterator (`offset`) und eine Abbruchbedingung (`continue`) im State. Für den Abbruch benutzen wir eine der Step Functions Primitiven (`Choice`) und prüfen auf unsere Abbruchbedingung `continue`. Weitere Primitiven findet ihr in der [AWS Dokumentation](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-states.html)). Unsere fertige State Machine sieht danach so aus:
 
 ![State Machine](/img/state-machine.png)
 
@@ -194,4 +194,4 @@ stateMachines:
 
 ## Zusammenfassung
 
-AWS Step Functions eignet sich hervorragend, um komplexere oder länger laufende Applikationen mit Hilfe von Lambda zu orchestrieren, jedoch auch für eine Vielzahl weiterer Anwendungsfälle. Habt Ihr selber schon mit Step Functions experimentiert, oder benutzt Ihr Step Functions bereits in Produktion? Lasst uns gerne per Kommentar wissen, wie Eure Erfahrungen sind!
+AWS Step Functions eignet sich hervorragend, um komplexere oder länger laufende Applikationen mit Hilfe von Lambda zu orchestrieren, jedoch auch für eine Vielzahl weiterer Anwendungsfälle. Habt ihr selber schon mit Step Functions experimentiert, oder benutzt ihr Step Functions bereits in Produktion? Lasst uns gerne per Kommentar wissen, wie eure Erfahrungen sind!
