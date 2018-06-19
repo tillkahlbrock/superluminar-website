@@ -1,7 +1,7 @@
 ---
 title: "Orchestrierung von Lambda Funktionen mit AWS Step Functions"
 author: "Deniz Adrian"
-date: 2018-06-12
+date: 2018-06-19
 ---
 
 Heute möchte ich Euch anhand eines praktischen Beispiels eine Einführung in [AWS Step Functions](https://aws.amazon.com/step-functions/) geben. Wir werden eine bestehende AWS Lambda Funktion in ihre einzelnen Bestandteile aufsplitten und in eine State Machine umbauen, die es uns ermöglicht, die Logik der Lambda Funktion über die [Limits einer einzelnen Lambda Funktion](https://docs.aws.amazon.com/lambda/latest/dg/limits.html#limits-list) hinaus zu skalieren.
