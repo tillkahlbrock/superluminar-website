@@ -24,24 +24,28 @@ hugo:
 	mkdir -p tmp
 	curl -LsS https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_$(OS)-64bit.tar.gz | tar xzf - hugo
 
-develop: hugo
+develop: hugo ## Start a development server
 	./hugo serve -D
 
-public: hugo
+public: hugo ## Build the website
 	./hugo
 
-install: hugo
+install: hugo ## Install dependencies (hugo)
 
-build: public
+build: public ## Build the website
 
-deploy: public guard-WEBSITE_BUCKET guard-CLOUDFRONT_DISTRIBUTION_ID
+deploy: public guard-WEBSITE_BUCKET guard-CLOUDFRONT_DISTRIBUTION_ID ## Deploys the website to the S3 bucket
 	aws s3 sync public/ s3://$(WEBSITE_BUCKET)/ --delete
 	aws configure set preview.cloudfront true
 	aws cloudfront create-invalidation --distribution-id=$(CLOUDFRONT_DISTRIBUTION_ID) --paths /
 
-deploy-pipeline:
+deploy-pipeline: ## Deploys the AWS CodePipeline that deploys the website
 	aws cloudformation deploy \
 		--stack-name superluminar-website-prod \
 		--region us-east-1 \
 		--template-file superluminar-website-prod.yaml \
 		--capabilities CAPABILITY_IAM
+
+.PHONY: help
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
