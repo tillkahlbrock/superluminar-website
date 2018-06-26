@@ -61,6 +61,18 @@ Die superluminar GmbH ist Standard Consulting Partner von AWS.
 </div>
 
 <h2>Referenzen</h2>
-<div>
-<img src="/img/Referenzen-7.png" style="width: 50%"><br>
+<div class=clearfix">
+<div class="sm-col sm-col-4"><img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 30%"></div>
+<div class="sm-col sm-col-4"><img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 30%"></div>
+<div class="sm-col sm-col-4"><img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 30%"></div>
+</div>
+<div class=clearfix">
+<div class="sm-col sm-col-4"><img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 30%"></div>
+<div class="sm-col sm-col-4"><img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 30%"></div>
+<div class="sm-col sm-col-4"><img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 30%"></div>
+</div>
+<div class=clearfix">
+<div class="sm-col sm-col-4"><img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 30%"></div>
+<div class="sm-col sm-col-4"><img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 30%"></div>
+<div class="sm-col sm-col-4"><img src="/img/Otto_Logo_Final_cmyk.jpg" style="width: 30%"></div>
 </div>
