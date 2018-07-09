@@ -1,7 +1,7 @@
 ---
 title: "Allgemeine Geschäftsbedingungen"
 ---
-Stand: 3.1.2018
+Stand: 09.07.2018
 §1 Geltungsbereich
 ==================
 
@@ -182,7 +182,7 @@ wir berechtigt, diesen dem Kunden zusätzlich in Rechnung zu stellen.
 
 Wir berechnen unsere Leistungen grundsätzlich nach Einsatztagen pro
 Berater. Sofern nichts anderes vereinbart ist, gilt ein Tagessatz von
-1.500€.
+1.600€.
 
 Ein Einsatztag umfasst 8 Stunden. Beginn und Ende des Einsatztages sowie
 Pausenzeiten werden im Rahmen unserer betrieblichen Möglichkeiten
