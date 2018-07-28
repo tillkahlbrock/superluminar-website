@@ -46,6 +46,7 @@ TBS
  - Kodifizierung: Die gesamte Lösung ist durch Code dokumentiert und es gibt keine manuellen Schritte (Ausnahme: Das Umbiegen der CodePipeline auf etwas anderes als S3 als Quelle ist gerade ein geklickter Schritt)
  - Erweiterbarkeit: Landing Zone ist eine fundierte Basis fuer das Ausrollen z. B. von eigenen CloudFormation Stacks.
  - Best Practises direkt von AWS: Landing Zone wird laufend von AWS gepflegt und erweitert. 
+ - Anwendung auf bestehende Setups: Grundlegend ist es moeglich, bestehende Multi-Account Setups auf AWS Landing Zone zu migrieren und somit die Vorteile auch fuer Bestandssetups zu geniessen.
 
 ### Was uns nicht so gut gefaellt:
 
