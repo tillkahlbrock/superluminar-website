@@ -45,18 +45,24 @@ TBS
  - Configuration per Manifest:
  - Kodifizierung: Die gesamte Lösung ist durch Code dokumentiert und es gibt keine manuellen Schritte (Ausnahme: Das Umbiegen der CodePipeline auf etwas anderes als S3 als Quelle ist gerade ein geklickter Schritt)
  - Erweiterbarkeit: Landing Zone ist eine fundierte Basis fuer das Ausrollen z. B. von eigenen CloudFormation Stacks.
- - Best Practises direkt von AWS
+ - Best Practises direkt von AWS: Landing Zone wird laufend von AWS gepflegt und erweitert. 
 
-Was nicht so gut ist:
+### Was uns nicht so gut gefaellt:
 
  - Komplexität durch viele eingesetzte Services.
  - Nicht so richtig Open Source: Die Solution ist zwar öffentlich abrufbar, aber "versteckt". Sie kann aber trotzdem benutzt werden und unsere ersten Tests haben eine grundlegende "Production readiness" ergeben.
 
 ### Und die Kosten?
 
-
+TBD
 
 ### Wie könnt ihr es selbst testen?
+
+Ihr koennt AWS Landing Zone selbst testen. Wir empfehlen, erst in einem frisch angelegten Account mit einer neuen Organisation zu testen, damit ihr in der "Sandkiste" Erfahrungen sammeln koennt. 
+
+Hier sind die Dokus von AWS:
+
+ - TBD
 
 superluminar ist AWS Consulting Partner und unterstützt euch gerne, euer neues oder bestehendes Multi-Account Setup mit AWS Landing Zone zu automatisieren oder zu optimieren. 
 
