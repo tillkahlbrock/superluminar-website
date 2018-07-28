@@ -4,25 +4,24 @@ author: "Soenke Ruempler"
 date: 2018-08-01
 ---
 
-AWS Multi Account Setups sind heutzutage der Standard fuer AWS Workloads. Die Vorteile liegen auf der Hand: 
+> Was sind AWS Best Practises? Wie kann ich meine Workloads absichern? Wie kann ich Teams groesstmoegliche Autonomie geben, waehrend nicht die Sicherheit/Einheitlichkeit leidet? Welches Grunddesign sollte ich in AWS verwenden?  Wie verwalte ich Benutzer und Zugriffsrechte? Wie geht AWS Multi Account?
 
- - groesstmoeglioche Autonomie fuer Produkteams
- - Abschottung ("compartmentalization" / "blast radius reduction") von Dev/Test/Prod Environments
- - Sicherheit: Auslagerung von zB CloudTrail Audit Logs in Extra Accounts
- - Grundlegende High Level Design Struktur
+Dies sind viele Fragen, die wir regelmaessig hoeren, gerade von Kunden, die neu auf AWS unterwegs sind, und sich im Zoo der ganzen Konzepte und Services zurechtfinden muessen.
 
+Hier und da existieren Blog Posts zu Best Practises, auch von AWS selbst - manche aktuell, manche outdated - aber waere es nicht toll, wenn es da etwas automatisertes gaebe, so dass man einen Quickstart hat und direkt mit der eigentlichen Arbeit starten kann?
 
-Wie sehen regemaessig, dass diese Setups "geklickt" werden, d.h. wenig nachvollzielbar oder reproduzierbar sind und daher dann auch keine einheitliche Baseline mehr vorhanden ist.
+Wir sehen regemaessig, dass aufgrund verschiedener Umstaende das AWS Grundsetup dann in der AWS Web Console "geklickt" wird, d.h. manuell erstellt und damit wenig nachvollzielbar oder reproduzierbar ist. Weiterhin basiert dann das Einarbeiten von Good/Best Practises hauefig auf zufaelligen Events, z. B. hat ein\*e Mitarbeiter\*in einen Blog Post gelesen, verlinkt den Artikel in den Dev-Chat nach dem Motto "man muesste mal". Gemacht wirds dann nicht, weil "keine Zeit" oder "nicht im Scope" oder der Aufwand zu gross ist. Oder es wird gemacht, aber dann wiederrum "geklickt", womit das Wissen dann haeufig im Kopf der "Klicker\*innen" bleiben.    
 
-Bisher gab es fuer die Setups keine kodi Loesung, doch mit AWS Landing Zone aendert sich dies. Landing Zone ist kein AWS Produkt, sondern eine sogennate "Solution", also ein Komglomeerat von zusammengestecken AWS Services, welches so etwas wie ein Produkt ergibt.
+Bisher gab es fuer die Setups keine kodifizierte Loesung, doch mit AWS Landing Zone aendert sich dies: Landing Zone eine "AWS Solution", welche aktuelle Best Practises kodifiziert und automatisiert ausrollt. 
 
 ## Was verspricht Landing Zone?
 
- - Einheitliches vollautomatisertes AWS Sub-Account Setup
- - Kodifizierte Best Practises (inkl. Updates direkt von AWS) - zB automatisiertes CloudTrail Setup
- - Erweiterbarkeit durch Templates
- - kodiziertes globales Management von Org Units und Services Control Policies in AWS Organizations
- - Single Sign On (optional)
+ - Automatisiertes AWS Multi Account Setup
+ - Grundlegende Sicherheitsrichtlinien
+ - Kodifizierte Best Practises (inkl. Updates direkt von AWS) - zB automatisiertes CloudTrail Setup und VPC/Netzwerk-Design 
+ - DevOps Best Practises: Infrastructure-as-Code durch kodifizierte Templates und Continous Delivery, wodurch auch eigene Erweiterungen global ausgerollt werden koennen.
+
+ - Single Sign On und zentrale Verwaltung von Zugriffsrechten (optional)
 
 ## Der erste Eindruck
 
@@ -34,12 +33,11 @@ Hier waehlt man einige Grundsetups aus. Die Initialisierung schreibt ein Config-
 
 Das Grundsetup legt folgende Accounts an: 
 
-
-
-
-
+TBS
 
 ### Einen neuen Account anlegen.
+
+TBS
 
 ### Was uns gefaellt:
 
@@ -52,8 +50,7 @@ Das Grundsetup legt folgende Accounts an:
 Was nicht so gut ist:
 
  - Komplexitaet durch viele eingesetzte Services.
- - Nicht so richtig Open Source.  
-
+ - Nicht so richtig Open Source: Die Solution ist zwar oeffentlich abrufbar, aber "versteckt". Sie kann aber trotzdem benutzt werden und unsere ersten Tests haben eine grundlegende "Production readiness" ergeben.
 
 ### Und die Kosten?
 
@@ -63,12 +60,15 @@ Was nicht so gut ist:
 
 superluminar ist AWS Consulting Partner und unterstuetzt euch gerne, euer neues oder bestehendes Multi-Account Setup mit AWS Landing Zone zu automatisieren oder zu optimieren. 
 
-### Ausblick
+### Zusammenfassung und Ausblick
+
+TBD Zusamenfassung
 
 In folgenden Beitraegen wollen wir uns folgende Aspekte anschauen:
 
+ - Wie funktioniert die eingebaute SSO Loesung? Was ist zu beachten?
  - Wie bekommt ihr eine bestehendes AWS Multi Account Setup in die Landing Zone?
- - Wie update ich Landing Zone bei neuen Releases?
+ - Wie updated ihr Landing Zone bei neuen Releases? Was passiert bei einem Update?
  - Wie kann ich Landing Zone erweitern, zum Beispiel eigene CloudFormation Stacks global ueber alle Accounts ausrollen und aktuell halten?
 
 
