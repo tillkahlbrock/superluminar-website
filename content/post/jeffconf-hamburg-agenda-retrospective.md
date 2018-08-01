@@ -11,7 +11,7 @@ The agenda team consisted of 3 people:
 
 - [Susanne Kaiser](https://twitter.com/suksr)
 - [Ben Tisdall](https://twitter.com/btisdall)
-- [Soenke Ruempler](https://twitter.com/s0enke]) (my humble self)
+- [Soenke Ruempler](https://twitter.com/s0enke) (my humble self)
 
 First of all, thanks to Susanne and Ben for co-organizing this community event! They sacrified a lot of their spare time to make it possible!
 
