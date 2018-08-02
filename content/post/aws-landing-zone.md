@@ -46,6 +46,7 @@ Das Grundsetup legt folgende Accounts an:
  - Logging: Hier landen zentral die Logs, z. B. CLoudTrail Audit Logs.
 
 ![AWS Landing Zone Account Struktur](https://d1.awsstatic.com/aws-answers/answers-images/landing-zone-implementation-architecture.6bfa23d88aef1ce97035d0333f476898739697b9.png)
+
 ([Quelle: https://aws.amazon.com/answers/aws-landing-zone/](https://aws.amazon.com/answers/aws-landing-zone/))
 
 ### Account Baseline
