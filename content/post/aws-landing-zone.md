@@ -1,6 +1,7 @@
 ---
 title: "Für euch getestet: Multi Accounts Setups mit AWS Landing Zone"
 author: "Soenke Ruempler"
+slug: "fuer-euch-getestet-multi-accounts-setups-mit-aws-landing-zone"
 date: 2018-08-01
 ---
 
