@@ -26,7 +26,7 @@ Bisher gab es für die Setups keine (uns bekannte) Lösung, doch mit AWS Landing
 
 ## Der erste Eindruck
 
-Während [viele](https://www.contino.io/insights/3-ways-the-new-aws-landing-zone-as-code-accelerates-enterprise-cloud-adoption) [Blog Posts](http://up2v.nl/2018/06/20/aws-introducing-aws-landing-zone-solution/) nur nochmal mehr oder weniger die News von AWS kopieren, haben wir Landing Zone direkt für euch ausprobiert.
+Während [einige](https://www.contino.io/insights/3-ways-the-new-aws-landing-zone-as-code-accelerates-enterprise-cloud-adoption) [Blog Posts](http://up2v.nl/2018/06/20/aws-introducing-aws-landing-zone-solution/) nur nochmal mehr oder weniger die News von AWS kopieren, haben wir Landing Zone direkt für euch ausprobiert.
 
 ### Die Installation
 
