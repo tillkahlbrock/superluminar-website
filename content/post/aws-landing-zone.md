@@ -67,7 +67,7 @@ Einen neuen AWS Account anlegen könnt ihr nach erfolgreicher Einrichtung der AW
 
 {{< figure src="/img/aws-landing-zone/new-account.png" title="Auswahl des Produkts im Service Catalog">}}
 
-Nach Auswahl des Produktes können E-Mail-Adresse des Stammbenutzers für den neuen Account sowie ein Name und die OU ausgewählt werden. Zusätzlich könnt ihr einstellen, ob und wie eine VPC konfiguriert werden soll.
+Nach Auswahl des Produktes können E-Mail-Adresse des Stammbenutzers für den neuen Account sowie ein Name und die Organizational Unit ausgewählt werden. Zusätzlich könnt ihr einstellen, ob und wie eine VPC konfiguriert werden soll.
 
 {{< figure src="/img/aws-landing-zone/new-account-2.png" title="Einstellen der Parameter fuer den neuen Account">}}
 
