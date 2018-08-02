@@ -4,13 +4,13 @@ author: "Soenke Ruempler"
 date: 2018-08-01
 ---
 
-> Was sind AWS Best Practises? Wie kann ich meine Workloads absichern? Wie kann ich Teams grösstmögliche Autonomie geben, während nicht die Sicherheit/Einheitlichkeit leidet? Welches Grunddesign sollte ich in AWS verwenden?  Wie verwalte ich Benutzer und Zugriffsrechte? Wie geht AWS Multi Account?
+> Was sind AWS Best Practises? Wie kann ich meine Workloads absichern? Wie kann ich Teams größtmögliche Autonomie geben, ohne  dass die Sicherheit/Einheitlichkeit leidet? Welches Grund-Design sollte ich in AWS verwenden?  Wie verwalte ich Benutzer und Zugriffsrechte? Wie geht AWS Multi Account?
 
 Dies sind viele Fragen, die wir regelmäßig hören, gerade von Kunden, die neu auf AWS unterwegs sind, und sich im Zoo der ganzen Konzepte und Services zurechtfinden müssen.
 
 Hier und da existieren Blog Posts zu Best Practises, auch von AWS selbst - manche aktuell, manche outdated - aber wäre es nicht toll, wenn es da etwas Automatisiertes gäbe, so dass man einen Quickstart hat und direkt mit der eigentlichen Arbeit starten kann?
 
-Wir sehen häufig, dass aufgrund verschiedener Umstände das AWS Grundsetup dann in der AWS Web Console "geklickt" wird, d.h. manuell erstellt und damit wenig nachvollziehbar oder reproduzierbar ist. Weiterhin basiert dann das Einarbeiten von Good/Best Practises häufig auf zufälligen Events, z. B. hat ein\*e Mitarbeiter\*in einen Blog Post gelesen, verlinkt den Artikel in den Dev-Chat nach dem Motto "man müsste mal". Gemacht wirds dann oft nicht, weil "keine Zeit" oder "nicht im Scope" oder der initiale Aufwand zu groß sei. Oder es wird gemacht, aber dann wiederum "geklickt", womit das Wissen dann häufig im Kopf der "Klicker\*innen" verbleibt und somit oft versandet.
+Wir sehen häufig, dass aufgrund verschiedener Umstände das AWS Grund-Setup dann in der AWS Web Console "geklickt" wird, d.h. manuell erstellt und damit wenig nachvollziehbar oder reproduzierbar ist. Weiterhin basiert dann das Einarbeiten von Good/Best Practises häufig auf zufälligen Events, z. B. hat ein\*e Mitarbeiter\*in einen Blog Post gelesen, verlinkt den Artikel in den Dev-Chat nach dem Motto "man müsste mal". Gemacht wird es dann oft nicht, weil "keine Zeit" oder "nicht im Scope" oder der initiale Aufwand zu groß sei. Oder es wird gemacht, aber dann wiederum "geklickt", womit das Wissen dann häufig im Kopf der "Klicker\*innen" verbleibt und somit oft versandet.
 
 Bisher gab es für die Setups keine (uns bekannte) Lösung, doch mit AWS Landing Zone ändert sich dies: Landing Zone eine "AWS Solution", welche aktuelle Best Practises kodifiziert und automatisiert ausrollt. 
 
@@ -22,7 +22,7 @@ Bisher gab es für die Setups keine (uns bekannte) Lösung, doch mit AWS Landing
  - DevOps Best Practises: Infrastructure-as-Code durch kodifizierte Templates und Continuous Delivery, wodurch auch eigene Erweiterungen global ausgerollt werden können.
  - hohe Anpassbarkeit durch Templates
  - Modularität
- - Single Sign On und zentrale Verwaltung von Zugriffsrechten (optional)
+ - Single Sign-On und zentrale Verwaltung von Zugriffsrechten (optional)
 
 ## Der erste Eindruck
 
@@ -81,9 +81,9 @@ Nach Auswahl des Produktes können E-Mail-Adresse des Stammbenutzers für den ne
 
 ## Was uns (noch) nicht so gut gefällt
 
-Unter anderen sind uns bei ersten Testen folgende Dinge aufgefallen:
+Unter anderen sind uns bei den ersten Tests folgende Dinge aufgefallen:
 
- - Komplexität durch viele eingesetzte Services: So ist es mitunter etwas mühsam, zu verstehen, was passiert. Ein beispielhafter Aufruf: Service Catalog triggert CloudFormation, welches Custom Resources hat, die Lambda triggern, welches eine Step Functions State Machine triggert, welche u.a. CloudFormation StackSets aufrufen. Allerdings ist durch den konsequenten Einsatz von Serverless Komponenten auch ein geringer Wartungsaufwand gewährleistet.
+ - Komplexität durch viele eingesetzte Services: So ist es mitunter etwas mühsam, zu verstehen, was passiert. Ein beispielhafter Aufruf: Service Catalog triggert CloudFormation, welches Custom Resources hat, die Lambda triggern, was eine Step Functions State Machine triggert, welche u.a. CloudFormation StackSets aufrufen. Allerdings ist durch den konsequenten Einsatz von Serverless Komponenten auch ein geringer Wartungsaufwand gewährleistet.
  - Noch nicht so richtig veröffentlicht: Die Solution ist zwar öffentlich abrufbar, aber "versteckt". Sie kann aber trotzdem benutzt werden und unsere ersten Tests haben eine grundlegende "Production readiness" ergeben. Weiterhin unterliegt sie der [Amazon Software License](https://aws.amazon.com/asl/), welche Verwendung und Veränderung im AWS Kontext erlaubt.
  - Die AWS SSO Lösung ist gerade auf die `us-east-1` beschränkt, benötigt ein Active Directory und kann von Haus aus kein Multi-Factor-Auth. 
 
@@ -100,7 +100,7 @@ Laut AWS kommen hier ca. $500 pro Monat zusammen. Dies kann durch Verzicht auf A
 
 ## Wie könnt ihr es selbst testen?
 
-Ihr könnt AWS Landing Zone selbst testen. Wir empfehlen, erst in einem frisch angelegten Account mit einer neuen Organisation zu testen, damit ihr in der "Sandkiste" Erfahrungen sammeln könnt. Landing Zone selbst kommt als CloudFormation Template und ist somit "One-Click" installierbar:
+Ihr könnt AWS Landing Zone selbst testen. Wir empfehlen, erst in einem frisch angelegten Account mit einer neuen Organisation zu testen, damit ihr in der "Sandkiste" Erfahrungen sammeln könnt. Landing Zone selbst kommt als CloudFormation Template und ist somit per "One-Click" installierbar:
 
 [![Launch Stack](https://raw.githubusercontent.com/s0enke/cloudformation-templates/master/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=aws-landing-zone-initiation&templateURL=https://s3.amazonaws.com/solutions-reference/aws-landing-zone/latest/aws-landing-zone-initiation.template)
 
