@@ -37,14 +37,14 @@ Die Initialisierung schreibt ein Config-Template in ein S3 Bucket. Dieses dient 
 
 Diese Config kann später angepasst werden und ist die "Single Source of Truth" für eure Landing Zone. Bei jeder Änderung der Config läuft die CodePipeline los und wendet die Änderungen auf die Infrastruktur an. Neben dem Manifest sind auch CloudFormation Templates, z. B. für VPCs, Teil der Konfiguration (und können somit auch angepasst oder erweitert werden, wenn gewünscht). 
 
-Für den ersten Test empfehlen wir übrigens, den Parameter`BuildLandingZone` auf `false` zu stellen, so dass nicht direkt die Pipeline "losrennt". So könnt ihr erst einmal die generierte Config inspizieren und ggf. noch anpassen, bevor es losgeht. Weiterhin solltet ihr `LockStackSetsExecutionRole` ggf. auch erst auf `false` setzen, denn sonst geht euch ggf. der direkte Zugriff auf die Sub-Accounts verloren. Später ist es allerdings empfehlenswert, den Schalter auf `true` zu setzen, da hierdurch der Administratoren-Rollen-Zugriff in Sub-Accounts auf die Landing Zone Ressourcen beschränkt wird.  
+Für den ersten Test empfehlen wir übrigens, den Parameter `BuildLandingZone` auf `false` zu stellen, so dass nicht direkt die Pipeline "losrennt". So könnt ihr erst einmal die generierte Config inspizieren und ggf. noch anpassen, bevor es losgeht. Weiterhin solltet ihr `LockStackSetsExecutionRole` ggf. auch erst auf `false` setzen, denn sonst geht euch ggf. der direkte Zugriff auf die Sub-Accounts verloren. Später ist es allerdings empfehlenswert, den Schalter auf `true` zu setzen, da hierdurch der Administratoren-Rollen-Zugriff in Sub-Accounts auf die Landing Zone Ressourcen beschränkt wird.  
 
 Das Grundsetup legt folgende Accounts an: 
 
  - Master: Hier liegt die AWS Organization und auch die CodePipeline, welche die Landing Zone ausrollt. Weiterhin liegen hier SSO, und ein Service Catalog für die sogenannte "Account Vending Machine" (AVM), welche das Anlegen von neuen AWS Accounts automatisiert.
  - Security: Hier liegen Rollen, die es erlauben, in andere Accounts zu wechseln sowie Notifications über Security Incidents
  - Shared Services: Active Directory und andere Dienste, die von allen Accounts konsumiert werden, sollen hier Platz finden.
- - Logging: Hier landen zentral die Logs, z. B. CLoudTrail Audit Logs.
+ - Logging: Hier landen zentral die Logs, z. B. CloudTrail Audit Logs.
 
 ![AWS Landing Zone Account Struktur](https://d1.awsstatic.com/aws-answers/answers-images/landing-zone-implementation-architecture.6bfa23d88aef1ce97035d0333f476898739697b9.png)
 
@@ -69,7 +69,7 @@ Einen neuen AWS Account anlegen könnt ihr nach erfolgreicher Einrichtung der AW
 
 Nach Auswahl des Produktes können E-Mail-Adresse des Stammbenutzers für den neuen Account sowie ein Name und die Organizational Unit ausgewählt werden. Zusätzlich könnt ihr einstellen, ob und wie eine VPC konfiguriert werden soll.
 
-{{< figure src="/img/aws-landing-zone/new-account-2.png" title="Einstellen der Parameter fuer den neuen Account">}}
+{{< figure src="/img/aws-landing-zone/new-account-2.png" title="Einstellen der Parameter für den neuen Account">}}
 
 ## Was uns gefällt
 
@@ -78,7 +78,7 @@ Nach Auswahl des Produktes können E-Mail-Adresse des Stammbenutzers für den ne
  - Best Practises direkt von AWS: Hier hat AWS Erfahrungen gesammelt und kodifiziert.
  - Landing Zone wird laufend von AWS gepflegt und erweitert: So kam kurz nach unserem Test eine neue Version heraus, die 2 Bugs gefixt hat, auf die wir auch gestoßen waren. Allerdings gibt es derzeit noch keine Notifications oder Changelogs.
  - Anwendung auf bestehende Setups: Grundlegend ist es möglich, bestehende Multi-Account Setups auf AWS Landing Zone zu migrieren und somit die Vorteile auch für Bestands Setups zu genießen.
- - Idempotenz: Wir hatten während des Tests mehrere Fehler, wo es nicht weiterging, z. B. in der Pipeline, aber nach Fixen es Codes konnten wir die Pipeline neu anstoßen und es ging weiter. Wir kamen also nie in eine Sackgasse. Dies ist wohl auch dem konsequenten Einsatz von Lambda und Step Functions zu danken, die eine gewisse Idempotenz erzwingen.
+ - Idempotenz: Wir hatten während des Tests mehrere Fehler, wo es nicht weiterging, z. B. in der Pipeline, aber nach Fixen des Codes konnten wir die Pipeline neu anstoßen und es ging weiter. Wir kamen also nie in eine Sackgasse. Dies ist wohl auch dem konsequenten Einsatz von Lambda und Step Functions zu verdanken, die eine gewisse Idempotenz erzwingen.
 
 ## Was uns (noch) nicht so gut gefällt
 
@@ -121,8 +121,8 @@ Mit Landing Zone stellt AWS uns eine solide Grundlage für sichere und automatis
 
 In folgenden Beiträgen wollen wir unter anderem weitere Aspekte erörtern:
 
- - Wie bekommt ihr eine bestehendes AWS Multi Account Setup in die Landing Zone? Was ist zu beachten?
- - Wie könnt ihr die Baseline anpassen, um z. B. ohne Active Directory / SSO zu starten?
+ - Wie bekommt ihr ein bestehendes AWS Multi Account Setup in die Landing Zone? Was ist zu beachten?
+ - Wie könnt ihr die Baseline anpassen, um z.B. ohne Active Directory / SSO zu starten?
  - Wie updatet ihr Landing Zone bei neuen Releases? Was passiert bei einem Update?
  - Wie kann ich unterschiedliche Account-Settings für unterschiedliche Umgebungen (z. B. dev/prod) oder Teams/OUs erreichen?
  - Wie kann ich Landing Zone erweitern, zum Beispiel eigene CloudFormation Stacks global über alle Accounts ausrollen und aktuell halten?
