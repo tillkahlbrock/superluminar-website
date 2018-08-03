@@ -2,7 +2,7 @@
 title: "Für euch getestet: Multi Accounts Setups mit AWS Landing Zone"
 author: "Soenke Ruempler"
 slug: "fuer-euch-getestet-multi-accounts-setups-mit-aws-landing-zone"
-date: 2018-08-01
+date: 2018-08-03
 ---
 
 > Was sind AWS Best Practises? Wie kann ich meine Workloads absichern? Wie kann ich Teams größtmögliche Autonomie geben, ohne  dass die Sicherheit/Einheitlichkeit leidet? Welches Grund-Design sollte ich in AWS verwenden?  Wie verwalte ich Benutzer und Zugriffsrechte? Wie geht AWS Multi Account?
