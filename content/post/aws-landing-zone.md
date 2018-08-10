@@ -5,22 +5,22 @@ slug: "fuer-euch-getestet-multi-accounts-setups-mit-aws-landing-zone"
 date: 2018-08-03
 ---
 
-> Was sind AWS Best Practises? Wie kann ich meine Workloads absichern? Wie kann ich Teams größtmögliche Autonomie geben, ohne  dass die Sicherheit/Einheitlichkeit leidet? Welches Grund-Design sollte ich in AWS verwenden?  Wie verwalte ich Benutzer und Zugriffsrechte? Wie geht AWS Multi Account?
+> Was sind AWS Best Practices? Wie kann ich meine Workloads absichern? Wie kann ich Teams größtmögliche Autonomie geben, ohne  dass die Sicherheit/Einheitlichkeit leidet? Welches Grund-Design sollte ich in AWS verwenden?  Wie verwalte ich Benutzer und Zugriffsrechte? Wie geht AWS Multi Account?
 
 Dies sind viele Fragen, die wir regelmäßig hören, gerade von Kunden, die neu auf AWS unterwegs sind, und sich im Zoo der ganzen Konzepte und Services zurechtfinden müssen.
 
-Hier und da existieren Blog Posts zu Best Practises, auch von AWS selbst - manche aktuell, manche outdated - aber wäre es nicht toll, wenn es da etwas Automatisiertes gäbe, so dass man einen Quickstart hat und direkt mit der eigentlichen Arbeit starten kann?
+Hier und da existieren Blog Posts zu Best Practices, auch von AWS selbst - manche aktuell, manche outdated - aber wäre es nicht toll, wenn es da etwas Automatisiertes gäbe, so dass man einen Quickstart hat und direkt mit der eigentlichen Arbeit starten kann?
 
-Wir sehen häufig, dass aufgrund verschiedener Umstände das AWS Grund-Setup dann in der AWS Web Console "geklickt" wird, d.h. manuell erstellt und damit wenig nachvollziehbar oder reproduzierbar ist. Weiterhin basiert dann das Einarbeiten von Good/Best Practises häufig auf zufälligen Events, z. B. hat ein\*e Mitarbeiter\*in einen Blog Post gelesen, verlinkt den Artikel in den Dev-Chat nach dem Motto "man müsste mal". Gemacht wird es dann oft nicht, weil "keine Zeit" oder "nicht im Scope" oder der initiale Aufwand zu groß sei. Oder es wird gemacht, aber dann wiederum "geklickt", womit das Wissen dann häufig im Kopf der "Klicker\*innen" verbleibt und somit oft versandet.
+Wir sehen häufig, dass aufgrund verschiedener Umstände das AWS Grund-Setup dann in der AWS Web Console "geklickt" wird, d.h. manuell erstellt und damit wenig nachvollziehbar oder reproduzierbar ist. Weiterhin basiert dann das Einarbeiten von Good/Best Practices häufig auf zufälligen Events, z. B. hat ein\*e Mitarbeiter\*in einen Blog Post gelesen, verlinkt den Artikel in den Dev-Chat nach dem Motto "man müsste mal". Gemacht wird es dann oft nicht, weil "keine Zeit" oder "nicht im Scope" oder der initiale Aufwand zu groß sei. Oder es wird gemacht, aber dann wiederum "geklickt", womit das Wissen dann häufig im Kopf der "Klicker\*innen" verbleibt und somit oft versandet.
 
-Bisher gab es für die Setups keine (uns bekannte) Lösung, doch mit AWS Landing Zone ändert sich dies: Landing Zone eine "AWS Solution", welche aktuelle Best Practises kodifiziert und automatisiert ausrollt. 
+Bisher gab es für die Setups keine (uns bekannte) Lösung, doch mit AWS Landing Zone ändert sich dies: Landing Zone eine "AWS Solution", welche aktuelle Best Practices kodifiziert und automatisiert ausrollt. 
 
 ## Was verspricht Landing Zone?
 
  - Automatisiertes AWS Multi Account Setup
  - Grundlegende Sicherheitsrichtlinien
- - Kodifizierte Best Practises (inkl. Updates direkt von AWS) - z.B. automatisiertes CloudTrail Setup und VPC/Netzwerk-Design 
- - DevOps Best Practises: Infrastructure-as-Code durch kodifizierte Templates und Continuous Delivery, wodurch auch eigene Erweiterungen global ausgerollt werden können.
+ - Kodifizierte Best Practices (inkl. Updates direkt von AWS) - z.B. automatisiertes CloudTrail Setup und VPC/Netzwerk-Design 
+ - DevOps Best Practices: Infrastructure-as-Code durch kodifizierte Templates und Continuous Delivery, wodurch auch eigene Erweiterungen global ausgerollt werden können.
  - hohe Anpassbarkeit durch Templates
  - Modularität
  - Single Sign-On und zentrale Verwaltung von Zugriffsrechten (optional)
