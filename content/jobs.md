@@ -11,7 +11,7 @@ menu:
 superluminar bietet Cloud Consulting für Unternehmen, Startups und Organisationen und unser Büro ist in Hamburg am Fischmarkt. 
 Wir verstehen nicht nur die modernsten Technologien, wir schauen auch auf Menschen und Prozesse. So unterstützen wir Organisationen bei der Transition hin zu moderner Produktentwicklung. “Mit statt für euch” ist dabei unser Motto.
 
-Als *Senior Cloud Consultant* arbeitest du mit uns zusammen und unterstützt unsere Kunden bei dem Weg in und durch die Cloud. 
+Als **Senior Cloud Consultant** arbeitest du mit uns zusammen und unterstützt unsere Kunden bei dem Weg in und durch die Cloud. 
 Der Fokus liegt dabei auf Beratung, Coaching und Trainings. Werkverträge und Arbeit nach Pflichtenheft gibt es bei uns nicht.
 
 ## Was wir bieten: 
