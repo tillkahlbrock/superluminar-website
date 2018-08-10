@@ -1,6 +1,9 @@
 ---
 title: "Jobs"
-draft: false
+description: "Cloud Consulting Jobs in Hamburg bei superluminar."
+menu:
+  main:
+    weight: 1
 ---
 # Senior Cloud Consultant (m/w/d)
 
