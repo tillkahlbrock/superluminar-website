@@ -14,7 +14,7 @@ Wäre es nicht gut, wenn solche grundlegenden Einstellungen direkt für jeden AW
 
 AWS Landing Zone bietet genau hierfür grundlegende Funktionalität, um eigene AWS Ressourcen oder Einstellungen über Sub-Accounts und Regionen hinweg zu verteilen. Damit kann einmal aufgebautes zentrales Wissen kodifiziert und dann automatisch verteilt werden: Dev-Teams können schneller mit der eigentlichen Arbeit anfangen, ohne sich langwieriges Grundsetup mühsam zu erarbeiten.
 
-Zurueck zum Beispiel. Für ein grundlegendes Setup des API Gateways braucht ihr neben einem eingerichteten AWS Landing Zone Setup zwei Dinge:
+Zurück zum Beispiel: Für ein grundlegendes Setup des API Gateways braucht ihr neben einem eingerichteten AWS Landing Zone Setup zwei Dinge:
 
  - Eine IAM Rolle, die global ausgerollt wird - und nicht je Region - da IAM ein globaler Dienst ist. Hierfür nehmen wir die CloudFormation Resource `AWS::IAM::Role`
  - Die regionale Grundkonfiguration des API Gateways Dienstes, damit der Dienst Logs und Metriken zu CloudWatch schreiben kann. Dafür dient der Resource `AWS::ApiGateway::Account
@@ -115,4 +115,4 @@ Ein Test mit Löschen von einzelnen Regionen aus der Liste in einer Baseline hat
 
 ## Fazit
 
-AWS Landing Zone bietet eine solide Grundlage, um Organisationsweit sogenannte Baselines, also Grundlegende Setups, die jw AWS Account gleich sein sollen, zentral zu pflegen und auszurollen. Damit ist es möglich, dass sich im Unternehmen bewährte Good/Best Practises einfach kodifizieren lassen und somit Wissensinseln vermeiden.
+AWS Landing Zone bietet eine solide Grundlage, um organisationsweit sogenannte Baselines, also grundlegende Setups, die in jedem AWS Sub-Account gleich sein sollen, zentral zu pflegen und auszurollen. Damit wird es möglich, dass sich im Unternehmen bewährte Good/Best Practises einfach kodifizieren und somit Wissensinseln vermeiden lassen.
