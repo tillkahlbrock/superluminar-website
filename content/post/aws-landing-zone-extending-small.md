@@ -1,7 +1,7 @@
 ---
 title: "AWS Landing Zone erweitern: Ein Beispiel aus der Praxis"
 author: "Soenke Ruempler"
-date: 2018-08-03
+date: 2018-08-14
 ---
 
 Nachdem wir [einen grundlegenden Blick auf AWS Landing Zone]({{< ref "aws-landing-zone.md" >}}) geworfen haben, und wie es bei Deployments von Enterprise AWS Setups hilft, wollen wir euch heute ein Beispiel liefern, wie ihr Landing Zone erweitern könnt.
@@ -16,8 +16,8 @@ AWS Landing Zone bietet genau hierfür grundlegende Funktionalität, um eigene A
 
 Zurück zum Beispiel: Für ein grundlegendes Setup des API Gateways braucht ihr neben einem eingerichteten AWS Landing Zone Setup zwei Dinge:
 
- - Eine IAM Rolle, die global ausgerollt wird - und nicht je Region - da IAM ein globaler Dienst ist. Hierfür nehmen wir die CloudFormation Resource `AWS::IAM::Role`
- - Die regionale Grundkonfiguration des API Gateways Dienstes, damit der Dienst Logs und Metriken zu CloudWatch schreiben kann. Dafür dient der Resource `AWS::ApiGateway::Account
+ - Eine IAM Rolle, die global ausgerollt wird - und nicht je Region - da IAM ein globaler Dienst ist. Hierfür nehmen wir die CloudFormation Ressource `AWS::IAM::Role`
+ - Die regionale Grundkonfiguration des API Gateways Dienstes, damit der Dienst Logs und Metriken zu CloudWatch schreiben kann. Dafür dient die Cloudformation Ressource `AWS::ApiGateway::Account
 `.
 
 Beginnen wir mit der globalen IAM Rolle, die einmal pro AWS Account (aber nicht je Region) vorhanden sein muss. Dafür definiert ihr in eurem Manifest `manifest.yaml` eurer Landing Zone Konfiguration:
