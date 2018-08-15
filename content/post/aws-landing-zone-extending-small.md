@@ -111,7 +111,7 @@ Das Ergebnis ist, dass der Stack jetzt sowohl in `eu-central-1` als auch neu in 
 
 Durch das Löschen des Codes einer Baseline Ressource im Manifest werden auch die entsprechenden CloudFormation Stacks gelöscht.
 
-Ein Test mit Löschen von einzelnen Regionen aus der Liste in einer Baseline hat bei uns allerdings ergeben, dass diese bestehen bleibt. Die Vermutung ist, dass das Löschen einer Region bei der Zustands-Konvergierung noch nicht in Landing Zone implementiert ist implementiert ist.
+Ein Test mit Löschen von einzelnen Regionen aus der Liste in einer Baseline hat bei uns allerdings ergeben, dass diese bestehen bleibt. Die Vermutung ist, dass das Löschen einer Region bei der Zustands-Konvergierung noch nicht in Landing Zone implementiert ist.
 
 ## Fazit
 
