@@ -2,7 +2,7 @@
 title: Blog
 menu: 
   main:
-    weight: 1000
+    weight: 2
 ---
 
 Hier publizieren wir Artikel, Tutorials und Neuigkeiten.
