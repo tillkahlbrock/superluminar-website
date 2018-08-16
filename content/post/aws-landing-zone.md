@@ -121,10 +121,9 @@ Mit Landing Zone stellt AWS uns eine solide Grundlage für sichere und automatis
 
 In folgenden Beiträgen wollen wir unter anderem weitere Aspekte erörtern:
 
- - [AWS Landing Zone erweitern: ein Beispiel aus der Praxis]({{< ref "aws-landing-zone-extending-small.md" >}}) 
+ - [Wie kann ich Landing Zone erweitern, zum Beispiel eigene CloudFormation Stacks global über alle Accounts ausrollen und aktuell halten?]({{< ref "aws-landing-zone-extending-small.md" >}})
  - Wie bekommt ihr ein bestehendes AWS Multi Account Setup in die Landing Zone? Was ist zu beachten?
  - Wie könnt ihr die Baseline anpassen, um z.B. ohne Active Directory / SSO zu starten?
  - Wie updatet ihr Landing Zone bei neuen Releases? Was passiert bei einem Update?
  - Wie kann ich unterschiedliche Account-Settings für unterschiedliche Umgebungen (z. B. dev/prod) oder Teams/OUs erreichen?
- - Wie kann ich Landing Zone erweitern, zum Beispiel eigene CloudFormation Stacks global über alle Accounts ausrollen und aktuell halten?
  - Wie funktioniert die eingebaute SSO Lösung? Was ist zu beachten?
