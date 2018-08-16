@@ -121,6 +121,7 @@ Mit Landing Zone stellt AWS uns eine solide Grundlage für sichere und automatis
 
 In folgenden Beiträgen wollen wir unter anderem weitere Aspekte erörtern:
 
+ - [AWS Landing Zone erweitern: ein Beispiel aus der Praxis]({{< ref "aws-landing-zone-extending-small.md" >}}) 
  - Wie bekommt ihr ein bestehendes AWS Multi Account Setup in die Landing Zone? Was ist zu beachten?
  - Wie könnt ihr die Baseline anpassen, um z.B. ohne Active Directory / SSO zu starten?
  - Wie updatet ihr Landing Zone bei neuen Releases? Was passiert bei einem Update?
