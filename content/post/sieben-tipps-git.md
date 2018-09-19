@@ -27,7 +27,7 @@ $ git pull
 error: ...
 error: please commit or stash them.
 ```
-Kennt ihr? Dann schaltet doch `autostash` ein (Achtung, geht nur mit der Einstellung oben in Kombination):
+Kennt ihr? Dann schaltet doch `autostash` ein (Achtung, geht nur in Kombination mit `rebase'):
 ```
 $ git config --global rebase.autoStash true
 ```
