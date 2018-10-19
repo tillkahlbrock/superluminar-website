@@ -25,7 +25,9 @@ We got 48 submissions via the CfP.
 - The agenda included 17 talks including lightning talks
 
 ## Provider / Content Diversity in the CfP
+
 Content-wise we got the following distribution (separated by Cloud Providers):
+
 - 23 AWS (3 from AWS employees)
 - 3 Azure and 2 of them from Microsoft employees.
 - 1 Google
@@ -36,17 +38,20 @@ Content-wise we got the following distribution (separated by Cloud Providers):
 Our internal diversity goal was 30% from people underrepresented in tech.
 
 If we don’t count in workshop facilitators, that’s:
+
 - 3 of our 17 talks were from women, that’s 17%
 - 5 of our 17 talks weren’t from white males, that’s 29% (I am no expert here but I counted asian/indian as “not white male” - please correct me if that’s wrong - actually I don’t like this distinction at all since we are all humans, but it’s for the sake of statistics and diversity report here).
 
 None of the CfP submitters were woman. In order to raise the women speaker rate from 0% we looked e.g. at speakerinnen.org for women speakers and we were really glad that we found Manu Rink there! Additionally we also scanned Twitter, LinkedIn, etcpp - and we were glad that Anna and Gillian joined us as well. In the end we contacted about 14 women and got 3 confirmed in total. We did not send them through a CfP process, though, but let them choose their topic.
 
 ## CfP Process
-We had a “committee” of 3 people. 3 seems to be good because it’s an odd number and gives us quorum.
-The CfP process was anonymized, a feature of PaperCall.io.
-The CfP was open for three month, AFAIR we did this because re:invent was in between and we wanted to give those people who were preparing for / exhausted from re:invent a chance to submit a proposal as well.
-We did not have explicit criteria for the selection. E.g. how the content should be mixed.
-We did a “preselection” in the middle of the running CfP. I think we did this as a result of the long running CfP. In hindsight we should not have done a ‘mid selection’ because that lowered the chance for later CfPs to be accepted. 
+
+- We had a “committee” of 3 people. 3 seems to be good because it’s an odd number and gives us quorum.
+- The CfP process was anonymized, a feature of PaperCall.io.
+- The CfP was open for three month, AFAIR we did this because re:invent was in between and we wanted to give those people who were preparing for / exhausted from re:invent a chance to submit a proposal as well.
+- We did not have explicit criteria for the selection. E.g. how the content should be mixed.
+- We did a “preselection” in the middle of the running CfP. I think we did this as a result of the long running CfP. In hindsight we should not have done a ‘mid selection’ because that lowered the chance for later CfPs to be accepted. 
+
 ## Why so much AWS content?
 
 One feedback that we got was that there was much AWS content. In fact every second talk had at least some AWS content. Here comes the (hindsight) explanation:
