@@ -15,7 +15,6 @@ Umsatzsteuer-Identifikationsnummer: DE815731015<br>
 info@superluminar.io
 
 # Vertreten durch
-Deniz Adrian<br>
 Jan Brauer<br>
 Boris Erdmann<br>
 Hendric Rüsch<br>

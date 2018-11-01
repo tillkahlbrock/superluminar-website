@@ -10,7 +10,7 @@ Hohenzollernring 138<br>
 Deutschland<br>
 <br>
 E-Mailadresse: info@superluminar.io<br>
-Geschäftsführer: Boris Erdmann, Deniz Adrian, Jan Brauer, Soenke Ruempler, Hendric Rüsch<br>
+Geschäftsführer: Boris Erdmann, Jan Brauer, Soenke Ruempler, Hendric Rüsch<br>
 Impressum: https://superluminar.io/impressum/</span></p><h3 id="dsg-general-datatype">Arten der verarbeiteten Daten:</h3><p>-	Bestandsdaten (z.B., Namen, Adressen).<br>
 -	Kontaktdaten (z.B., E-Mail, Telefonnummern).<br>
 -	Inhaltsdaten (z.B., Texteingaben, Fotografien, Videos).<br>
