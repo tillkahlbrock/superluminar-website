@@ -4,11 +4,11 @@ author: "Till Kahlbrock"
 date: 2018-11-16
 ---
 
-Since quite some time now Prometheus is the de facto standard when it comes to monitoring and alerting of self hosted Kubernetes clusters and their workloads.
-This is mainly because Prometheus is fairly easy to setup and operate on Kubernetes, has good service discovery options and - because of its broad adoptions - there are many applications exposing their metrics in a [format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format) understood by prometheus.
+Prometheus is the de facto standard when it comes to monitoring and alerting of self hosted Kubernetes clusters and their workloads.
+This is mainly because Prometheus is easy to setup and operate on Kubernetes, has good service discovery options and - because of its broad adoptions - there are many applications exposing their metrics in a [format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format) understood by Prometheus.
 
 ## Service Discovery
-In the prometheus configuration it is possible to define multiple `scrape_configs`, each for a  specific `target`. A target can be an application like a database server or a web app or a group of related apps. The target can have many `endpoints`, which represents the concrete instances of the application.
+In the Prometheus configuration it is possible to define multiple `scrape_configs`, each for a  specific `target`. A target can be an application like a database server or a web app or a group of related apps. The target can have many `endpoints`, which represents the concrete instances of the application.
 
 But how does Prometheus get to know the targets it has to scrape? This is where Service Discovery comes into play. 
 
@@ -30,7 +30,7 @@ It defines a job called `web-app`. Prometheus will query the Kubernetes API and 
 
 
 ## Prometheus Operator
-To make the configuration of this certain aspect of prometheus easier, the CustomResource ServiceMonitor where introduced (https://github.com/coreos/prometheus-operator/blob/master/Documentation/design.md#servicemonitor) which is consumed by the Prometheus Operator (https://github.com/coreos/prometheus-operator).
+To make the configuration of this certain aspect of Prometheus easier, the CustomResource ServiceMonitor where introduced (https://github.com/coreos/prometheus-operator/blob/master/Documentation/design.md#servicemonitor) which is consumed by the Prometheus Operator (https://github.com/coreos/prometheus-operator).
 
 To make the management of Prometheus easier we will use the [Prometheus Operator](https://github.com/coreos/prometheus-operator). 
 
@@ -83,8 +83,8 @@ spec:
       app: prometheus-operator-alertmanager
       release: loping-echidna
 ```
-When the above new ServiceMonitor is created, the prometheus-operator recognizes this event and updates the Prometheus configuration stored in a kubernetes secret, so that a new scrape config with a corresponding `kubernetes_sd_config` directive is created. 
-This triggers prometheus to start its internal service-discovery mechanism and scan the respective namespaces for endpoints with the configured labels. Prometheus then starts to scrape this endpoints and the stores the collected metrics in its time series database.
+When the above new ServiceMonitor is created, the Prometheus-Operator recognizes this event and updates the Prometheus configuration stored in a kubernetes secret, so that a new scrape config with a corresponding `kubernetes_sd_config` directive is created. 
+This triggers Prometheus to start its internal service-discovery mechanism and scan the respective namespaces for endpoints with the configured labels. Prometheus then starts to scrape this endpoints and the stores the collected metrics in its time series database.
 
 ## Conclusion
-The usage of ServiceMonitors allows us to store the monitoring configuration of our apps next to the apps themselves. It is also possible to automate the creation of prometheus scrape configuration by using helm charts. It is also possible to give the user of the chart the possibility to simply enable or disable metric scraping with a flag, without the need to understand the details of prometheus configuration.
+The usage of ServiceMonitors allows us to store the monitoring configuration of our apps next to the apps themselves. It is also possible to automate the creation of Prometheus scrape configuration by using helm charts. It is also possible to give the user of the chart the possibility to simply enable or disable metric scraping with a flag, without the need to understand the details of Prometheus configuration.
