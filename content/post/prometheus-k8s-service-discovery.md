@@ -40,7 +40,7 @@ The [Operator-Pattern](https://coreos.com/blog/introducing-operators.html) was i
 A Kubernetes Controller (also an Operator) extends the K8s api by defining [Custom Resources (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and reacting to their modification. A common example of a custom Controller is the [Nginx IngressController](https://kubernetes.github.io/ingress-nginx/), that comes to action when a Ingress resource gets created, modified or deleted and rewrites the nginx configuration appropriately.
 
 ## Custom Resource Definition (CRD)
-The PrometheusOperator comes with four CRDs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` and `Alertmanager`. The former two are relevant for configuring how Prometheus discovers its targets. The `Prometheus` CRD is used by the PrometheusOperator to configure the Prometheus Instances:
+Prometheus Operator comes with four CRDs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` and `Alertmanager`. The former two are relevant for configuring how Prometheus discovers its targets. The `Prometheus` CRD is used by Prometheus Operator to configure the Prometheus Instances:
 ```
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
@@ -58,7 +58,7 @@ spec:
     matchLabels:
       monitoring: prometheus
 ```
-With this Prometheus CRD we tell the prometheus-operator, that it should look for ServiceMonitor CRDs with the label `monitoring=prometheus` in the namespace with the label `monitoring=prometheus-main`.
+With this Prometheus CRD we tell the Prometheus Operator, that it should look for ServiceMonitor CRDs with the label `monitoring=prometheus` in the namespace with the label `monitoring=prometheus-main`.
 
 A ServiceMonitor CRD maps to exactly one scrape_config entry in the prometheus configuration file.
 ```
@@ -83,7 +83,7 @@ spec:
       app: prometheus-operator-alertmanager
       release: loping-echidna
 ```
-When the above new ServiceMonitor is created, the Prometheus-Operator recognizes this event and updates the Prometheus configuration stored in a kubernetes secret, so that a new scrape config with a corresponding `kubernetes_sd_config` directive is created. 
+When the above new ServiceMonitor is created, the Prometheus Operator recognizes this event and updates the Prometheus configuration stored in a kubernetes secret, so that a new scrape config with a corresponding `kubernetes_sd_config` directive is created. 
 This triggers Prometheus to start its internal service-discovery mechanism and scan the respective namespaces for endpoints with the configured labels. Prometheus then starts to scrape this endpoints and the stores the collected metrics in its time series database.
 
 ## Conclusion
