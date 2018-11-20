@@ -40,7 +40,7 @@ The [Operator-Pattern](https://coreos.com/blog/introducing-operators.html) was i
 A Kubernetes Controller (also an Operator) extends the K8s api by defining [Custom Resources (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and reacting to their modification. A common example of a custom Controller is the [Nginx IngressController](https://kubernetes.github.io/ingress-nginx/), that comes to action when a Ingress resource gets created, modified or deleted and rewrites the nginx configuration appropriately.
 
 ## Custom Resource Definition (CRD)
-The PrometheusOperator comes with four CRDs: Prometheus, ServiceMonitor, PrometheusRule and Alertmanager. The former two are relevant for configuring how Prometheus discovers its targets. Prometheus CRD tell the PrometheusOperator how to configure the Prometheus Instances:
+The PrometheusOperator comes with four CRDs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` and `Alertmanager`. The former two are relevant for configuring how Prometheus discovers its targets. Prometheus CRD tell the PrometheusOperator how to configure the Prometheus Instances:
 ```
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
