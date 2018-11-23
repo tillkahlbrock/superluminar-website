@@ -11,7 +11,7 @@ In der Prometheus-Konfiguration ist es möglich, mehrere `scrape_configs` zu def
 
 Die Herausforderung besteht darin, dynamisch auf das Hinzufügen und Entfernen von Endpunkten zu reagieren und die Konfiguration entsprechend anzupassen. Hier kommt Service Discovery ins Spiel.
 
-Die Service-Discovery-Optionen werden werden mit den Konfigurationsdirektiven `*_sd_config` festgelegt. In der [offiziellen Dokumentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/) sind insgesamt 12 verschiedene Arten der Service Discovery aufgeführt, z. B. `DNS`, `Consul`, `AWS` `EC2` oder `File`. Hier konzentrieren wir uns allerdings auf die `kubernetes_sd_config`-Methode und wie sie mit dem Prometheus-Operator benutzt werden kann.
+Die Service-Discovery-Optionen werden mit den Konfigurationsdirektiven `*_sd_config` festgelegt. In der [offiziellen Dokumentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/) sind insgesamt 12 verschiedene Arten der Service Discovery aufgeführt, z. B. `DNS`, `Consul`, `AWS` `EC2` oder `File`. Hier konzentrieren wir uns allerdings auf die `kubernetes_sd_config`-Methode und wie sie mit dem Prometheus-Operator benutzt werden kann.
 
 Eine verkürzte Scrape-Konfiguration könnte der folgenden ähneln:
 ```
@@ -40,7 +40,7 @@ Ein Kubernetes Controller (auch ein Operator) erweitert die Kubernetes API, inde
 Um die Konfiguration von Prometheus Service Discovery zu erleichtern, wurde die Ressource `ServiceMonitor` [eingeführt](https://github.com/coreos/prometheus-operator/blob/master/Documentation/design.md#servicemonitor), die wiederum vom [Prometheus Operator](https://github.com/coreos/prometheus-operator) verarbeitet wird. Der Prometheus-Operator agiert hier also als Controller.
 
 ## Custom Resource Definition (CRD)
-Prometheus-Operator kommt mit vier CDs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` und `Alertmanager`. Nur die ersten beiden sind relevant für die Konfiguration der Prometheus Service Discovery. Die CRD `Prometheus` wird vom Prometheus-Operator verwendet, um die Prometheus-Instanzen zu konfigurieren: 
+Prometheus-Operator kommt mit vier CDRs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` und `Alertmanager`. Nur die ersten beiden sind relevant für die Konfiguration der Prometheus Service Discovery. Die CRD `Prometheus` wird vom Prometheus-Operator verwendet, um die Prometheus-Instanzen zu konfigurieren:
 ```
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
