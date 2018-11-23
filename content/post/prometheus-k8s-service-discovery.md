@@ -1,17 +1,17 @@
 ---
-title: "Prometheus Service Discovery on Kubernetes"
+title: "Prometheus Service Discovery mit Kubernetes"
 author: "Till Kahlbrock"
 date: 2018-11-16
 ---
 
-Prometheus ist der de facto Standard, wenn es um die Überwachung und Alarmierung von selbst gehosteten Kubernetes-Clustern und deren Workloads geht. Dies liegt vor allem daran, dass Prometheus auf Kubernetes einfach einzurichten und zu bedienen ist, gute Service-Discovery-Optionen bietet und es aufgrund der weiten Verbreitung viele Anwendungen gibt, die ihre Metriken in einem für Prometheus konsumierbarem [Format] ( https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format) anbieten. 
+Prometheus ist der de facto Standard, wenn es um die Überwachung und Alarmierung von selbst gehosteten Kubernetes-Clustern und deren Workloads geht. Dies liegt vor allem daran, dass Prometheus auf Kubernetes einfach einzurichten und zu bedienen ist, gute Service-Discovery-Optionen bietet und es aufgrund der weiten Verbreitung viele Anwendungen gibt, die ihre Metriken in einem für Prometheus konsumierbarem [Format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format) anbieten.
 
 ## Service Discovery
 In der Prometheus-Konfiguration ist es möglich, mehrere `scrape_configs` zu definieren, jeweils für ein bestimmtes Ziel (`target`). Ein Ziel kann ein Datenbankserver, eine Web-Anwendung oder eine Gruppe verwandter Applikationen sein. Das Ziel kann wiederum aus viele Endpunkten (`endpoints`) bestehen, was die konkreten Instanzen der Anwendung darstellt.
 
 Die Herausforderung besteht darin, dynamisch auf das Hinzufügen und Entfernen von Endpunkten zu reagieren und die Konfiguration entsprechend anzupassen. Hier kommt Service Discovery ins Spiel.
 
-Die Service-Discovery-Optionen werden werden mit den Konfigurationsdirektiven `*_sd_config` festgelegt. In der [offiziellen Dokumentation] (https://prometheus.io/docs/prometheus/latest/configuration/configuration/) sind insgesamt 12 verschiedene Arten der Service Discovery aufgeführt, z. B. `DNS`, `Consul`, `AWS` `EC2` oder `File`. Hier konzentrieren wir uns allerdings auf die `kubernetes_sd_config`-Methode und wie sie mit dem Prometheus-Operator benutzt werden kann.
+Die Service-Discovery-Optionen werden werden mit den Konfigurationsdirektiven `*_sd_config` festgelegt. In der [offiziellen Dokumentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/) sind insgesamt 12 verschiedene Arten der Service Discovery aufgeführt, z. B. `DNS`, `Consul`, `AWS` `EC2` oder `File`. Hier konzentrieren wir uns allerdings auf die `kubernetes_sd_config`-Methode und wie sie mit dem Prometheus-Operator benutzt werden kann.
 
 Eine verkürzte Scrape-Konfiguration könnte der folgenden ähneln:
 ```
@@ -30,14 +30,14 @@ Diese Konfiguration erstellt einen Job namens `web-app`. Prometheus sucht über 
 ## Prometheus Operator
 Um die Verwaltung von Prometheus zu erleichtern, verwenden wir den [Prometheus Operator](https://github.com/coreos/prometheus-operator). 
 
-Das [Operator-Pattern] (https://coreos.com/blog/introducing-operators.html) wurde von coreos eingeführt und zielt darauf ab, den Betrieb komplexer Software auf Kubernetes-Clustern zu vereinfachen. Kubernetes Operator sollen Aufgaben automatisieren, die traditionell von menschlichen Bedienern durchgeführt werden. 
+Das [Operator-Pattern](https://coreos.com/blog/introducing-operators.html) wurde von coreos eingeführt und zielt darauf ab, den Betrieb komplexer Software auf Kubernetes-Clustern zu vereinfachen. Kubernetes Operator sollen Aufgaben automatisieren, die traditionell von menschlichen Bedienern durchgeführt werden.
 Mit anderen Worten:
 
 > An Operator is an application-specific controller that extends the Kubernetes API to create, configure, and manage instances of complex stateful applications on behalf of a Kubernetes user. It builds upon the basic Kubernetes resource and controller concepts but includes domain or application-specific knowledge to automate common tasks.
 
-Ein Kubernetes Controller (auch ein Operator) erweitert die Kubernetes API, indem er [Custom Resource Definitions (CRD)] (https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) festlegt und auf deren Änderung reagiert. Ein gängiges Beispiel für einen benutzerdefinierten Controller ist der [Nginx IngressController] (https://kubernetes.github.io/ingress-nginx/), der zum Einsatz kommt, wenn eine Ingress-Ressource erstellt, geändert oder gelöscht wird und die nginx-Konfiguration entsprechend neu schreibt.
+Ein Kubernetes Controller (auch ein Operator) erweitert die Kubernetes API, indem er [Custom Resource Definitions (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) festlegt und auf deren Änderung reagiert. Ein gängiges Beispiel für einen benutzerdefinierten Controller ist der [Nginx IngressController](https://kubernetes.github.io/ingress-nginx/), der zum Einsatz kommt, wenn eine Ingress-Ressource erstellt, geändert oder gelöscht wird und die nginx-Konfiguration entsprechend neu schreibt.
 
-Um die Konfiguration von Prometheus Service Discovery zu erleichtern, wurde der Custom Resource `ServiceMonitor` eingeführt ( https://github.com/coreos/prometheus-operator/blob/master/Documentation/design.md#servicemonitor), die wiederum vom Prometheus Operator (https://github.com/coreos/prometheus-operator) verarbeitet wird. Der Prometheus-Operator agiert hier also als Controller.
+Um die Konfiguration von Prometheus Service Discovery zu erleichtern, wurde die Ressource `ServiceMonitor` [eingeführt](https://github.com/coreos/prometheus-operator/blob/master/Documentation/design.md#servicemonitor), die wiederum vom [Prometheus Operator](https://github.com/coreos/prometheus-operator) verarbeitet wird. Der Prometheus-Operator agiert hier also als Controller.
 
 ## Custom Resource Definition (CRD)
 Prometheus-Operator kommt mit vier CDs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` und `Alertmanager`. Nur die ersten beiden sind relevant für die Konfiguration der Prometheus Service Discovery. Die CRD `Prometheus` wird vom Prometheus-Operator verwendet, um die Prometheus-Instanzen zu konfigurieren: 
