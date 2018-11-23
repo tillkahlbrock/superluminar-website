@@ -40,7 +40,7 @@ Ein Kubernetes Controller (auch ein Operator) erweitert die Kubernetes API, inde
 Um die Konfiguration von Prometheus Service Discovery zu erleichtern, wurde die Ressource `ServiceMonitor` [eingeführt](https://github.com/coreos/prometheus-operator/blob/master/Documentation/design.md#servicemonitor), die wiederum vom [Prometheus Operator](https://github.com/coreos/prometheus-operator) verarbeitet wird. Der Prometheus-Operator agiert hier also als Controller.
 
 ## Custom Resource Definition (CRD)
-Prometheus-Operator kommt mit vier CDRs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` und `Alertmanager`. Nur die ersten beiden sind relevant für die Konfiguration der Prometheus Service Discovery. Die CRD `Prometheus` wird vom Prometheus-Operator verwendet, um die Prometheus-Instanzen zu konfigurieren:
+Prometheus-Operator kommt mit vier CRDs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` und `Alertmanager`. Nur die ersten beiden sind relevant für die Konfiguration der Prometheus Service Discovery. Die CRD `Prometheus` wird vom Prometheus-Operator verwendet, um die Prometheus-Instanzen zu konfigurieren:
 ```
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
@@ -66,22 +66,22 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    app: prometheus-operator-alertmanager
-  name: loping-echidna-prometheus-alertmanager
-  namespace: default
+    monitoring: prometheus
+  name: web-app
+  namespace: monitoring
 spec:
   endpoints:
-  - interval: 30s
-    path: /metrics
+  - interval: 10s
+    path: /app/metrics
     port: web
   namespaceSelector:
     matchNames:
-    - default
-    - monitoring
+    - ns_a
+    - ns_b
+    - ns_c
   selector:
     matchLabels:
-      app: prometheus-operator-alertmanager
-      release: loping-echidna
+      app: web-app
 ```
 Wenn der obige `ServiceMonitor` neu erstellt wird, erkennt der Prometheus-Operator dieses Ereignis und aktualisiert die Prometheus-Konfiguration, so dass ein neuer `scrape_config`-Eintrag mit einer entsprechenden `kubernetes_sd_config`-Direktive erstellt wird. Dadurch wird Prometheus dazu veranlasst, seinen internen Service-Discovery-Mechanismus zu starten und die entsprechenden Namensräume (mit den konfigurierten Labels) nach Endpunkten zu scannen. Prometheus beginnt dann, diese Endpunkte abzufragen und speichert die gesammelten Metriken in seiner [internen Datenbank](https://fabxc.org/tsdb/).
 
