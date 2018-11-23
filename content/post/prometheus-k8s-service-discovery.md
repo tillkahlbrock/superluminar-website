@@ -4,7 +4,7 @@ author: "Till Kahlbrock"
 date: 2018-11-16
 ---
 
-Prometheus ist der de facto Standard, wenn es um die Überwachung und Alarmierung von selbst gehosteten Kubernetes-Clustern und deren Workloads geht. Dies liegt vor allem daran, dass Prometheus auf Kubernetes einfach einzurichten und zu bedienen ist, gute Service-Discovery-Optionen bietet und es aufgrund der weiten Verbreitung viele Anwendungen gibt, die ihre Metriken in einem für Prometheus konsumierbarem [Format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format) anbieten.
+Prometheus ist der de facto Standard, wenn es um die Überwachung und Alarmierung von selbst gehosteten Kubernetes-Clustern und den auf ihnen laufenden Anwendungen geht. Dies liegt vor allem daran, dass Prometheus auf Kubernetes einfach einzurichten und zu bedienen ist, gute Service-Discovery-Optionen bietet und es aufgrund der weiten Verbreitung viele Anwendungen gibt, die ihre Metriken in einem für Prometheus konsumierbarem [Format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format) anbieten.
 
 ## Service Discovery
 In der Prometheus-Konfiguration ist es möglich, mehrere `scrape_configs` zu definieren, jeweils für ein bestimmtes Ziel (`target`). Ein Ziel kann ein Datenbankserver, eine Web-Anwendung oder eine Gruppe verwandter Applikationen sein. Das Ziel kann wiederum aus viele Endpunkten (`endpoints`) bestehen, was die konkreten Instanzen der Anwendung darstellt.
