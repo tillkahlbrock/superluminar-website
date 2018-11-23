@@ -4,17 +4,16 @@ author: "Till Kahlbrock"
 date: 2018-11-16
 ---
 
-Prometheus is the de facto standard when it comes to monitoring and alerting of self hosted Kubernetes clusters and their workloads.
-This is mainly because Prometheus is easy to setup and operate on Kubernetes, has good service discovery options and - because of its broad adoptions - there are many applications exposing their metrics in a [format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format) understood by Prometheus.
+Prometheus ist der de facto Standard, wenn es um die Überwachung und Alarmierung von selbst gehosteten Kubernetes-Clustern und deren Workloads geht. Dies liegt vor allem daran, dass Prometheus auf Kubernetes einfach einzurichten und zu bedienen ist, gute Service-Discovery-Optionen bietet und es aufgrund der weiten Verbreitung viele Anwendungen gibt, die ihre Metriken in einem für Prometheus konsumierbarem [Format] ( https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md#text-based-format) anbieten. 
 
 ## Service Discovery
-In the Prometheus configuration it is possible to define multiple `scrape_configs`, each for a  specific `target`. A target can be an application like a database server or a web app or a group of related apps. The target can have many `endpoints`, which represents the concrete instances of the application.
+In der Prometheus-Konfiguration ist es möglich, mehrere `scrape_configs` zu definieren, jeweils für ein bestimmtes Ziel (`target`). Ein Ziel kann ein Datenbankserver, eine Web-Anwendung oder eine Gruppe verwandter Applikationen sein. Das Ziel kann wiederunm aus viele Endpunkten (`enpoints`) bestehen, was die konkreten Instanzen der Anwendung darstellt. 
 
-But how does Prometheus get to know the targets it has to scrape? This is where Service Discovery comes into play. 
+Die Herausvorderung besteht darin, dynamisch auf das Hinzufügen und Enfernen von Enpunkten zu reagieren und die Konfiguration entsprechend anzupassen. Hier kommt Service Discovery ins Spiel. 
 
-The service discovery configuration is provided with the `*_sd_config` configuration directives. The [official documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/) list a total of 12 different possible types of service discovery e.g: DNS, Consul, AWS EC2 or File. Here we will focus on the  `kubernetes_sd_config` method and how it integrates with the Prometheus Operator.
+Die Service-Discovery-Optionen werden werden mit den Konfigurationsdirektiven `*_sd_config` festgelegt. In der [offiziellen Dokumentation] (https://prometheus.io/docs/prometheus/latest/configuration/configuration/) sind insgesamt 12 verschiedene Arten der Service Discovery aufgeführt, z. B. `DNS`, `Consul`, `AWS` `EC2` oder `File`. Hier konzentrieren wir uns allerdings auf die `kubernetes_sd_config`-Methode und wie sie mit dem Prometheus-Operator benutzt werden kann.
 
-A shortened scrape configuration could be similar to the following:
+Eine verkürzte Scrape-Konfiguration könnte der folgenden ähneln:
 ```
 scrape_configs:
 - job_name: 'web-app'
@@ -25,22 +24,22 @@ scrape_configs:
     namespaces:
       names: [ns_a, ns_b, ns_c]
 ```
-
-It defines a job called `web-app`. Prometheus will query the Kubernetes API and look for endpoints in the namespaces `ns_a`, `ns_b` and `ns_c`. It will try to scrape all discovered endpoints under the path `/app/metrics` every 10 seconds.
+Diese Konfiguration erstellt einen Job namens `web-app`. Prometheus sucht über die Kubernetes API nach Endpunkten in den Namensräumen `ns_a`, `ns_b` und `ns_c` und versucht, alle versuchten Endpunkte unter dem Pfad `/ app/metrics` alle 10 Sekunden abzufragen.
 
 
 ## Prometheus Operator
-To make the configuration of this certain aspect of Prometheus easier, the CustomResource ServiceMonitor where introduced (https://github.com/coreos/prometheus-operator/blob/master/Documentation/design.md#servicemonitor) which is consumed by the Prometheus Operator (https://github.com/coreos/prometheus-operator).
+Um die Verwaltung von Prometheus zu erleichtern, verwenden wir den [Prometheus Operator](https://github.com/coreos/prometheus-operator). 
 
-To make the management of Prometheus easier we will use the [Prometheus Operator](https://github.com/coreos/prometheus-operator). 
-
-The [Operator-Pattern](https://coreos.com/blog/introducing-operators.html) was introduced by coreos and aims to simplify operation of complex software running on Kubernetes clusters. At its core it was designed to automated tasks traditionally done by human operators by writing software. In other words:
+Das [Operator-Pattern] (https://coreos.com/blog/introducing-operators.html) wurde von coreos eingeführt und zielt darauf ab, den Betrieb komplexer Software auf Kubernetes-Clustern zu vereinfachen. Kubernetes Operator sollen Aufgaben automatisieren, die traditionell von menschlichen Bedienern durchgeführt werden. 
+Mit anderen Worten:
 > [... ] An Operator is an application-specific controller that extends the Kubernetes API to create, configure, and manage instances of complex stateful applications on behalf of a Kubernetes user. It builds upon the basic Kubernetes resource and controller concepts but includes domain or application-specific knowledge to automate common tasks.
 
-A Kubernetes Controller (also an Operator) extends the K8s api by defining [Custom Resources (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and reacting to their modification. A common example of a custom Controller is the [Nginx IngressController](https://kubernetes.github.io/ingress-nginx/), that comes to action when a Ingress resource gets created, modified or deleted and rewrites the nginx configuration appropriately.
+Ein Kubernetes Controller (auch ein Operator) erweitert die Kubernetes API, indem er [Custom Resource Definitions (CRD)] (https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) festlegt und auf deren Änderung reagiert. Ein gängiges Beispiel für einen benutzerdefinierten Controller ist der [Nginx IngressController] (https://kubernetes.github.io/ingress-nginx/), der zum Einsatz kommt, wenn eine Ingress-Ressource erstellt, geändert oder gelöscht wird und die nginx-Konfiguration entsprechend neu schreibt.
+
+Um die Konfiguration von Prometheus Service Discovery zu erleichtern, wurde der Custom Resource `ServiceMonitor` eingeführt ( https://github.com/coreos/prometheus-operator/blob/master/Documentation/design.md#servicemonitor), die wiederum vom Prometheus Operator (https://github.com/coreos/prometheus-operator) verarbeitet wird. Der Prometheus-Operator agiert hier also als Controller.
 
 ## Custom Resource Definition (CRD)
-Prometheus Operator comes with four CRDs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` and `Alertmanager`. The former two are relevant for configuring how Prometheus discovers its targets. The `Prometheus` CRD is used by Prometheus Operator to configure the Prometheus Instances:
+Prometheus-Operator kommt mit vier CDs: `Prometheus`, `ServiceMonitor`, `PrometheusRule` und `Alertmanager`. Nur die ersten beiden sind relevant für die Konfiguration der Prometheus Service Discovery. Die CRD `Prometheus` wird vom Prometheus-Operator verwendet, um die Prometheus-Instanzen zu konfigurieren: 
 ```
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
@@ -58,9 +57,9 @@ spec:
     matchLabels:
       monitoring: prometheus
 ```
-With this Prometheus CRD we tell the Prometheus Operator, that it should look for ServiceMonitor CRDs with the label `monitoring=prometheus` in the namespace with the label `monitoring=prometheus-main`.
+Mit diesem Prometheus CRD bestimmen wir, dass der Prometheus-Operator nach `ServiceMonitor` CRDs mit dem Label `monitoring = prometheus` im Namensraum mit dem Label `monitoring = prometheus-main` suchen soll.
 
-A ServiceMonitor CRD maps to exactly one scrape_config entry in the prometheus configuration file.
+Ein `ServiceMonitor` CRD resultiert in genau einem `scrape_config`-Eintrag in der Prometheus-Konfigurationsdatei.
 ```
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -83,8 +82,9 @@ spec:
       app: prometheus-operator-alertmanager
       release: loping-echidna
 ```
-When the above new ServiceMonitor is created, the Prometheus Operator recognizes this event and updates the Prometheus configuration stored in a kubernetes secret, so that a new scrape config with a corresponding `kubernetes_sd_config` directive is created. 
-This triggers Prometheus to start its internal service-discovery mechanism and scan the respective namespaces for endpoints with the configured labels. Prometheus then starts to scrape this endpoints and the stores the collected metrics in its time series database.
+Wenn der obige `ServiceMonitor` neu erstellt wird, erkennt der Prometheus-Operator dieses Ereignis und aktualisiert die Prometheus-Konfiguration, so dass ein neuer `scrape_config`-Eintrag mit einer entsprechenden `kubernetes_sd_config`-Direktive erstellt wird. Dadurch wird Prometheus dazu veranlasst, seinen internen Service-Discovery-Mechanismus zu starten und die entsprechenden Namensräumen (mit den konfigurierten Labels) nach Endpunkten zu scannen. Prometheus beginnt dann, diese Endpunkte abzufragen und speichert die gesammelten Metriken in seiner [internen Datenbank](https://fabxc.org/tsdb/). 
 
-## Conclusion
-With the use of Prometheus Operator and ServiceMonitors the discovery of scrape targets becomes easy. It allows us to store the monitoring configuration and our application code together. It is also possible to automate the creation of Prometheus scrape configuration by using a helm chart. This gives the user of the chart the possibility to simply enable or disable metric scraping with a flag, without the need to understand the details of Prometheus configuration.
+## Fazit
+Die Verwendung von Prometheus-Operator in Verbindung mit `ServiceMonitor` CRDs macht das Hinzufügen von neuen und das Entfernen alter Ziele in der Prometheus-Konfiguration zum Kindernspiel. Es ergibt sich ausserdem die Möglichkeit den Programmcode einer Applikation und die Monitoring-Konfiguration, am selben Ort zu speichern.
+
+Auch die Möglichkeit der Verwendung von [Helm-Templates](https://helm.sh/) zur automatisierten Erstellung der Prometheus-Konfiguration ist ein nicht zu unterschätzender Vorteil. So wird es dem Benutzer einer Applikation möglich, das Abfragen von Metriken per Schalter einfach an- oder auszuschalten. Ein Verständnis der Details der Prometheus-Konfiguration ist damit nicht nötig.
