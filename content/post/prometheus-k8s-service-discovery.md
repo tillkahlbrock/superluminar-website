@@ -32,7 +32,8 @@ Um die Verwaltung von Prometheus zu erleichtern, verwenden wir den [Prometheus O
 
 Das [Operator-Pattern] (https://coreos.com/blog/introducing-operators.html) wurde von coreos eingeführt und zielt darauf ab, den Betrieb komplexer Software auf Kubernetes-Clustern zu vereinfachen. Kubernetes Operator sollen Aufgaben automatisieren, die traditionell von menschlichen Bedienern durchgeführt werden. 
 Mit anderen Worten:
-> [... ] An Operator is an application-specific controller that extends the Kubernetes API to create, configure, and manage instances of complex stateful applications on behalf of a Kubernetes user. It builds upon the basic Kubernetes resource and controller concepts but includes domain or application-specific knowledge to automate common tasks.
+
+> An Operator is an application-specific controller that extends the Kubernetes API to create, configure, and manage instances of complex stateful applications on behalf of a Kubernetes user. It builds upon the basic Kubernetes resource and controller concepts but includes domain or application-specific knowledge to automate common tasks.
 
 Ein Kubernetes Controller (auch ein Operator) erweitert die Kubernetes API, indem er [Custom Resource Definitions (CRD)] (https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) festlegt und auf deren Änderung reagiert. Ein gängiges Beispiel für einen benutzerdefinierten Controller ist der [Nginx IngressController] (https://kubernetes.github.io/ingress-nginx/), der zum Einsatz kommt, wenn eine Ingress-Ressource erstellt, geändert oder gelöscht wird und die nginx-Konfiguration entsprechend neu schreibt.
 
