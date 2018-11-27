@@ -5,6 +5,8 @@ slug: "fuer-euch-getestet-multi-accounts-setups-mit-aws-landing-zone"
 date: 2018-08-03
 ---
 
+**Update 2018-11-27**: Landing Zone 2.0 wurde released und wir haben den Artikel entsprechend angepasst.
+
 > Was sind AWS Best Practices? Wie kann ich meine Workloads absichern? Wie kann ich Teams größtmögliche Autonomie geben, ohne  dass die Sicherheit/Einheitlichkeit leidet? Welches Grund-Design sollte ich in AWS verwenden?  Wie verwalte ich Benutzer und Zugriffsrechte? Wie geht AWS Multi Account?
 
 Dies sind viele Fragen, die wir regelmäßig hören, gerade von Kunden, die neu auf AWS unterwegs sind, und sich im Zoo der ganzen Konzepte und Services zurechtfinden müssen.
@@ -19,7 +21,7 @@ Bisher gab es für die Setups keine (uns bekannte) Lösung, doch mit AWS Landing
 
  - Automatisiertes AWS Multi Account Setup
  - Grundlegende Sicherheitsrichtlinien
- - Kodifizierte Best Practices (inkl. Updates direkt von AWS) - z.B. automatisiertes CloudTrail Setup und VPC/Netzwerk-Design 
+ - Kodifizierte Best Practices (inkl. Updates direkt von AWS) - z.B. automatisiertes CloudTrail Setup, GuardDuty und VPC/Netzwerk-Design
  - DevOps Best Practices: Infrastructure-as-Code durch kodifizierte Templates und Continuous Delivery, wodurch auch eigene Erweiterungen global ausgerollt werden können.
  - hohe Anpassbarkeit durch Templates
  - Modularität
@@ -55,6 +57,7 @@ Das Grundsetup legt folgende Accounts an:
 In alle Accounts wird eine sogenannte Baseline provisioniert, diese enthält in der Default-Konfiguration:
 
  - CloudTrail Setup (Audit Logs)
+ - AWS GuardDuty fuer automatisierte Threat Detection.
  - AWS Config und ein grundlegendes Ruleset ("Governance"), z. B. um einen Alert zu senden, wenn CloudTrail deaktiviert wurde
  - IAM Passwort Policy für IAM User
  - Cross Account Access vom Security Account
@@ -86,18 +89,11 @@ Unter anderen sind uns bei den ersten Tests folgende Dinge aufgefallen:
 
  - Komplexität durch viele eingesetzte Services: So ist es mitunter etwas mühsam, zu verstehen, was passiert. Ein beispielhafter Aufruf: Service Catalog triggert CloudFormation, welches Custom Resources hat, die Lambda triggern, was eine Step Functions State Machine triggert, welche u.a. CloudFormation StackSets aufrufen. Allerdings ist durch den konsequenten Einsatz von Serverless Komponenten auch ein geringer Wartungsaufwand gewährleistet.
  - Noch nicht so richtig veröffentlicht: Die Solution ist zwar öffentlich abrufbar, aber "versteckt". Sie kann aber trotzdem benutzt werden und unsere ersten Tests haben eine grundlegende "Production readiness" ergeben. Weiterhin unterliegt sie der [Amazon Software License](https://aws.amazon.com/asl/), welche Verwendung und Veränderung im AWS Kontext erlaubt.
- - Die AWS SSO Lösung ist gerade auf die `us-east-1` beschränkt, benötigt ein Active Directory und kann von Haus aus kein Multi-Factor-Auth. 
+ - Die AWS SSO Lösung ist gerade auf die `us-east-1` beschränkt und kann von Haus aus kein Multi-Factor-Auth.
 
 ## Und die Kosten?
 
-Landing Zone richtet standardmässig ein paar Ressourcen ein, die Geld kosten. Die größten Kostenverursacher sind:
-
- - Active Directory Service
- - AD Connector im Master Account
- - AWS Config Rules je AWS Account
- - EC2 Instanz als Remote Desktop Gateway/JumpHost, um zum Active Directory zu verbinden
-
-Laut AWS kommen hier ca. $500 pro Monat zusammen. Dies kann durch Verzicht auf Active Directory und SSO aber erheblich gesenkt werden. 
+Landing Zone richtet standardmässig ein paar Ressourcen ein, die Geld kosten. Die größten Kostenverursacher sind AWS Config Rules und GuardDuty je AWS Account und Region. Laut AWS kommen hier ca. $200 pro Monat zusammen.
 
 ## Wie könnt ihr es selbst testen?
 
@@ -113,11 +109,11 @@ Hier sind die Dokus von AWS:
  - [AWS Landing Zone Implementation Guide](https://s3.amazonaws.com/solutions-reference/aws-landing-zone/latest/aws-landing-zone-implementation-guide.pdf)
  - [AWS Landing Zone  User Guide](https://s3.amazonaws.com/solutions-reference/aws-landing-zone/latest/aws-landing-zone-user-guide.pdf)
 
-superluminar ist AWS Consulting Partner und unterstützt euch gerne, euer neues oder bestehendes Multi-Account Setup mit AWS Landing Zone zu automatisieren oder zu optimieren. 
+superluminar ist AWS Consulting Partner und unterstützt euch gerne, euer neues oder bestehendes Multi-Account Setup mit AWS Landing Zone zu automatisieren oder zu optimieren.
 
 ### Zusammenfassung und Ausblick
 
-Mit Landing Zone stellt AWS uns eine solide Grundlage für sichere und automatisierte Multi Account Setups bereit. Weiterhin macht sich die Lösung durch Erweiterbarkeit, konsequenten Einsatz von Infrastructure as Code, Continuous Deployment sowie Updates von AWS positiv bemerkbar. 
+Mit Landing Zone stellt AWS uns eine solide Grundlage für sichere und automatisierte Multi Account Setups bereit. Weiterhin macht sich die Lösung durch Erweiterbarkeit, konsequenten Einsatz von Infrastructure as Code, Continuous Deployment sowie Updates von AWS positiv bemerkbar.
 
 In folgenden Beiträgen wollen wir unter anderem weitere Aspekte erörtern:
 
