@@ -5,7 +5,7 @@ slug: "fuer-euch-getestet-multi-accounts-setups-mit-aws-landing-zone"
 date: 2018-08-03
 ---
 
-**Update 2018-11-27**: Landing Zone 2.0 wurde released und wir haben den Artikel entsprechend angepasst.
+**Update 2018-11-27: Landing Zone 2.0 wurde released und wir haben den Artikel entsprechend angepasst.**
 
 > Was sind AWS Best Practices? Wie kann ich meine Workloads absichern? Wie kann ich Teams größtmögliche Autonomie geben, ohne  dass die Sicherheit/Einheitlichkeit leidet? Welches Grund-Design sollte ich in AWS verwenden?  Wie verwalte ich Benutzer und Zugriffsrechte? Wie geht AWS Multi Account?
 
