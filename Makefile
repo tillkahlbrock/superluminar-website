@@ -54,7 +54,7 @@ deploy-preview-pipeline: ## Deploys the AWS CodePipeline that deploys the websit
 		--stack-name website-preview \
 		--region us-east-1 \
 		--template-file website-preview.yaml \
-		--capabilities CAPABILITY_IAM
+		--capabilities CAPABILITY_NAMED_IAM
 
 .PHONY: help
 help:

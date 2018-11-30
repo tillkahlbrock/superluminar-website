@@ -165,3 +165,34 @@ Resources:
           Action: sts:AssumeRole
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AdministratorAccess
+
+  PreviewS3DeploymentUser:
+    Type: AWS::IAM::User
+    Properties:
+      Policies:
+      - PolicyName: "WebsitePreviewDeployment"
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+          - Effect: "Allow"
+            Action:
+            - "s3:ListBucket"
+            Resource: !GetAtt WebsitePreviewBucket.Arn
+          - Effect: "Allow"
+            Action:
+            - "s3:PutObject"
+            - "s3:GetObject"
+            - "s3:DeleteObject"
+            Resource: !Join [ "/", [ !GetAtt WebsitePreviewBucket.Arn, "*" ] ]
+      UserName: s3-deployment-user
+
+  PreviewS3DeploymentUserAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref PreviewS3DeploymentUser
+
+Outputs:
+  UserAccessKey:
+    Value: !Ref PreviewS3DeploymentUserAccessKey
+  UserSecretKey:
+    Value: !GetAtt PreviewS3DeploymentUserAccessKey.SecretAccessKey
