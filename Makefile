@@ -40,7 +40,7 @@ deploy: public guard-WEBSITE_BUCKET guard-CLOUDFRONT_DISTRIBUTION_ID ## Deploys 
 	aws cloudfront create-invalidation --distribution-id=$(CLOUDFRONT_DISTRIBUTION_ID) --paths /
 
 deploy-preview: public guard-PREVIEW_BUCKET ## Deploys a preview of the website to the S3 bucket
-	aws s3 sync public/ s3://$(PREVIEW_BUCKET)/ --delete
+	aws s3 sync public/ s3://$(PREVIEW_BUCKET)/$(PATH) --delete
 
 deploy-pipeline: ## Deploys the AWS CodePipeline that deploys the website
 	aws cloudformation deploy \
