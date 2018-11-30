@@ -1,12 +1,19 @@
 language: go
 go:
-- "1.11"
-
+- '1.11'
 services:
 - docker
-
 before_script:
 - make install
-
 script:
 - make build
+deploy:
+  provider: s3
+  access_key_id:
+    secure: Tv/whc2iIUfNST6eqXWt7UX5bZuF4hkOX7XGGDklzAauGMqMzKcE7QZWeKRuZxgAy/6uDUaZVY8IbdKs/ifUfTedYd7Jvre7S+1A1q5wqav6BLaYnVJU73QyIewEib87nLrvDPtB+cOw6Zk/+PKqbqiTQN/HiNydPyBAtpxKI+FxSn+kQmRTycCVslRBK1hjJBhhrvM0vKRr1wcV7qNKRQvfsfwf1PgZVdYvDLtgFS2haoxk3ANSA/Qvkc0QQ6VomQ73Nn9x82QittXsmPTZjiRYGgozZ0krKzMpAaxBU5z47eOc1P4yNjmNStMIb+hSpHTKbojJcUd8FUmXCDST9JbYqs865maUYI/2KRi9NWUVdrHAcCro6LbQ0gRUKw4xfNSGQtboqTbRNbuRe6nAGuRTm0ojCQHgT1GyyJc2GBbYS6ZJVwg2El2MJM6HgxwayAdmKEv0FbFGQ7Xt+C/n5MkeRYr03zQA5vQg6gxOvfa952tToAf/TXjyvT8rHWRcwd8/0j7e7AHjkyL7Cw0p1QkyD11x6gehrus1Qs2pVSFcwZcTKunq1aCOPfGEhlHa5VeY/ncIi0EvsVfiGqAOv5ns8UGP19b+eEjyk5CMtcK8e7Bta0q98Gib0rDaLkOs9m3/hixHC6UVxY5FemdwNQ6aEzvQ0dwXKAiw+wF+7FI=
+  secret_access_key:
+    secure: nQSaYtkn5budS8UCPbw+JaZC6i5GK6GjpViyjCq6Cg65lxH6P5ONd8vU94UacRogzyaFNv14scpHI5EWxtjHHiQ1bbUiZmpGrRoiA06PPrUD+RPwYooj/OoPHER8/ru3jJXjbJMXzA5bfJlPqIbmb2K6DbyvElnggF/VVHtbqtFELvm6Z/jmAitzM1Zj/0T3z0xmt2TOKOa/kS9CeoV0ZjL4Yf8ODLz4Jdt/F0YZ/rQEfEt03hhYy2G13n9Cp7nTVUuhf/xheGyITtOzJSIcBcAunNr+rPDoY0P5i+KYTCX3ilGwvQQfUV7/s+loEVi7Y1O+MMOsrv8MLT8OQZhqgamM7dIxZpOEpKogdL9zIc9QSiWB6AhLZ2SixK556ZcbsikgTdz9gUTicQmucvsA7wLQI9EqfKDus2C6Ysa/Wn70oQxTNpKWAYWh7uXSDjKUdjpZra2QyX3sP62zSsyGen8MWEdR5WZ0eTMDWM05H6eePQtUtZmJJM07r+GE7J/+UVsMOPQmrB5jG7iVaemQBGtMCN7kvMCekP0fCHqqdKVhurZWKHqV+SH2C0rhBuHThnMvRHCZHLfP+W1Xt49IN74U1tGq+1ysV6K51qNlDXE0rKS0NOmHW7X2gpzaaQiZY7BStGKOp9Be1dGe3D3mDWPooh9jpzjS6Nm8JbU97KQ=
+  bucket: "$BUCKET_NAME"
+  local_dir: public
+  upload-dir: "${TRAVIS_PULL_REQUEST_BRANCH}-${TRAVIS_PULL_REQUEST}"
+  skip_cleanup: true
