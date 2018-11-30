@@ -3,12 +3,17 @@ go:
 - '1.11'
 services:
 - docker
+
+before_install:
+- pip install --user awscli
+- export PATH=$PATH:$HOME/.local/bin
+
 before_script:
 - make install
+
 script:
 - make build
 - make deploy-preview
+
 env:
-  - PREVIEW_BUCKET=website-preview-websitepreviewbucket-1f2gwhwwwzuq4
-  - BUCKET_PATH="${TRAVIS_PULL_REQUEST_BRANCH}-${TRAVIS_PULL_REQUEST}"
   - secure: crjaffw/A6tM0SFHLSxc+VGgM8Qu+bAydEqX/IZ8ICzIYCe1owPcn13RqoFIzQU13kMKx27MTylScvAMi5csdRCEcj9tUg3klpGt/YphbkLO0YwmlMgTd/MX/wDp9Do3sRidGaRHKMJf8YVpDEWiBJc1m102W3a5z/HNxh7l0Q+c3e7WCmvfuZcwVsiOSrH4hSY4mQHnarloUsARAa3oqsHoEA5ZWazn5F5KSzolyWuLEcKRHZVp2Wk+6+GQSW1idhyndX5/FqjcNA4sftlJoQTNZp7M3yj3R+OYJQOs5W5j2OVbxF5P6fjldJvCHMAefLu8k0hfBKs8Ra09b3kYzQhWfr4bXvoSlZ3g+v9SihzN0R1uA/UK56tOX9AmfaCOqW5A3MWVLVdvwLDDbZaJqR9BRu0JbK6UbFRmzbtH33kDnZQERweITjsgtnIfobxZeOI81+jegCqycpfpPCrZ43ujlJxrCy1GisrTv/NGZC7SPXSKmx69zE+LqL0y4uB9yFPpEWg9D6DfOm8A1Jx/DblJqYEhyN7/UqpTVGvAtwVZMYENKs4lS8CWy1TvzZ+JIamVhUzAdh9n+hA0nCshX2Yc4YAhuUum7VJ0BJDF1n8i64Jdipnjzgw1kdgufmzJAER1PTsM//LwNS5OjF7mtY1wGhbR3hb/MmWPG59kKlc=
