@@ -11,7 +11,7 @@ Parameters:
     Default: superluminar-website
   GithubRepoBranch:
     Type: String
-    Default: master
+    Default: "*"
   DeploymentStage:
     Type: String
     Default: prod
