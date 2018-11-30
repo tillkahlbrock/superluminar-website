@@ -34,6 +34,9 @@ install: hugo ## Install dependencies (hugo)
 
 build: public ## Build the website
 
+build-preview: guard-BASE_URL ## Build the preview website
+	./hugo --baseURL $(BASE_URL)
+
 deploy: public guard-WEBSITE_BUCKET guard-CLOUDFRONT_DISTRIBUTION_ID ## Deploys the website to the S3 bucket
 	aws s3 sync public/ s3://$(WEBSITE_BUCKET)/ --delete
 	aws configure set preview.cloudfront true
