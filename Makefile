@@ -34,13 +34,16 @@ install: hugo ## Install dependencies (hugo)
 
 build: public ## Build the website
 
+build-preview: guard-BASE_URL ## Build the preview website
+	./hugo --baseURL $(BASE_URL)
+
 deploy: public guard-WEBSITE_BUCKET guard-CLOUDFRONT_DISTRIBUTION_ID ## Deploys the website to the S3 bucket
 	aws s3 sync public/ s3://$(WEBSITE_BUCKET)/ --delete
 	aws configure set preview.cloudfront true
 	aws cloudfront create-invalidation --distribution-id=$(CLOUDFRONT_DISTRIBUTION_ID) --paths /
 
 deploy-preview: public guard-PREVIEW_BUCKET ## Deploys a preview of the website to the S3 bucket
-	aws s3 sync public/ s3://$(PREVIEW_BUCKET)/ --delete
+	aws s3 sync public/ s3://$(PREVIEW_BUCKET)/$(BUCKET_PATH) --delete
 
 deploy-pipeline: ## Deploys the AWS CodePipeline that deploys the website
 	aws cloudformation deploy \
@@ -54,7 +57,7 @@ deploy-preview-pipeline: ## Deploys the AWS CodePipeline that deploys the websit
 		--stack-name website-preview \
 		--region us-east-1 \
 		--template-file website-preview.yaml \
-		--capabilities CAPABILITY_IAM
+		--capabilities CAPABILITY_NAMED_IAM
 
 .PHONY: help
 help:
