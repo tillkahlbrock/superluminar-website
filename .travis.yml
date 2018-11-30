@@ -1,0 +1,12 @@
+language: go
+go:
+- "1.11"
+
+services:
+- docker
+
+before_script:
+- make install
+
+script:
+- make build
