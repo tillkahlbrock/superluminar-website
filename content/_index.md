@@ -2,7 +2,7 @@
 title: "Wir beraten, coachen und trainieren"
 description: "Moderne Arbeitsweisen in der Produktentwicklung erhöhen die Erfolgschancen durch schnelle Feedback-Zyklen."
 ---
-<h1 class="h1 h0-responsive my2">Mit uns bringt Ihr eure Produktentwicklung auf Speed</h1>
+<h1 class="h1 h0-responsive my2">Mit uns bringt Ihr eure Produktentwicklung auf Spied</h1>
 Wir verstehen nicht nur die modernsten Technologien, wir schauen auch auf Menschen und Prozesse. So unterstützen wir eure Organisation bei der Transition hin zu moderner Produktentwicklung: *mit statt für euch*. Dies unterscheidet uns vom Markt.
 
 ## Wie wir arbeiten
