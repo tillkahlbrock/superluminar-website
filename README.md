@@ -1,4 +1,4 @@
-# superluminar.io website
+# superluminar.io website-preview
 
 This repo hosts the source code and deploy pipeline for https://superluminar.io.
 
