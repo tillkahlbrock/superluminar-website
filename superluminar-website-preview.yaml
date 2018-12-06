@@ -86,3 +86,7 @@ Resources:
           Action: sts:AssumeRole
       ManagedPolicyArns:
       - arn:aws:iam::aws:policy/AdministratorAccess
+Outputs:
+  S3BucketURL:
+    Value: !Join ['', ['https://', !GetAtt WebsitePreviewBucket.DomainName ] ]
+    Description: Name of S3 bucket to hold website content
