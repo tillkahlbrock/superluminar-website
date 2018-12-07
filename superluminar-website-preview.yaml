@@ -46,7 +46,7 @@ Resources:
         - Name: PREVIEW_BUCKET
           Value: !Ref WebsitePreviewBucket
         - Name: BUCKET_PATH
-          Value: preview
+          Value: "${CODEBUILD_WEBHOOK_TRIGGER}"
         - Name: BASE_URL
           Value: !Join ['', [ 'https://', !GetAtt WebsitePreviewBucket.DomainName, "/", "${CODEBUILD_WEBHOOK_TRIGGER}", "/" ] ]
         - Name: GITHUB_TOKEN
