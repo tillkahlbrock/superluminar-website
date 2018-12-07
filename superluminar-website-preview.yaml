@@ -40,7 +40,7 @@ Resources:
         Type: NO_ARTIFACTS
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
-        Image: alpine:3.8
+        Image: ubuntu:18.04
         Type: LINUX_CONTAINER
         EnvironmentVariables:
         - Name: PREVIEW_BUCKET
@@ -65,7 +65,8 @@ Resources:
             install:
               commands:
                 # install dependencies
-                - apk -v --update add make curl python py-pip groff ca-certificates
+                - apt update
+                - apt install -y ca-certificates build-essential curl python python-pip groff
                 - pip install --upgrade awscli
                 - make install
             build:
