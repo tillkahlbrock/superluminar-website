@@ -65,7 +65,7 @@ Resources:
             install:
               commands:
                 # install dependencies
-                - apk -v --update add make curl python py-pip groff
+                - apk -v --update add make curl python py-pip groff ca-certificates
                 - pip install --upgrade awscli
                 - make install
             build:
