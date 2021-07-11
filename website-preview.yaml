@@ -1,0 +1,198 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Deployment pipeline for https://superluminar.io including a CDN and HTTPS
+Parameters:
+  GithubOauthToken:
+    Type: String
+  GithubRepoOwner:
+    Type: String
+    Default: tillkahlbrock
+  GithubRepoName:
+    Type: String
+    Default: superluminar-website
+  GithubRepoBranch:
+    Type: String
+    Default: master
+  DeploymentStage:
+    Type: String
+    Default: prod
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: Source Code Repository
+        Parameters:
+          - GithubRepoOwner
+          - GithubRepoName
+          - GithubRepoBranch
+          - GithubOauthToken
+Resources:
+  WebsitePreviewBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref WebsitePreviewBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          Effect: Allow
+          Principal: "*"
+          Action: s3:GetObject
+          Resource: !Sub arn:aws:s3:::${WebsitePreviewBucket}/*
+  ArtifactStoreBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      VersioningConfiguration:
+        Status: Enabled
+      AccessControl: BucketOwnerFullControl
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      RoleArn: !GetAtt PipelineRole.Arn
+      ArtifactStore:
+        Location:
+          Ref:
+            ArtifactStoreBucket
+        Type: S3
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: SourceAction
+              ActionTypeId:
+                Category: Source
+                Owner: ThirdParty
+                Version: 1
+                Provider: GitHub
+              InputArtifacts: []
+              OutputArtifacts:
+                - Name: SourceOutput
+              Configuration:
+                Owner: !Ref GithubRepoOwner
+                Repo: !Ref GithubRepoName
+                Branch: !Ref GithubRepoBranch
+                OAuthToken: !Ref GithubOauthToken
+              RunOrder: 1
+        - Name: DeployWebsitePreview
+          Actions:
+          - Name: DeployWebsiteAction
+            ActionTypeId:
+              Category: Build
+              Owner: AWS
+              Version: 1
+              Provider: CodeBuild
+            InputArtifacts:
+              - Name: SourceOutput
+            OutputArtifacts:
+              - Name: DeployWebsiteActionOutput
+            Configuration:
+              ProjectName:
+                Ref: DeployWebsitePreviewBuild
+            RunOrder: 2
+
+  PipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          Effect: Allow
+          Principal:
+            Service: codepipeline.amazonaws.com
+          Action: sts:AssumeRole
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess
+
+  PipelineWebhook:
+    Type: 'AWS::CodePipeline::Webhook'
+    Properties:
+      AuthenticationConfiguration:
+        SecretToken: !Ref GithubOauthToken
+      Filters:
+      - JsonPath: "$.ref"
+        MatchEquals: refs/heads/{Branch}
+      Authentication: GITHUB_HMAC
+      TargetPipeline: !Ref Pipeline
+      TargetAction: SourceAction # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-webhook.html#cfn-codepipeline-webhook-targetaction
+      Name: SuperluminarIOPreviewWebhook
+      TargetPipelineVersion: !GetAtt Pipeline.Version
+      RegisterWithThirdParty: 'true'
+
+  DeployWebsitePreviewBuild:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/ubuntu-base:14.04
+        Type: LINUX_CONTAINER
+        EnvironmentVariables:
+          - Name: PREVIEW_BUCKET
+            Value: !Ref WebsitePreviewBucket
+          - Name: LC_CTYPE
+            Value: en_US.UTF-8
+      Name: !Sub DeployWebsitePreviewBuild-${DeploymentStage}
+      ServiceRole: !Ref DeployWebsitePreviewRole
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: |
+          version: 0.1
+          phases:
+            install:
+              commands:
+                - make install
+            build:
+              commands:
+                - make build
+            post_build:
+              commands:
+                - make deploy-preview
+
+  DeployWebsitePreviewRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          Effect: Allow
+          Principal:
+            Service: codebuild.amazonaws.com
+          Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess
+
+  PreviewS3DeploymentUser:
+    Type: AWS::IAM::User
+    Properties:
+      Policies:
+      - PolicyName: "WebsitePreviewDeployment"
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+          - Effect: "Allow"
+            Action:
+            - "s3:ListBucket"
+            Resource: !GetAtt WebsitePreviewBucket.Arn
+          - Effect: "Allow"
+            Action:
+            - "s3:PutObject"
+            - "s3:GetObject"
+            - "s3:DeleteObject"
+            Resource: !Join [ "/", [ !GetAtt WebsitePreviewBucket.Arn, "*" ] ]
+      UserName: s3-deployment-user
+
+  PreviewS3DeploymentUserAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref PreviewS3DeploymentUser
+
+Outputs:
+  UserAccessKey:
+    Value: !Ref PreviewS3DeploymentUserAccessKey
+  UserSecretKey:
+    Value: !GetAtt PreviewS3DeploymentUserAccessKey.SecretAccessKey
