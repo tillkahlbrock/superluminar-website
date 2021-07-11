@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Bucket and User for previews of https://superluminar.io
+Resources:
+  WebsitePreviewBucket:
+    Type: AWS::S3::Bucket
+    LifecycleConfiguration:
+      ExpirationInDays: 30
+    Properties:
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref WebsitePreviewBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          Effect: Allow
+          Principal: "*"
+          Action: s3:GetObject
+          Resource: !Sub arn:aws:s3:::${WebsitePreviewBucket}/*
+  PreviewS3DeploymentUser:
+    Type: AWS::IAM::User
+    Properties:
+      Policies:
+      - PolicyName: "WebsitePreviewDeployment"
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+          - Effect: "Allow"
+            Action:
+            - "s3:ListBucket"
+            Resource: !GetAtt WebsitePreviewBucket.Arn
+          - Effect: "Allow"
+            Action:
+            - "s3:PutObject"
+            - "s3:GetObject"
+            - "s3:DeleteObject"
+            Resource: !Join [ "/", [ !GetAtt WebsitePreviewBucket.Arn, "*" ] ]
+      UserName: s3-deployment-user
+  PreviewS3DeploymentUserAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref PreviewS3DeploymentUser
+
+Outputs:
+  UserAccessKey:
+    Value: !Ref PreviewS3DeploymentUserAccessKey
+  UserSecretKey:
+    Value: !GetAtt PreviewS3DeploymentUserAccessKey.SecretAccessKey
+  WebsiteURL:
+    Value: !Join ['', [ 'https://', !GetAtt WebsitePreviewBucket.DomainName ] ]
+    Description: URL for website hosted on S3
