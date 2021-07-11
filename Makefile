@@ -39,11 +39,21 @@ deploy: public guard-WEBSITE_BUCKET guard-CLOUDFRONT_DISTRIBUTION_ID ## Deploys 
 	aws configure set preview.cloudfront true
 	aws cloudfront create-invalidation --distribution-id=$(CLOUDFRONT_DISTRIBUTION_ID) --paths /
 
+deploy-preview: public guard-PREVIEW_BUCKET ## Deploys a preview of the website to the S3 bucket
+	aws s3 sync public/ s3://$(PREVIEW_BUCKET)/ --delete
+
 deploy-pipeline: ## Deploys the AWS CodePipeline that deploys the website
 	aws cloudformation deploy \
 		--stack-name superluminar-website-prod \
 		--region us-east-1 \
 		--template-file superluminar-website-prod.yaml \
+		--capabilities CAPABILITY_IAM
+
+deploy-preview-pipeline: ## Deploys the AWS CodePipeline that deploys the website preview
+	aws cloudformation deploy \
+		--stack-name website-preview \
+		--region us-east-1 \
+		--template-file website-preview.yaml \
 		--capabilities CAPABILITY_IAM
 
 .PHONY: help
